@@ -1,10 +1,9 @@
 import './App.css';
+import GetBillingDetails from './components/billingdetails/GetBillingDetails';
 
 function App() {
-  return (
-    <div>
-      Hello
-    </div>
+  return (  
+    <GetBillingDetails />
   );
 }
 
