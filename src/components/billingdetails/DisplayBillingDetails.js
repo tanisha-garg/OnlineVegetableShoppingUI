@@ -15,7 +15,10 @@ function DisplayBillingDetails({ bill }) {
     <div>
       <ul>
         <li>
-          {billingId} {transactionMode} {transactionDate} {transactionStatus}
+          Billing Id: {billingId} <br />
+          Transaction Mode: {transactionMode} <br />
+          Transaction Date: {transactionDate} <br/>
+          Transaction Status: {transactionStatus}
         </li>
         <li>
           Billing Address: {flatNo}, {buildingName}, {area},

@@ -6,11 +6,10 @@ import UpdateTransactionStatus from './components/billingdetails/UpdateTransacti
 
 function App() {
   return (  
-    // <GetBillingDetails />
+    //  <GetBillingDetails />
     // <AddBillingDetails />
-    <GetBillingDetails />
     // <UpdateTransactionMode />
-    // <UpdateTransactionStatus />
+    <UpdateTransactionStatus />
 
   );
 }

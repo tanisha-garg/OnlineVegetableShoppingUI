@@ -26,7 +26,7 @@ function UpdateTransactionStatus() {
 
   const submitHandler = (event) => {
       event.preventDefault();
-      const newState = {...state, bill:bill, errMsg:undefined};
+      const newState = {...state, bill:undefined, errMsg:errMsg};
       setState(newState);
 
   }
@@ -40,27 +40,33 @@ function UpdateTransactionStatus() {
   }
 
   return (
-    <div>
+    <div className="container w-75 mt-5">
       <h2>Update Transaction Status</h2>
       <form onSubmit={submitHandler}>
-      <label>Enter BillingId:</label>
+        <div className="form-group">
+        <label>Enter BillingId:</label>
         <input
+        className="form-control"
           type="text"
           name="billingId"
           ref={billIdRef}
           onChange={() => fieldHandler(billIdRef)}
-        /> <br />
+        />
+        </div>
+        <div className="form-group">
         <label>Enter Transaction Status: </label>
         <input
+        className="form-control"
           type="text"
           name="transactionStatus"
           ref={tStatusRef}
           onChange={() => fieldHandler(tStatusRef)}
-        /> <br />
-        <button>Submit</button>
-      </form>
+        />
+        </div>
+        <button className="btn btn-primary">Submit</button>
+      </form><br />
 
-      <span>Id is {state.billingId} Transaction Status is {state.transactionStatus} </span>
+      {/* <span>Id is {state.billingId} Transaction Status is {state.transactionStatus} </span> */}
 
       {state.bill ? (
           <div>
@@ -69,7 +75,7 @@ function UpdateTransactionStatus() {
           </div>
       ) : ("") }
       {state.errMsg ? (
-          <div>
+          <div className="text-danger h6">
               Request was not successsful <br /> {state.errMsg}
           </div>
       ) : ("")}

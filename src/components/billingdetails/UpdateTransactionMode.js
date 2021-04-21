@@ -29,7 +29,7 @@ function UpdateTransactionMode() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const newState = { ...state, bill: bill, errMsg: undefined };
+    const newState = { ...state, bill:undefined, errMsg: errMsg };
     setState(newState);
   };
 
@@ -47,42 +47,47 @@ function UpdateTransactionMode() {
   };
 
   return (
-    <div>
+    <div className="container mt-5 w-75">
       <h2>Update Transaction Mode</h2>
       <form onSubmit={submitHandler}>
-        <label>Enter BillingId:</label>
-        <input
-          type="text"
-          name="billingId"
-          ref={billIdRef}
-          onChange={() => fieldHandler(billIdRef)}
-        /> <br />
-        <label>Enter Transaction Mode: </label>
-        <input
-          type="text"
-          name="transactionMode"
-          ref={tModeRef}
-          onChange={() => fieldHandler(tModeRef)}
-        />{" "}
-        <br />
-        <button>Submit</button>
-      </form>
+        <div className="form-group">
+          <label>Enter BillingId:</label>
+          <input
+            className="form-control"
+            type="text"
+            name="billingId"
+            ref={billIdRef}
+            onChange={() => fieldHandler(billIdRef)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Enter Transaction Mode: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="transactionMode"
+            ref={tModeRef}
+            onChange={() => fieldHandler(tModeRef)}
+          />
+        </div>
 
-      <span>
+        <button className="btn btn-primary">Submit</button>
+      </form> <br />
+
+      {/* <span>
         Id is {state.billingId} Transaction Mode is {state.transactionMode}{" "}
-      </span>
+      </span> */}
 
       {state.bill ? (
         <div>
-          
-      <h3>Updated Billing Details Response</h3>
+          <h3>Updated Billing Details Response</h3>
           <DisplayBillingDetails bill={bill} />
         </div>
       ) : (
         ""
       )}
       {state.errMsg ? (
-        <div>
+        <div className="text-danger h6">
           Request was not successsful <br /> {state.errMsg}
         </div>
       ) : (

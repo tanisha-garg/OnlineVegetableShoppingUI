@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
 
 function AddBillingDetails() {
-
-    let bill = {
-        billingId: 1,
-        transactionMode: "COD",
-        transactionDate: "2021-04-20",
-        transactionStatus: "Succesful",
-        flatNo: "21",
-        buildingName: "ABC",
-        area: "Sector 2",
-        city: "Chandigarh",
-        state: "punjab",
-        pincode: "123456",
-      };
-    let errMsg = "Cannot retrieve Bill Details Response";
+  let bill = {
+    billingId: 1,
+    transactionMode: "COD",
+    transactionDate: "2021-04-20",
+    transactionStatus: "Succesful",
+    flatNo: "21",
+    buildingName: "ABC",
+    area: "Sector 2",
+    city: "Chandigarh",
+    state: "punjab",
+    pincode: "123456",
+  };
+  let errMsg = "Cannot retrieve Bill Details Response";
 
   const orderRef = React.createRef();
   const tModeRef = React.createRef();
@@ -33,7 +32,7 @@ function AddBillingDetails() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const newState = {...state, bill:bill, errMsg: undefined};
+    const newState = { ...state, bill: undefined, errMsg: errMsg };
     setNewState(newState);
   };
 
@@ -51,55 +50,68 @@ function AddBillingDetails() {
   };
 
   return (
-    <div>
+    <div className="container mt-5 w-75">
       <h2>Add Bill</h2>
       <form onSubmit={submitHandler}>
-        <label>OrderId:</label>
-        <input
-          type="text"
-          name="orderId"
-          ref={orderRef}
-          onChange={() => fieldHandler(orderRef)}
-        />
-        <br />
-        <label>Transaction Mode: </label>
-        <input
-          type="text"
-          name="transactionMode"
-          ref={tModeRef}
-          onChange={() => fieldHandler(tModeRef)}
-        />
-        <br />
-        <label>Transaction Status: </label>
-        <input
-          type="text"
-          name="transactionStatus"
-          ref={tStatusRef}
-          onChange={() => fieldHandler(tStatusRef)}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
+        <div className="form-group">
+          <label>OrderId:</label>
+          <input
+            className="form-control"
+            type="text"
+            name="orderId"
+            ref={orderRef}
+            onChange={() => fieldHandler(orderRef)}
+          />
+        </div>
 
-      <h3>Add Bill Details</h3>
-      Order Id is {state.orderId} <br />
-      Transaction Mode is {state.transactionMode} <br />
-      Transaction Status is {state.transactionStatus} <br />
+        <div className="form-group">
+          <label>Transaction Mode: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="transactionMode"
+            ref={tModeRef}
+            onChange={() => fieldHandler(tModeRef)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Transaction Status: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="transactionStatus"
+            ref={tStatusRef}
+            onChange={() => fieldHandler(tStatusRef)}
+          />
+        </div>
+
+        <button className="btn btn-primary">Submit</button>
+      </form><br/>
+
+      {/* <div>
+        <h3>Add Bill Details</h3>
+        Order Id is {state.orderId} <br />
+        Transaction Mode is {state.transactionMode} <br />
+        Transaction Status is {state.transactionStatus} <br />
+      </div> */}
 
       {state.bill ? (
-          <div>
-              <h5>Bill Added successfully</h5>
-              <h4>Billing Details Response</h4>
-              <DisplayBillingDetails bill={bill}/>
-          </div>
-      ) : ("")}
-
+        <div>
+          <h5>Bill Added successfully</h5>
+          <h4>Billing Details Response</h4>
+          <DisplayBillingDetails bill={bill} />
+        </div>
+      ) : (
+        ""
+      )}
       {state.errMsg ? (
-          <div>
-              Request was not successsful <br /> {state.errMsg}
-          </div>
-      ) : ("")}
-
+        <div className="text-danger h6">
+          Request was not successsful <br /> {state.errMsg}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
