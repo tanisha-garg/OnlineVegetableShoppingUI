@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
+import validationMessage from "./billingValidationMessage";
 
 function AddBillingDetails() {
   let bill = {
@@ -26,12 +27,16 @@ function AddBillingDetails() {
     transactionStatus: undefined,
     bill: undefined,
     errMsg: undefined,
+    validations: {orderId:undefined}
   };
 
   let [state, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if(state.validations.orderId){
+      return;
+    }
     const newState = { ...state, bill: undefined, errMsg: errMsg };
     setNewState(newState);
   };
@@ -40,14 +45,27 @@ function AddBillingDetails() {
     const field = reference.current;
     const fieldName = field.name;
     const fieldVal = field.value;
+    let validationMessage;
+    if(reference === orderRef){
+      validationMessage = validateOrderId(fieldVal);
+    }
+    const newValidations = {...state.validations, [fieldName]:validationMessage};
     const newState = {
       ...state,
       [fieldName]: fieldVal,
       bill: undefined,
       errMsg: undefined,
+      validations: newValidations
     };
     setNewState(newState);
   };
+
+  const validateOrderId = (orderId) => {
+    if(orderId < 0){
+      return validationMessage.orderIdLessThanZero;
+    }
+    return undefined;
+  }
 
   return (
     <div className="container mt-5 w-75">
@@ -61,7 +79,13 @@ function AddBillingDetails() {
             name="orderId"
             ref={orderRef}
             onChange={() => fieldHandler(orderRef)}
+            required
           />
+          {state.validations.orderId ? (
+            <div className="text-danger mt-2">
+              {state.validations.orderId}
+            </div>
+          ) : ("")}
         </div>
 
         <div className="form-group">

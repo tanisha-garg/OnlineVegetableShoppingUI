@@ -7,9 +7,9 @@ import UpdateTransactionStatus from './components/billingdetails/UpdateTransacti
 function App() {
   return (  
     //  <GetBillingDetails />
-    // <AddBillingDetails />
+    <AddBillingDetails />
     // <UpdateTransactionMode />
-    <UpdateTransactionStatus />
+    // <UpdateTransactionStatus />
 
   );
 }
