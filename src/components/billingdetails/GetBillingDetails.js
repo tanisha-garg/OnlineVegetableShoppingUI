@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
+import validationMessage from "./billingValidationMessage";
 
 function GetBillingDetails() {
   let bill = {
@@ -18,26 +19,51 @@ function GetBillingDetails() {
 
   const billIdRef = React.createRef();
 
-  const initialState = { billId: -1, bill: undefined, errMsg: undefined };
+  const initialState = {
+    billingId: -1,
+    bill: undefined,
+    errMsg: undefined,
+    validations: { billingId: undefined }
+  };
 
   let [state, setNewState] = useState(initialState);
 
-  const setIdHandler = () => {
-    const field = billIdRef.current;
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (state.validations.billingId) {
+      return;
+    }
+    const newState = { ...state, bill: bill, errMsg: undefined };
+    setNewState(newState);
+  };
+
+  const setIdHandler = (reference) => {
+    const field = reference.current;
+    const fieldName = field.name;
     const fieldValue = field.value;
+    let validationMessage;
+    if (reference === billIdRef) {
+      validationMessage = validateBillId(fieldValue);
+    }
+    const newValidations = {
+      ...state.validations,
+      [fieldName]: validationMessage
+    };
     const newState = {
       ...state,
       billingId: fieldValue,
       bill: undefined,
       errMsg: undefined,
+      validations: newValidations,
     };
     setNewState(newState);
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const newState = { ...state, bill: bill, errMsg: undefined };
-    setNewState(newState);
+  const validateBillId = (billingId) => {
+    if (billingId < 0) {
+      return validationMessage.billingIdLessThanZero;
+    }
+    return undefined;
   };
 
   return (
@@ -45,19 +71,25 @@ function GetBillingDetails() {
       <h3>Fetch bill by Id</h3>
       <form onSubmit={submitHandler} className="mt-3">
         <div className="form-group">
-          <label>Enter Id: </label>
+          <label>Enter Billing Id: </label>
           <input
             className="form-control"
             type="text"
             name="billingId"
             ref={billIdRef}
-            onChange={() => setIdHandler()}
+            onChange={() => setIdHandler(billIdRef)}
           />
+          {state.validations.billingId ? (
+            <div className="text-danger mt-2">{state.validations.billingId}</div>
+          ) : (
+            ""
+          )}
         </div>
 
         <br />
         <button className="btn btn-primary">Submit</button>
-      </form><br />
+      </form>
+      <br />
       {/* <span>Id is {state.billingId} </span> */}
       {state.bill ? (
         <div>

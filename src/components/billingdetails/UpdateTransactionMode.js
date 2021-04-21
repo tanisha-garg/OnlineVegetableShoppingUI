@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
+import validationMessage from "./billingValidationMessage";
 
 function UpdateTransactionMode() {
   let bill = {
@@ -23,12 +24,16 @@ function UpdateTransactionMode() {
     transactionMode: undefined,
     bill: undefined,
     errMsg: undefined,
+    validations: { billingId: undefined }
   };
 
   let [state, setState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if (state.validations.billingId) {
+      return;
+    }
     const newState = { ...state, bill:undefined, errMsg: errMsg };
     setState(newState);
   };
@@ -37,13 +42,29 @@ function UpdateTransactionMode() {
     const field = reference.current;
     const fieldName = field.name;
     const fieldVal = field.value;
+    let validationMessage;
+    if (reference === billIdRef) {
+      validationMessage = validateBillId(fieldVal);
+    }
+    const newValidations = {
+      ...state.validations,
+      [fieldName]: validationMessage
+    };
     const newState = {
       ...state,
       [fieldName]: fieldVal,
       bill: undefined,
       errMsg: undefined,
+      validations: newValidations
     };
     setState(newState);
+  };
+
+  const validateBillId = (billingId) => {
+    if (billingId < 0) {
+      return validationMessage.billingIdLessThanZero;
+    }
+    return undefined;
   };
 
   return (
@@ -59,6 +80,11 @@ function UpdateTransactionMode() {
             ref={billIdRef}
             onChange={() => fieldHandler(billIdRef)}
           />
+          {state.validations.billingId ? (
+            <div className="text-danger mt-2">{state.validations.billingId}</div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="form-group">
           <label>Enter Transaction Mode: </label>
