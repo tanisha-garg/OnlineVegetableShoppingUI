@@ -1,16 +1,26 @@
 function DisplayBillingDetails({ bill }) {
+  let {
+    billingId,
+    transactionMode,
+    transactionDate,
+    transactionStatus,
+    flatNo,
+    buildingName,
+    area,
+    city,
+    state,
+    pincode,
+   } = bill;
   return (
     <div>
-      <h2>Bill Details</h2>
       <ul>
         <li>
-          {bill.billingId} {bill.transactionMode} {bill.transactionDate}{" "}
-          {bill.transactionStatus}
+          {billingId} {transactionMode} {transactionDate} {transactionStatus}
         </li>
         <li>
-          Billing Address: {bill.flatNo}, {bill.buildingName}, {bill.area},
+          Billing Address: {flatNo}, {buildingName}, {area},
           <br />
-          {bill.city}, {bill.state}, {bill.pincode}
+          {city}, {state}, {pincode}
         </li>
       </ul>
     </div>

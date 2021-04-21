@@ -18,6 +18,7 @@ function UpdateTransactionStatus() {
     let errMsg = "Cannot retrieve Bill Details Response";
 
   const tStatusRef = React.createRef();
+  const billIdRef = React.createRef();
 
   const initialState = {transactionStatus:undefined, bill:undefined, errMsg:undefined};
 
@@ -30,10 +31,11 @@ function UpdateTransactionStatus() {
 
   }
 
-  const setTStatusHandler = () => {
-    const field = tStatusRef.current;
+  const fieldHandler = (reference) => {
+    const field = reference.current;
+    const fieldName = field.name;
     const fieldVal = field.value;
-    const newState = {...state,transactionStatus:fieldVal, bill:undefined, errMsg:undefined};
+    const newState = {...state,[fieldName]:fieldVal, bill:undefined, errMsg:undefined};
     setState(newState);
   }
 
@@ -41,21 +43,28 @@ function UpdateTransactionStatus() {
     <div>
       <h2>Update Transaction Status</h2>
       <form onSubmit={submitHandler}>
+      <label>Enter BillingId:</label>
+        <input
+          type="text"
+          name="billingId"
+          ref={billIdRef}
+          onChange={() => fieldHandler(billIdRef)}
+        /> <br />
         <label>Enter Transaction Status: </label>
         <input
           type="text"
           name="transactionStatus"
           ref={tStatusRef}
-          onChange={() => setTStatusHandler()}
+          onChange={() => fieldHandler(tStatusRef)}
         /> <br />
         <button>Submit</button>
       </form>
 
-      <span>Transaction Status is {state.transactionStatus} </span>
+      <span>Id is {state.billingId} Transaction Status is {state.transactionStatus} </span>
 
-      <h3>Updated BillingDetails Response</h3>
       {state.bill ? (
           <div>
+            <h3>Updated Billing Details Response</h3>
               <DisplayBillingDetails bill={bill} />
           </div>
       ) : ("") }

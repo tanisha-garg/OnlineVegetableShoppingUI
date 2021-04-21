@@ -3,19 +3,19 @@ import DisplayBillingDetails from "./DisplayBillingDetails";
 
 function AddBillingDetails() {
 
-    // let bill = {
-    //     billingId: 1,
-    //     transactionMode: "COD",
-    //     transactionDate: "2021-04-20",
-    //     transactionStatus: "Succesful",
-    //     flatNo: "21",
-    //     buildingName: "ABC",
-    //     area: "Sector 2",
-    //     city: "Chandigarh",
-    //     state: "punjab",
-    //     pincode: "123456",
-    //   };
-    //let errMsg = "Cannot retrieve Bill Details Response";
+    let bill = {
+        billingId: 1,
+        transactionMode: "COD",
+        transactionDate: "2021-04-20",
+        transactionStatus: "Succesful",
+        flatNo: "21",
+        buildingName: "ABC",
+        area: "Sector 2",
+        city: "Chandigarh",
+        state: "punjab",
+        pincode: "123456",
+      };
+    let errMsg = "Cannot retrieve Bill Details Response";
 
   const orderRef = React.createRef();
   const tModeRef = React.createRef();
@@ -33,8 +33,8 @@ function AddBillingDetails() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // const newState = {...state, bill:undefined, errMsg: undefined};
-    // setNewState(newState);
+    const newState = {...state, bill:bill, errMsg: undefined};
+    setNewState(newState);
   };
 
   const fieldHandler = (reference) => {
@@ -86,19 +86,19 @@ function AddBillingDetails() {
       Transaction Mode is {state.transactionMode} <br />
       Transaction Status is {state.transactionStatus} <br />
 
-      <h3>Billing Details Response</h3>
-      {/* {state.bill ? (
+      {state.bill ? (
           <div>
-              <h4>Bill Added successfully</h4>
+              <h5>Bill Added successfully</h5>
+              <h4>Billing Details Response</h4>
               <DisplayBillingDetails bill={bill}/>
           </div>
-      ) : ("")} */}
+      ) : ("")}
 
-      {/* {state.errMsg ? (
+      {state.errMsg ? (
           <div>
               Request was not successsful <br /> {state.errMsg}
           </div>
-      ) : ("")} */}
+      ) : ("")}
 
     </div>
   );

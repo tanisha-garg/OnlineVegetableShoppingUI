@@ -32,7 +32,7 @@ function GetBillingDetails(){
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const newState = {...state, bill:undefined, errMsg:errMsg};
+        const newState = {...state, bill:bill, errMsg:undefined};
         setNewState(newState);
     }
 
@@ -45,9 +45,10 @@ function GetBillingDetails(){
                 <button>Submit</button>
             </form>
             <span>Id is {state.billingId} </span>
-            <h3>Updated BillingDetails Response</h3>
             {state.bill ? (
                 <div>
+                    
+      <h3>Billing Details Response</h3>
                     <DisplayBillingDetails bill={bill} />
                 </div>
             ) : ("") }
