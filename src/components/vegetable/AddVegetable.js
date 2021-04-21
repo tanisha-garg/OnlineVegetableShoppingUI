@@ -4,7 +4,10 @@ import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 
 
-
+/**
+ * 
+ * Add Vegetable Component
+ */
 export default function AddVegetable() {
     const veg = {
       id: 1,

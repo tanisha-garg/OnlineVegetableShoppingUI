@@ -3,6 +3,11 @@ import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 
+/**
+ * 
+ * Update Vegetable Quantity Component
+ */
+
 export default function UpdateVegetableQuantity() {
     const veg = {
         id: 1,

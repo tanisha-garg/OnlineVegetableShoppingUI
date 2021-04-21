@@ -3,6 +3,11 @@ import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 
+/**
+ * 
+ * Get Vegetable Component
+ */
+
 export default function GetVegetableDetails() {
     const veg = {
       id: 1,

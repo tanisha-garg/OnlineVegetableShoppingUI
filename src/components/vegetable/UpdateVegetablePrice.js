@@ -3,7 +3,10 @@ import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 
-
+/**
+ * 
+ * Update Vegetable Price Component
+ */
 
 export default function UpdateVegetablePrice() {
   const veg = {
