@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DisplayVegetable from "./DisplayVegetables";
+import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 

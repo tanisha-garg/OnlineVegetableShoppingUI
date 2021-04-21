@@ -22,11 +22,11 @@ function App() {
       {/*<DisplayVegetable veg={veg}/>*/}
       {/*<DisplayVegetables vegetables={veg1}/>*/}
       {/*<AddVegetable/>*/}
-      {/*<UpdateVegetablePrice/>*/}
+      {<UpdateVegetablePrice/>}
       {/*<UpdateVegetableQuantity/>*/}
       {/*<GetVegetableDetails/>*/}
       {/*<VegetableHome/>*/}
-      {<NavBar/>}
+      {/*<NavBar/>*/}
     </div>
   );
 }
