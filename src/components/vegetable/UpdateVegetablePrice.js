@@ -29,6 +29,10 @@ export default function UpdateVegetablePrice() {
     formStatus: "",
     validations:{id:undefined,price:undefined}
   });
+  /**
+   * 
+   * Change Handler Function
+   */
 
   const changeHandler = (ref) => {
     const fieldName = ref.current.name;
@@ -68,6 +72,11 @@ export default function UpdateVegetablePrice() {
         }
         return undefined;
       };
+
+      /**
+       * 
+       * submit Handler Function 
+       */
 
   const submitHandler = (event) => {
     event.preventDefault();

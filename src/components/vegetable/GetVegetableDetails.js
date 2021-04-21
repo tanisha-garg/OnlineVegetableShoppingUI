@@ -26,6 +26,11 @@ export default function GetVegetableDetails() {
       errMsg: undefined,
       validations:{id:undefined}
     });
+
+/**
+ * 
+ * Set ID Handler Function
+ */
   
     const setIdHandler = () => {
       const idValue=idRef.current.value;
@@ -40,6 +45,11 @@ export default function GetVegetableDetails() {
       };
       setFormState(newState);
     };
+    
+/**
+ * 
+ * Submit Handler Function
+ */
   
     const submitHandler = (event) => {
       event.preDefault();

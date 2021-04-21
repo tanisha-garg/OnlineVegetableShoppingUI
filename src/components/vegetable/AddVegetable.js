@@ -24,7 +24,7 @@ export default function AddVegetable() {
     const quantityRef = React.createRef();
     const priceRef = React.createRef();
   
-    const initialState = {
+    const initialState = {        
       name: undefined,
       category: undefined,
       type: undefined,
@@ -37,11 +37,19 @@ export default function AddVegetable() {
     };
   
     const [currentState, setNewState] = useState(initialState);
-  
+  /**
+   * 
+   * submit Handler Function
+   */
     const submitHandler = (event) => {
       event.preventDefault();
       setNewState({ ...currentState, formStatus: "form submitted successfully" });
     };
+
+  /**
+   * 
+   * change Handler Function
+   */
   
     const changeHandler = (ref) => {
       const fieldName = ref.current.name;
