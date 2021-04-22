@@ -1,4 +1,6 @@
 import './App.css';
+import CancelOrderDetail from './Components/Order/CancelOrderDetail';
+import ViewOrderDetail from './Components/Order/ViewOrderDetail';
 import AddBillingDetails from './components/billingdetails/AddBillingDetails';
 import GetBillingDetails from './components/billingdetails/GetBillingDetails';
 import UpdateTransactionMode from './components/billingdetails/UpdateTransactionMode';
@@ -26,7 +28,7 @@ function App() {
       {/*<DisplayVegetable veg={veg}/>*/}
       {/*<DisplayVegetables vegetables={veg1}/>*/}
       {/*<AddVegetable/>*/}
-      {<UpdateVegetablePrice/>}
+      //{<UpdateVegetablePrice/>}
       {/*<UpdateVegetableQuantity/>*/}
       {/*<GetVegetableDetails/>*/}
       {/*<VegetableHome/>*/}
@@ -35,6 +37,8 @@ function App() {
     // <AddBillingDetails />
     // <UpdateTransactionMode />
    // <UpdateTransactionStatus />
+         //<CancelOrderDetail />
+    //  <ViewOrderDetail />
     </div>
 
   );
