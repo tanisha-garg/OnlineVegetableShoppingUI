@@ -1,19 +1,19 @@
 import "./App.css";
-import CancelOrderDetail from "./component/order/CancelOrderDetail";
-import ViewOrderDetail from "./component/order/ViewOrderDetail";
-import AddBillingDetails from "./component/billingdetails/AddBillingDetails";
-import GetBillingDetails from "./component/billingdetails/GetBillingDetails";
-import UpdateTransactionMode from "./component/billingdetails/UpdateTransactionMode";
-import UpdateTransactionStatus from "./component/billingdetails/UpdateTransactionStatus";
-import AddVegetable from "./component/vegetable/AddVegetable";
-import DisplayVegetable from "./component/vegetable/DisplayVegetable";
-import DisplayVegetables from "./component/vegetable/DisplayVegetables";
-import GetVegetableDetails from "./component/vegetable/GetVegetableDetails";
-import NavBar from "./component/vegetable/NavBar";
-import UpdateVegetablePrice from "./component/vegetable/UpdateVegetablePrice";
-import UpdateVegetableQuantity from "./component/vegetable/UpdateVegetableQuantity";
-import VegetableHome from "./component/vegetable/VegetableHome";
-import DisplayOrderDetails from "./component/order/DisplayOrderDetails";
+import CancelOrderDetail from "./components/order/CancelOrderDetail";
+import ViewOrderDetail from "./components/order/ViewOrderDetail";
+import AddBillingDetails from "./components/billingdetails/AddBillingDetails";
+import GetBillingDetails from "./components/billingdetails/GetBillingDetails";
+import UpdateTransactionMode from "./components/billingdetails/UpdateTransactionMode";
+import UpdateTransactionStatus from "./components/billingdetails/UpdateTransactionStatus";
+import AddVegetable from "./components/vegetable/AddVegetable";
+import DisplayVegetable from "./components/vegetable/DisplayVegetable";
+import DisplayVegetables from "./components/vegetable/DisplayVegetables";
+import GetVegetableDetails from "./components/vegetable/GetVegetableDetails";
+import NavBar from "./components/vegetable/NavBar";
+import UpdateVegetablePrice from "./components/vegetable/UpdateVegetablePrice";
+import UpdateVegetableQuantity from "./components/vegetable/UpdateVegetableQuantity";
+import VegetableHome from "./components/vegetable/VegetableHome";
+import DisplayOrderDetails from "./components/order/DisplayOrderDetails";
 /*const veg = {
   id: 1,
   name: "potato",
