@@ -14,6 +14,7 @@ import UpdateVegetablePrice from "./components/vegetable/UpdateVegetablePrice";
 import UpdateVegetableQuantity from "./components/vegetable/UpdateVegetableQuantity";
 import VegetableHome from "./components/vegetable/VegetableHome";
 import DisplayOrderDetails from "./components/order/DisplayOrderDetails";
+
 /*const veg = {
   id: 1,
   name: "potato",
@@ -42,6 +43,7 @@ function App() {
       {/* <CancelOrderDetail />
     // <ViewOrderDetail /> */}
      <DisplayOrderDetails order={order} />
+
     </div>
   );
 }
