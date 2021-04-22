@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
-import validationMessage from "./billingValidationMessage";
+import GetBillingDetailsOnRequest from "./GetBillingDetailsOnRequest";
 
-function GetBillingDetails() {
+function GetBillingDetails(props) {
   let bill = {
     billingId: 1,
     transactionMode: "COD",
@@ -16,91 +16,32 @@ function GetBillingDetails() {
     pincode: "123456",
   };
   let errMsg = "Cannot retrieve Bill Details Response";
+  const initialState = { bill: undefined, errMsg: undefined };
 
-  const billIdRef = React.createRef();
+  const [state, setNewState] = useState(initialState);
 
-  const initialState = {
-    billingId: -1,
-    bill: undefined,
-    errMsg: undefined,
-    validations: { billingId: undefined }
-  };
-
-  let [state, setNewState] = useState(initialState);
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    if (state.validations.billingId) {
-      return;
-    }
+  const fetchBillDetailsOnRender = () => {
+    const id = props.match.params.id;
     const newState = { ...state, bill: bill, errMsg: undefined };
     setNewState(newState);
   };
 
-  const setIdHandler = (reference) => {
-    const field = reference.current;
-    const fieldName = field.name;
-    const fieldValue = field.value;
-    let validationMessage;
-    if (reference === billIdRef) {
-      validationMessage = validateBillId(fieldValue);
-    }
-    const newValidations = {
-      ...state.validations,
-      [fieldName]: validationMessage
-    };
-    const newState = {
-      ...state,
-      billingId: fieldValue,
-      bill: undefined,
-      errMsg: undefined,
-      validations: newValidations,
-    };
-    setNewState(newState);
-  };
-
-  const validateBillId = (billingId) => {
-    if (billingId < 0) {
-      return validationMessage.billingIdLessThanZero;
-    }
-    return undefined;
-  };
+  useEffect(fetchBillDetailsOnRender);
 
   return (
-    <div className="container mt-5 w-75">
-      <h3>Fetch bill by Id</h3>
-      <form onSubmit={submitHandler} className="mt-3">
-        <div className="form-group">
-          <label>Enter Billing Id: </label>
-          <input
-            className="form-control"
-            type="text"
-            name="billingId"
-            ref={billIdRef}
-            onChange={() => setIdHandler(billIdRef)}
-          />
-          {state.validations.billingId ? (
-            <div className="text-danger mt-2">{state.validations.billingId}</div>
-          ) : (
-            ""
-          )}
-        </div>
+    <div>
+      <h2>Get Bill Details by Id</h2>
 
-        <br />
-        <button className="btn btn-primary">Submit</button>
-      </form>
-      <br />
-      {/* <span>Id is {state.billingId} </span> */}
       {state.bill ? (
         <div>
-          <h3>Billing Details Response</h3>
-          <DisplayBillingDetails bill={bill} />
+          <DisplayBillingDetails bill={state.bill} />
         </div>
       ) : (
         ""
       )}
+
       {state.errMsg ? (
-        <div className="text-danger h6">
+        <div className="text-danger h6 mt-3">
           Request was not successsful <br /> {state.errMsg}
         </div>
       ) : (
