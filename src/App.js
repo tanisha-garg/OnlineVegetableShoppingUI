@@ -1,4 +1,8 @@
 import './App.css';
+import AddBillingDetails from './components/billingdetails/AddBillingDetails';
+import GetBillingDetails from './components/billingdetails/GetBillingDetails';
+import UpdateTransactionMode from './components/billingdetails/UpdateTransactionMode';
+import UpdateTransactionStatus from './components/billingdetails/UpdateTransactionStatus';
 import AddVegetable from './components/vegetable/AddVegetable';
 import DisplayVegetable from './components/vegetable/DisplayVegetable';
 import DisplayVegetables from './components/vegetable/DisplayVegetables';
@@ -27,7 +31,12 @@ function App() {
       {/*<GetVegetableDetails/>*/}
       {/*<VegetableHome/>*/}
       {/*<NavBar/>*/}
+     //  <GetBillingDetails />
+    // <AddBillingDetails />
+    // <UpdateTransactionMode />
+   // <UpdateTransactionStatus />
     </div>
+
   );
 }
 
