@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DisplayVegetable from "./DisplayVegetables";
+import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 
@@ -30,11 +30,11 @@ export default function AddVegetable() {
       type: undefined,
       quantity: undefined,
       price: undefined,
-      vegetable: undefined,
-      errMsg: undefined,
       formStatus: "",
       validations:{name:undefined,category:undefined,type:undefined,quanity:undefined,price:undefined}
     };
+
+    const response={vegetable: veg, errMsg: undefined};
   
     const [currentState, setNewState] = useState(initialState);
   /**
@@ -137,7 +137,7 @@ export default function AddVegetable() {
           <div className="form-group">
             <label>Enter name</label>
             <input
-              name="name" placeholder="Enter veg name"
+              name="name" placeholder="Enter veg name" 
               ref={nameRef}
               onChange={() => changeHandler(nameRef)}
             />
@@ -149,11 +149,15 @@ export default function AddVegetable() {
           </div>
           <div>
             <label>Enter category</label>
-            <input
+            <select
               name="category" placeholder="Enter category"
               ref={categoryRef}
-              onChange={() => changeHandler(categoryRef)}
-            />
+              onChange={() => changeHandler(categoryRef)}>
+                <option value="" disabled="select category">Select Category</option>
+                <option value="underground">Underground</option>
+                <option value="aboveground">Aboveground</option>
+              </select>
+           
             {currentState.validations.category?(
               <div className={commonStyle.error}>
                 {currentState.validations.category}
@@ -162,11 +166,17 @@ export default function AddVegetable() {
           </div>
           <div>
             <label>Enter type</label>
-            <input
+            <select
               name="type" placeholder="Enter type"
               ref={typeRef}
-              onChange={() => changeHandler(typeRef)}
-            />
+              onChange={() => changeHandler(typeRef)}>
+                <option value="" disabled="select type">Select Type</option>
+                <option value="root">Root</option>
+                <option value="cruciferous">Cruciferous</option>
+                <option value="allium">Allium</option>
+                <option value="leafygreen">Leafy Green</option>
+                <option value="marrow">Marrow</option>
+                </select>
             {currentState.validations.type?(
               <div className={commonStyle.error}>
                 {currentState.validations.type}
@@ -205,24 +215,18 @@ export default function AddVegetable() {
           </div>
         </form>
         <h2>{currentState.formStatus}</h2>
-        <h2>Details Entered By User</h2>
-        name is :{currentState.name} <br />
-        category is :{currentState.category} <br />
-        type is:{currentState.type} <br />
-        quantity is :{currentState.quantity} <br />
-        price is :{currentState.price}
-        {currentState.vegetable ? (
+        {response.vegetable ? (
           <div>
             <h2>Vegetable added successfully</h2>
-            <DisplayVegetable veg={currentState.vegetable} />
+            <DisplayVegetable veg={response.vegetable} />
           </div>
         ) : (
           ""
         )}
-        {currentState.errMsg ? (
+        {response.errMsg ? (
           <div className={commonStyle.error}>
             Request was not successful <br />
-            {currentState.errMsg}
+            {response.errMsg}
           </div>
         ) : (
           ""

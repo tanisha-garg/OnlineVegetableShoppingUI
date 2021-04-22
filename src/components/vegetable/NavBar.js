@@ -40,7 +40,7 @@ export default function NavBar() {
                         <li className="nav-item">
 
                             <Link to="/byid" className="nav-link" >
-                                <span>Get customer details</span>
+                                <span>Get vegetable on Request</span>
                             </Link>
                         </li>
 
