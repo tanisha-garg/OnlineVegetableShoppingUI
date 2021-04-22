@@ -85,11 +85,12 @@ export default function UpdateVegetablePrice() {
 
   return (
     <div>
+       <h2>Update Vegetable Price</h2>
       <form onSubmit={(event) => submitHandler(event)}>
         <div>
           <label>Enter veg id</label>
           <input
-            name="id" type="number"
+            name="id" type="number" placeholder="Enter veg Id"
             ref={idRef}
             onChange={() => changeHandler(idRef)}
           />
@@ -102,7 +103,7 @@ export default function UpdateVegetablePrice() {
         <div>
           <label>Enter price</label>
           <input type="number"
-            name="price"
+            name="price" placeholder="Enter price"
             ref={priceRef}
             onChange={() => changeHandler(priceRef)}
           />

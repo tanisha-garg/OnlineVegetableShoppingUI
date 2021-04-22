@@ -81,11 +81,12 @@ export default function UpdateVegetableQuantity() {
     
       return (
         <div>
+          <h2>Update Vegetable Quantity</h2>
           <form onSubmit={(event) => submitHandler(event)}>
             <div>
               <label>Enter veg id</label>
               <input
-                name="id" type="number"
+                name="id" type="number" placeholder="Enter veg Id"
                 ref={idRef}
                 onChange={() => changeHandler(idRef)}
               />
@@ -98,7 +99,7 @@ export default function UpdateVegetableQuantity() {
             <div>
               <label>Enter Quantity</label>
               <input type="number"
-                name="quantity"
+                name="quantity" placeholder="Enter quantity"
                 ref={quantityRef}
                 onChange={() => changeHandler(quantityRef)}
               />

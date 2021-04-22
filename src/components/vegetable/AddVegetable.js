@@ -132,11 +132,12 @@ export default function AddVegetable() {
   
     return (
       <div>
+       <h2>Add Vegetable</h2> 
         <form onSubmit={(event) => submitHandler(event)}>
           <div className="form-group">
             <label>Enter name</label>
             <input
-              name="name"
+              name="name" placeholder="Enter veg name"
               ref={nameRef}
               onChange={() => changeHandler(nameRef)}
             />
@@ -149,7 +150,7 @@ export default function AddVegetable() {
           <div>
             <label>Enter category</label>
             <input
-              name="category"
+              name="category" placeholder="Enter category"
               ref={categoryRef}
               onChange={() => changeHandler(categoryRef)}
             />
@@ -162,7 +163,7 @@ export default function AddVegetable() {
           <div>
             <label>Enter type</label>
             <input
-              name="type"
+              name="type" placeholder="Enter type"
               ref={typeRef}
               onChange={() => changeHandler(typeRef)}
             />
@@ -176,7 +177,7 @@ export default function AddVegetable() {
             <label>Enter price</label>
             <input
               name="price"
-              type="number"
+              type="number" placeholder="Enter price"
               ref={priceRef}
               onChange={() => changeHandler(priceRef)}
             />
@@ -190,7 +191,7 @@ export default function AddVegetable() {
             <label>Enter Quantity</label>
             <input
               name="quantity"
-              type="number"
+              type="number"  placeholder="Enter quantity"
               ref={quantityRef}
               onChange={() => changeHandler(quantityRef)}
             />

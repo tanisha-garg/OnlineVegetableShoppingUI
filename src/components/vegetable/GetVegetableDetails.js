@@ -74,7 +74,7 @@ export default function GetVegetableDetails() {
             <label>Enter Veg Id</label>
             <input
               name="id"
-              type="number"
+              type="number" placeholder="Enter veg Id"
               ref={idRef}
               onChange={() => setIdHandler()}
             />
