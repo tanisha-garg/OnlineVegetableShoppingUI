@@ -6,7 +6,7 @@ function DisplayOrderList({orders}){
         <div className="container">
             <ul>
                 {
-                    orders.map((order) => <li key = {order.orderId} >
+                    orders.map((order) => <li className="mt-1" key = {order.orderId} >
                         <Link to = {`/orderdetails/:${order.orderId}`} >
                             <span>{order.orderId} {order.customerName}</span>
                         </Link>

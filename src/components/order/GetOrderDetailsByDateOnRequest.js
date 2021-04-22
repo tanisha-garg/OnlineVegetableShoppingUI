@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DisplayOrderList from "./DisplayOrderList";
 
-function GetOrderDetailsOfCustomerOnRequest() {
+function GetOrderDetailsByDateOnRequest() {
   const order1 = {
     orderId: 1,
     customerName: "Tanisha",
@@ -19,9 +19,13 @@ function GetOrderDetailsOfCustomerOnRequest() {
   const orders = [order1, order2];
   const errMsg = "Cannot fetch data";
 
-  const idRef = React.createRef();
+  const dateRef = React.createRef();
 
-  const initialState = { customerId: -1, orders: undefined, errMsg: undefined };
+  const initialState = {
+    date: undefined,
+    orders: undefined,
+    errMsg: undefined,
+  };
 
   const [state, setNewState] = useState(initialState);
 
@@ -39,7 +43,6 @@ function GetOrderDetailsOfCustomerOnRequest() {
   };
 
   const submitHandler = (event) => {
-    console.log("Inside submit handler");
     event.preventDefault();
     const newState = { ...state, orders: orders, errMsg: undefined };
     setNewState(newState);
@@ -47,22 +50,24 @@ function GetOrderDetailsOfCustomerOnRequest() {
 
   return (
     <div className="container w-75 mt-5">
-      <h2>Get all the orders placed by a customer</h2>
+      <h2>Get Order Details By Date</h2>
+
       <form onSubmit={(event) => submitHandler(event)}>
         <div className="form-group mt-4">
-          <label>Enter Customer Id</label>
+          <label>Enter Date:</label>
           <input
             type="text"
-            name="customerId"
+            name="orderDate"
+            placeholder="Eg: 10 August 2021"
             className="form-control"
-            ref={idRef}
-            onChange={() => fieldHandler(idRef)}
+            ref={dateRef}
+            onChange={() => fieldHandler(dateRef)}
             required
           />
         </div>
         <button className="btn btn-primary mt-2">Submit</button>
-      </form>{" "}
-      <br />
+      </form> <br />
+
       {state.orders ? (
         <div>
           <DisplayOrderList orders={state.orders} />
@@ -70,6 +75,7 @@ function GetOrderDetailsOfCustomerOnRequest() {
       ) : (
         ""
       )}
+
       {state.errMsg ? (
         <div className="text-danger h6">
           Request processing unsuccessful
@@ -83,4 +89,4 @@ function GetOrderDetailsOfCustomerOnRequest() {
   );
 }
 
-export default GetOrderDetailsOfCustomerOnRequest;
+export default GetOrderDetailsByDateOnRequest;

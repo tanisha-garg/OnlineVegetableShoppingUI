@@ -32,8 +32,8 @@ function GetOrderDetailsOfCustomer(props) {
   useEffect(fetchOrderDetailsOnRender);
 
   return (
-    <div className="container w-75 mt-5">
-      <h1> Get customer order details</h1>
+    <div className="container mt-5">
+      <h1> Get order details placed by customer</h1> <br />
 
       {state.orders ? (
         <div>
