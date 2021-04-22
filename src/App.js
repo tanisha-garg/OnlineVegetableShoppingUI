@@ -13,6 +13,7 @@ import NavBar from "./components/vegetable/NavBar";
 import UpdateVegetablePrice from "./components/vegetable/UpdateVegetablePrice";
 import UpdateVegetableQuantity from "./components/vegetable/UpdateVegetableQuantity";
 import VegetableHome from "./components/vegetable/VegetableHome";
+import DisplayOrderDetails from "./components/order/DisplayOrderDetails";
 /*const veg = {
   id: 1,
   name: "potato",
@@ -22,6 +23,7 @@ import VegetableHome from "./components/vegetable/VegetableHome";
   price: 50,
 };
 const veg1=[veg];*/
+const order = {orderId:1, customerName: "Tanisha", totalAmount:100.0, date:"20/01/2021", status:"Placed"};
 function App() {
   return (
     <div>
@@ -38,7 +40,8 @@ function App() {
      <UpdateTransactionMode />
     <UpdateTransactionStatus /> */}
       {/* <CancelOrderDetail />
-    <ViewOrderDetail /> */}
+    // <ViewOrderDetail /> */}
+     <DisplayOrderDetails order={order} />
     </div>
   );
 }
