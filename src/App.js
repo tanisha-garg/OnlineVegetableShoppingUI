@@ -1,10 +1,11 @@
 import './App.css';
+import CancelOrderDetail from './Components/Order/CancelOrderDetail';
+import ViewOrderDetail from './Components/Order/ViewOrderDetail';
 
 function App() {
   return (
-    <div>
-      Hello
-    </div>
+      <CancelOrderDetail />
+    //  <ViewOrderDetail />
   );
 }
 
