@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DisplayOrderList from "./DisplayOrderList";
 
-function GetOrderDetailsOfCustomer(props) {
+function GetOrderDetailsByCustomerId(props) {
   const order1 = {
     orderId: 1,
     customerName: "Tanisha",
@@ -32,28 +32,29 @@ function GetOrderDetailsOfCustomer(props) {
   useEffect(fetchOrderDetailsOnRender);
 
   return (
-    <div className="container mt-5">
-      <h1> Get order details placed by customer</h1> <br />
-
-      {state.orders ? (
-        <div>
-          <DisplayOrderList orders={state.orders} />
-        </div>
-      ) : (
-        ""
-      )}
-
-      {state.errMsg ? (
-        <div className="text-danger h6">
-          Request processing unsuccessful
-          <br />
-          {state.errMsg}
-        </div>
-      ) : (
-        ""
-      )}
+    <div className="container w-75 mt-5">
+      <div className="alert alert-info">Please provide an id in the url path</div>
+      <div>
+        <h2> Get order details placed by customer</h2> <br />
+        {state.orders ? (
+          <div>
+            <DisplayOrderList orders={state.orders} />
+          </div>
+        ) : (
+          ""
+        )}
+        {state.errMsg ? (
+          <div className="text-danger h6">
+            Request processing unsuccessful
+            <br />
+            {state.errMsg}
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }
 
-export default GetOrderDetailsOfCustomer;
+export default GetOrderDetailsByCustomerId;

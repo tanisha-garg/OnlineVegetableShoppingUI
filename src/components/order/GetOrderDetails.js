@@ -32,7 +32,7 @@ let errMsg = "Cannot process the request";
 
       {state.errMsg ? (
         <div className="text-danger h6 mt-3">
-          Request was not successsful <br /> {errMsg}
+          Request was not successsful <br /> {state.errMsg}
         </div>
       ) : (
         ""

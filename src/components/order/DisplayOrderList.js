@@ -4,11 +4,11 @@ function DisplayOrderList({orders}){
 
     return(
         <div className="container">
-            <ul>
+            <ul className="list-group">
                 {
-                    orders.map((order) => <li className="mt-1" key = {order.orderId} >
+                    orders.map((order) => <li className="mt-1 list-group-item" key = {order.orderId} >
                         <Link to = {`/orderdetails/:${order.orderId}`} >
-                            <span>{order.orderId} {order.customerName}</span>
+                            <span>{order.orderId} &emsp; {order.date}</span>
                         </Link>
                     </li>)
                 }

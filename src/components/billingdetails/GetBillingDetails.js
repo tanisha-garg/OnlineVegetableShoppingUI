@@ -29,24 +29,29 @@ function GetBillingDetails(props) {
   useEffect(fetchBillDetailsOnRender);
 
   return (
-    <div>
-      <h2>Get Bill Details by Id</h2>
+    <div className="container mt-4 w-75">
+      <div className="alert alert-info">
+        Please provide a billing id in the url path
+      </div>
+      <div className="mt-4">
+        <h2>Get Bill Details by Id</h2>
 
-      {state.bill ? (
-        <div>
-          <DisplayBillingDetails bill={state.bill} />
-        </div>
-      ) : (
-        ""
-      )}
+        {state.bill ? (
+          <div>
+            <DisplayBillingDetails bill={state.bill} />
+          </div>
+        ) : (
+          ""
+        )}
 
-      {state.errMsg ? (
-        <div className="text-danger h6 mt-3">
-          Request was not successsful <br /> {state.errMsg}
-        </div>
-      ) : (
-        ""
-      )}
+        {state.errMsg ? (
+          <div className="text-danger h6 mt-3">
+            Request was not successsful <br /> {state.errMsg}
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }
