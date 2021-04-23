@@ -16,7 +16,7 @@ let errMsg = "Cannot process the request";
     setNewState(newState);
   };
 
-  useEffect(fetchOrderDetailsOnRender);
+  useEffect(fetchOrderDetailsOnRender, []);
 
   return (
     <div className="container w-75 mt-5">

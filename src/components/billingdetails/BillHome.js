@@ -6,7 +6,9 @@ import GetBillingDetailsOnRequest from "./GetBillingDetailsOnRequest";
 function BillHome() {
   return (
     <div>
-      <Router>
+        <BillNavbar />
+
+      {/* <Router>
         <BillNavbar />
 
         <Route exact path="/billdetails/:id" component={GetBillingDetails} />
@@ -15,7 +17,7 @@ function BillHome() {
           path="/billdetailsonrequest"
           component={GetBillingDetailsOnRequest}
         />
-      </Router>
+      </Router> */}
     </div>
   );
 }

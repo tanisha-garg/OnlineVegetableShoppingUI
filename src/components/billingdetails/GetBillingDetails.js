@@ -26,7 +26,7 @@ function GetBillingDetails(props) {
     setNewState(newState);
   };
 
-  useEffect(fetchBillDetailsOnRender);
+  useEffect(fetchBillDetailsOnRender, []);
 
   return (
     <div className="container mt-4 w-75">

@@ -24,12 +24,12 @@ function GetOrderDetailsByCustomerId(props) {
   const [state, setNewState] = useState(initialState);
 
   const fetchOrderDetailsOnRender = () => {
-    const customerId = props.match.params.id;
-    const newState = { orders: orders, errMsg: undefined };
+    const id = props.match.params.id;
+    const newState = {...state, orders: orders, errMsg: undefined };
     setNewState(newState);
   };
 
-  useEffect(fetchOrderDetailsOnRender);
+  useEffect(fetchOrderDetailsOnRender, []);
 
   return (
     <div className="container w-75 mt-5">
