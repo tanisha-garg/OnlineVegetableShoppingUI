@@ -7,7 +7,7 @@ function Navbar(){
 
             <Link to="/ordersofcustomer/:id"> All Orders placed by a customer </Link>
             <Link to="/ordersofcustomeronrequest"> Get Customer Orders on request</Link>
-            <Link to="ordersbydate/:date"> All orders placed on a particular date</Link>
+            <Link to="/ordersbydate/:date"> All orders placed on a particular date</Link>
             <Link to="/ordersbydateonrequest"> Get Orders By Date on request</Link>
 
         </div>

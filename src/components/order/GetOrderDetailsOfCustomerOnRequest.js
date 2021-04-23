@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayOrderList from "./DisplayOrderList";
+import validationMessage from "./orderValidationMessage";
 
 function GetOrderDetailsOfCustomerOnRequest() {
   const order1 = {
@@ -21,7 +22,12 @@ function GetOrderDetailsOfCustomerOnRequest() {
 
   const idRef = React.createRef();
 
-  const initialState = { customerId: -1, orders: undefined, errMsg: undefined };
+  const initialState = {
+    customerId: -1,
+    orders: undefined,
+    errMsg: undefined,
+    validations: { customerId: undefined },
+  };
 
   const [state, setNewState] = useState(initialState);
 
@@ -29,11 +35,20 @@ function GetOrderDetailsOfCustomerOnRequest() {
     const field = reference.current;
     const fieldName = field.name;
     const fieldVal = field.value;
+    let validationMessage;
+    if (reference === idRef) {
+      validationMessage = validateCustomerId(fieldVal);
+    }
+    const newValidations = {
+      ...state.validations,
+      [fieldName]: validationMessage
+    };
     const newState = {
       ...state,
       [fieldName]: fieldVal,
       orders: undefined,
       errMsg: undefined,
+      validations: newValidations
     };
     setNewState(newState);
   };
@@ -41,8 +56,18 @@ function GetOrderDetailsOfCustomerOnRequest() {
   const submitHandler = (event) => {
     console.log("Inside submit handler");
     event.preventDefault();
+    if (state.validations.customerId) {
+      return;
+    }
     const newState = { ...state, orders: orders, errMsg: undefined };
     setNewState(newState);
+  };
+
+  const validateCustomerId = (customerId) => {
+    if (customerId < 0) {
+      return validationMessage.customerIdLessThanZero;
+    }
+    return undefined;
   };
 
   return (
@@ -59,6 +84,11 @@ function GetOrderDetailsOfCustomerOnRequest() {
             onChange={() => fieldHandler(idRef)}
             required
           />
+          {state.validations.customerId ? (
+            <div className="text-danger mt-2">{state.validations.customerId}</div>
+          ) : (
+            ""
+          )}
         </div>
         <button className="btn btn-primary mt-2">Submit</button>
       </form>{" "}
