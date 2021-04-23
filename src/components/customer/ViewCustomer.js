@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
+import commonStyle from "./commonStyle.module.css";
 
 export default function ViewCustomer() {
   let customer1 = {
@@ -27,9 +28,6 @@ export default function ViewCustomer() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    {
-      /* setNewState({ ...state, formStatus: "form submitted successfully" });  */
-    }
     console.log("current state is:", currentState);
   };
 

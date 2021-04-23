@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import validationMessage from "./validationMessage";
+import commonStyle from "./commonStyle.module.css";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
 
+// Adding Customer using functional Component
 function AddCustomer() {
+  // Dummy Data of Customer for Testing
+
   const customer = {
-    customerId: 1,
+    customerId: 20,
     name: "Ayesha",
     mobileNumber: "987654321",
     emailId: "abc@gmail.com",
@@ -15,7 +20,7 @@ function AddCustomer() {
     pincode: "123456",
   };
 
-  const idRef = React.createRef();
+  //Craeting Refs for fields
   const nameRef = React.createRef();
   const mobileNumberRef = React.createRef();
   const emailIdRef = React.createRef();
@@ -26,8 +31,8 @@ function AddCustomer() {
   const stateRef = React.createRef();
   const pincodeRef = React.createRef();
 
+  // defining the initial state
   const initialState = {
-    customerId: -1,
     name: undefined,
     mobileNumber: undefined,
     emailId: undefined,
@@ -37,138 +42,231 @@ function AddCustomer() {
     city: undefined,
     state: undefined,
     pincode: undefined,
-    customer: undefined,
-    errMsg: undefined,
     formStatus: "",
+    validations: {
+      // validations are also undefined initially
+      name: undefined,
+      mobileNumber: undefined,
+      pincode: undefined,
+    },
   };
 
-  let [state, setNewState] = useState(initialState);
+  // response after data is entered in the form
+  const response = {
+    customer: customer,
+    errMsg: undefined,
+  };
+
+  const [state, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setNewState({ ...state, formStatus: "form submitted successfully" });
+    setNewState({ ...state, formStatus: "Form submitted successfully" });
   };
 
-  const fieldHandler = (reference) => {
-    const field = reference.current;
+  const fieldHandler = (ref) => {
+    const field = ref.current;
     const fieldName = field.name;
     const fieldVal = field.value;
-    let newState = {
+    let validationMsg;
+    if (ref === nameRef) {
+      validationMsg = validateName(fieldVal);
+    }
+    if (ref === mobileNumberRef) {
+      validationMsg = validateMobileNumber(fieldVal);
+    }
+    if (ref === pincodeRef) {
+      validationMsg = validatePincode(fieldVal);
+    }
+    const newValidations = { ...state.validations, [fieldName]: validationMsg };
+    const newState = {
       ...state,
       [fieldName]: fieldVal,
       customer: undefined,
       errMsg: undefined,
+      validations: newValidations,
     };
     setNewState(newState);
+  };
+
+  /*
+   * validation method for name
+   */
+
+  const validateName = (name) => {
+    if (name.length < 3) {
+      return validationMessage.nameSmallthanLengthThree;
+    }
+    return undefined;
+  };
+
+  /*
+   * validation method for mobile number
+   */
+
+  const validateMobileNumber = (mobileNumber) => {
+    if (mobileNumber.length < 10 || mobileNumber.length > 10) {
+      return validationMessage.mobileNumberSmallerThanLengthTen;
+    }
+    return undefined;
+  };
+  /*
+   * validation method for pincode
+   */
+
+  const validatePincode = (pincode) => {
+    if (pincode < 1 || pincode.length < 6) {
+      return validationMessage.pincodeSixDigits;
+    }
+    return undefined;
   };
 
   return (
     <div>
       <h2> Add New Customer</h2>
       <form onSubmit={(event) => submitHandler(event)}>
-        <label> Customer Id: </label>
-        <input
-          name="Customer Id"
-          placeholder="CustomerId"
-          ref={idRef}
-          onChange={() => fieldHandler(idRef)}
-        />
+        <div className="form-group">
+          <label> Customer Name: </label>
+          <input
+            name="name"
+            placeholder="Name"
+            className="form-control"
+            ref={nameRef}
+            onChange={() => fieldHandler(nameRef)}
+            required
+          />
+        </div>
+        {state.validations.name ? (
+          <div className={commonStyle.error}>{state.validations.name}</div>
+        ) : (
+          ""
+        )}
         <br />
-        <label> Customer Name: </label>
-        <input
-          name="Customer Name"
-          placeholder="Name"
-          ref={nameRef}
-          onChange={() => fieldHandler(nameRef)}
-        />
+        <div className="form-group">
+          <label> Mobile Number: </label>
+          <input
+            name="mobileNumber"
+            placeholder="Mobile Number"
+            className="form-control"
+            ref={mobileNumberRef}
+            onChange={() => fieldHandler(mobileNumberRef)}
+            required
+          />
+        </div>
+        {state.validations.mobileNumber ? (
+          <div className={commonStyle.error}>
+            {state.validations.mobileNumber}
+          </div>
+        ) : (
+          ""
+        )}
         <br />
-        <label> Mobile Number: </label>
-        <input
-          name="Mobile Number"
-          placeholder="Mobile Number"
-          ref={mobileNumberRef}
-          onChange={() => fieldHandler(mobileNumberRef)}
-        />
+        <div className="form-group">
+          <label> Email Id: </label>
+          <input
+            name="emailId"
+            textfield="@."
+            type="email"
+            className="form-control"
+            placeholder="Email Id"
+            ref={emailIdRef}
+            onChange={() => fieldHandler(emailIdRef)}
+            required
+          />
+        </div>
         <br />
-        <label> EmailId: </label>
-        <input
-          name="Email Id"
-          type="email"
-          placeholder="EmailId"
-          ref={emailIdRef}
-          onChange={() => fieldHandler(emailIdRef)}
-        />
+        <div className="form-group">
+          <label> Flat No. </label>
+          <input
+            name="flatNo"
+            placeholder="Flat Number"
+            className="form-control"
+            ref={flatNoRef}
+            onChange={() => fieldHandler(flatNoRef)}
+            required
+          />
+        </div>
         <br />
-        <label> Flat No. </label>
-        <input
-          name="Flat no."
-          placeholder="Flat No."
-          ref={flatNoRef}
-          onChange={() => fieldHandler(flatNoRef)}
-        />
+        <div className="form-group">
+          <label> Building Name: </label>
+          <input
+            name="buildingName"
+            placeholder="Building Name"
+            className="form-control"
+            ref={buildingNameRef}
+            onChange={() => fieldHandler(buildingNameRef)}
+            required
+          />
+        </div>
         <br />
-        <label> Building Name: </label>
-        <input
-          name="Building Name"
-          placeholder="Building Name"
-          ref={buildingNameRef}
-          onChange={() => fieldHandler(buildingNameRef)}
-        />
+        <div className="form-group">
+          <label> Area: </label>
+          <input
+            name="area"
+            placeholder="Area"
+            className="form-control"
+            ref={areaRef}
+            onChange={() => fieldHandler(areaRef)}
+            required
+          />
+        </div>
         <br />
-        <label> Area: </label>
-        <input
-          name="Area"
-          placeholder="Area"
-          ref={areaRef}
-          onChange={() => fieldHandler(areaRef)}
-        />
+        <div className="form-group">
+          <label> City: </label>
+          <input
+            name="city"
+            placeholder="City"
+            className="form-control"
+            ref={cityRef}
+            onChange={() => fieldHandler(cityRef)}
+            required
+          />
+        </div>
         <br />
-        <label> City: </label>
-        <input
-          name="City"
-          placeholder="City"
-          ref={cityRef}
-          onChange={() => fieldHandler(cityRef)}
-        />
+        <div className="form-group">
+          <label> State: </label>
+          <input
+            name="state"
+            placeholder="State"
+            className="form-control"
+            ref={stateRef}
+            onChange={() => fieldHandler(stateRef)}
+            required
+          />
+        </div>
         <br />
-        <label> State: </label>
-        <input
-          name="State"
-          placeholder="State"
-          ref={stateRef}
-          onChange={() => fieldHandler(stateRef)}
-        />
+        <div className="form-group">
+          <label> Pincode: </label>
+          <input
+            name="pincode"
+            placeholder="Pincode"
+            className="form-control"
+            ref={pincodeRef}
+            onChange={() => fieldHandler(pincodeRef)}
+            required
+          />
+        </div>
+        {state.validations.pincode ? (
+          <div className={commonStyle.error}>{state.validations.pincode}</div>
+        ) : (
+          ""
+        )}
         <br />
-        <label> Pincode: </label>
-        <input
-          name="Pincode"
-          placeholder="Pincode"
-          ref={pincodeRef}
-          onChange={() => fieldHandler(pincodeRef)}
-        />
-        <br />
-        <button> Submit Data</button>
+        <button className="btn btn-primary"> Submit Data</button>
       </form>
       <h2>{state.formStatus}</h2>
-      <h3>
-        Details: <br />
-      </h3>
-
-      <br />
-      {state.customer ? (
+      {response.customer ? (
         <div>
           <h3>Customer Added Successfully</h3>
-          <br />
-          <DisplayCustomerDetails customer={state.customer} />
+          <DisplayCustomerDetails customer={response.customer} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
+      {response.errMsg ? (
         <div>
           <h3> Customer not Added Successfully</h3>
-          <br />
-          {state.errMsg}
+          {response.errMsg}
         </div>
       ) : (
         ""
