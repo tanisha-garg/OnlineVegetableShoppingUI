@@ -29,6 +29,15 @@ function fetchOrdersByDate(date){
 
 }
 
+function addOrderDetails(id){
+
+    const url = baseUrl + "/orders/add/" + id;
+    console.log(url);
+    const promise = axios.post(url);
+    return promise;
+
+}
 
 
-export {fetchOrderById, fetchOrdersByCustomerId, fetchOrdersByDate};
+
+export {fetchOrderById, fetchOrdersByCustomerId, fetchOrdersByDate, addOrderDetails};

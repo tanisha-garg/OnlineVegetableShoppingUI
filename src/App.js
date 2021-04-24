@@ -12,10 +12,14 @@ import GetOrderDetailsOfCustomerOnRequest from "./components/order/GetOrderDetai
 import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsByDateOnRequest";
 import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
 import { fetchBillDetails } from "./service/BillingDetailsService";
-import { fetchOrderById, fetchOrdersByCustomerId, fetchOrdersByDate } from "./service/OrderServiceT";
+import {
+  addOrderDetails,
+  fetchOrderById,
+  fetchOrdersByCustomerId,
+  fetchOrdersByDate,
+} from "./service/OrderServiceT";
 
 function App() {
-
   // const promise = fetchBillDetails(40);
   // promise.then((response) => console.log("Inside response body", response.data))
   // .catch((error) => console.log("Inside error", error.message));
@@ -24,13 +28,18 @@ function App() {
   // promise.then((response) => console.log("Inside response body", response.data))
   // .catch((error) => console.log("Inside error", error.message));
 
-    //  const promise = fetchOrdersByCustomerId(16);
-    //  promise.then((response) => console.log("Inside response body", response.data))
-    //  .catch((error) => console.log("Inside error", error.message));
+  //  const promise = fetchOrdersByCustomerId(16);
+  //  promise.then((response) => console.log("Inside response body", response.data))
+  //  .catch((error) => console.log("Inside error", error.message));
 
-     const promise = fetchOrdersByDate("23 April 2021");
-     promise.then((response) => console.log("Inside response body", response.data))
-     .catch((error) => console.log("Inside error", error.message));
+  //  const promise = fetchOrdersByDate("23 April 2021");
+  //  promise.then((response) => console.log("Inside response body", response.data))
+  //  .catch((error) => console.log("Inside error", error.message));
+
+  const promise = addOrderDetails(22);
+  promise
+    .then((response) => console.log("Inside response body", response.data))
+    .catch((error) => console.log("Inside error", error.message));
 
   return (
     <div>
