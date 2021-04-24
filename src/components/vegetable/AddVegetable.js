@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
+import VegetableService from "../../service/vegetable/VegetableService";
 
 
 /**
@@ -9,14 +10,14 @@ import commonStyle from "./commonStyle.module.css";
  * Add Vegetable Component
  */
 export default function AddVegetable() {
-    const veg = {
+    /*const veg = {
       id: 1,
       name: "potato",
       category: "underground",
       type: "root",
       quantity: 20,
       price: 30,
-    };
+    };*/
   
     const nameRef = React.createRef();
     const categoryRef = React.createRef();
@@ -34,7 +35,7 @@ export default function AddVegetable() {
       validations:{name:undefined,category:undefined,type:undefined,quanity:undefined,price:undefined}
     };
 
-    const response={vegetable: veg, errMsg: undefined};
+    const response={vegetable: undefined, errMsg: undefined};
   
     const [currentState, setNewState] = useState(initialState);
   /**
@@ -43,8 +44,18 @@ export default function AddVegetable() {
    */
     const submitHandler = (event) => {
       event.preventDefault();
-      setNewState({ ...currentState, formStatus: "form submitted successfully" });
-    };
+      if(currentState.validations.name || currentState.validations.type ||currentState.validations.category ||
+        currentState.validations.price ||currentState.validations.quanity){
+          return;
+        }
+        let data={...currentState};
+        const promise = VegetableService.addVegetable(data);
+        promise.then((response)=>
+          setNewState({...currentState,formStatus: "form submitted successfully",vegetable:response.data})
+        )
+        .catch((error)=>
+        setNewState({...currentState,errMsg:error.message}));
+        };
 
   /**
    * 
@@ -129,15 +140,15 @@ export default function AddVegetable() {
       }
       return undefined;
     };
-  
+    
     return (
       <div>
        <h2>Add Vegetable</h2> 
-        <form onSubmit={(event) => submitHandler(event)}>
+        <form onSubmit={submitHandler} className={commonStyle.content}>
           <div className="form-group">
             <label>Enter name</label>
             <input
-              name="name" placeholder="Enter veg name" 
+              name="name" placeholder="Enter veg name" required
               ref={nameRef}
               onChange={() => changeHandler(nameRef)}
             />
@@ -150,10 +161,10 @@ export default function AddVegetable() {
           <div>
             <label>Enter category</label>
             <select
-              name="category" placeholder="Enter category"
+              name="category" placeholder="Enter category" required
               ref={categoryRef}
               onChange={() => changeHandler(categoryRef)}>
-                <option value="" disabled="select category">Select Category</option>
+                <option disabled selected>Select Category</option>
                 <option value="underground">Underground</option>
                 <option value="aboveground">Aboveground</option>
               </select>
@@ -167,10 +178,10 @@ export default function AddVegetable() {
           <div>
             <label>Enter type</label>
             <select
-              name="type" placeholder="Enter type"
+              name="type" placeholder="Enter type" required
               ref={typeRef}
               onChange={() => changeHandler(typeRef)}>
-                <option value="" disabled="select type">Select Type</option>
+                <option disabled selected>Select Type</option>
                 <option value="root">Root</option>
                 <option value="cruciferous">Cruciferous</option>
                 <option value="allium">Allium</option>
@@ -187,7 +198,7 @@ export default function AddVegetable() {
             <label>Enter price</label>
             <input
               name="price"
-              type="number" placeholder="Enter price"
+              type="number" placeholder="Enter price" required
               ref={priceRef}
               onChange={() => changeHandler(priceRef)}
             />
@@ -201,7 +212,7 @@ export default function AddVegetable() {
             <label>Enter Quantity</label>
             <input
               name="quantity"
-              type="number"  placeholder="Enter quantity"
+              type="number"  placeholder="Enter quantity" required
               ref={quantityRef}
               onChange={() => changeHandler(quantityRef)}
             />
@@ -223,7 +234,7 @@ export default function AddVegetable() {
         ) : (
           ""
         )}
-        {response.errMsg ? (
+        {response.error ? (
           <div className={commonStyle.error}>
             Request was not successful <br />
             {response.errMsg}
@@ -234,4 +245,3 @@ export default function AddVegetable() {
       </div>
     );
   }
-  

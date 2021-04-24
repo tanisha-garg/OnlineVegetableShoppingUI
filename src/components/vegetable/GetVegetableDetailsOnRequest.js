@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
+import VegetableService from "../../service/vegetable/VegetableService";
 
 /**
  * 
  * Get Vegetable Component
  */
 
-export default function GetVegetableDetails() {
+export default function GetVegetableDetailsOnRequest() {
     const veg = {
       id: 1,
       name: "potato",
@@ -22,10 +23,10 @@ export default function GetVegetableDetails() {
   
     let [state, setFormState] = useState({
       id: undefined,
-      vegetable: undefined,
-      errMsg: undefined,
       validations:{id:undefined}
     });
+
+    const response={ vegetable: undefined,error: undefined,}
 
 /**
  * 
@@ -53,6 +54,17 @@ export default function GetVegetableDetails() {
   
     const submitHandler = (event) => {
       event.preDefault();
+      console.log("inside submit handler " , state);
+      if(state.validations.id){
+          return;
+        }
+        let data={...state};
+        const promise = VegetableService.fetchVegetableById(state.id);
+        promise.then((response)=>
+          setFormState({...state,formStatus: "vegetable fetched successfully",vegetable:response.data})
+        )
+        .catch((error)=>
+        setFormState({...state,errMsg:error.message}));
     };
   
     /**
