@@ -18,11 +18,8 @@ const veg = {
 };
 
 const data = {
-  name: "cabbage",
-  type: "leafygreen",
-  category: "aboveground",
-  price: 40,
-  quantity: 10,
+  vegId:10,
+  price:55
 };
 const veg1=[veg];
 function App() {
@@ -30,6 +27,7 @@ function App() {
   /*
   *testing service add component with mock data
   */
+
   /*const promise=VegetableService.addVegetable(data);
   promise.then(response=>console.log("inside addVegetable mock testing",response.data))
   .catch(error=>console.log("error in vegetable add component ",error.message));*/
@@ -37,15 +35,24 @@ function App() {
   /**
    * tetsing service fetch vegetable with mock data
    */
+
    /*const promise=VegetableService.fetchVegetable(1);
    promise.then(response=>console.log("inside fetch vegetable mock testing",response.data))
    .catch(error=>console.log("error in vegetable fetch component ",error.message));*/
+
+   /**
+   * tetsing service update vegetable price with mock data
+   */
+
+   const promise=VegetableService.UpdateVegetablePrice(data);
+   promise.then(response=>console.log("inside update vegetable price mock testing",response.data))
+   .catch(error=>console.log("error in vegetable fetch component ",error.message));
 
   return (
     <div>
       {/*<DisplayVegetable veg={veg}/>*/}
       {/*<DisplayVegetables vegetables={veg1}/>*/}
-      {<AddVegetable/>}
+      {/*<AddVegetable/>*/}
       {/*<UpdateVegetablePrice/>*/}
       {/*<UpdateVegetableQuantity/>*/}
       {/*<GetVegetableDetails/>*/}

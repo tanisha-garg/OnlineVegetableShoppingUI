@@ -24,11 +24,12 @@ export default function UpdateVegetablePrice() {
   let [state, setNewState] = useState({
     id: undefined,
     price:undefined,
-    vegetable: veg,
-    errMsg: undefined,
     formStatus: "",
     validations:{id:undefined,price:undefined}
   });
+
+  const response={ vegetable: undefined,
+    errMsg: undefined}
   /**
    * 
    * Change Handler Function
@@ -90,7 +91,7 @@ export default function UpdateVegetablePrice() {
         <div>
           <label>Enter veg id</label>
           <input
-            name="id" type="number" placeholder="Enter veg Id"
+            name="id" type="number" placeholder="Enter veg Id" required
             ref={idRef}
             onChange={() => changeHandler(idRef)}
           />
@@ -103,7 +104,7 @@ export default function UpdateVegetablePrice() {
         <div>
           <label>Enter price</label>
           <input type="number"
-            name="price" placeholder="Enter price"
+            name="price" placeholder="Enter price"  required
             ref={priceRef}
             onChange={() => changeHandler(priceRef)}
           />
@@ -116,15 +117,15 @@ export default function UpdateVegetablePrice() {
         <button type="submit">Update Vegetable</button>
       </form>
       <h2>{state.formStatus}</h2>
-      {state.vegetable ? (
+      {response.vegetable ? (
         <div>
-          <DisplayVegetable veg={state.vegetable} />
+          <DisplayVegetable veg={response.vegetable} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
-        <div className={commonStyle.console.error}>
+      {response.errMsg ? (
+        <div className={commonStyle.error}>
           Request was not successful <br />
           {state.errMsg}
         </div>

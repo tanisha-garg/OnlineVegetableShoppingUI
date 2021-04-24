@@ -17,5 +17,13 @@ function addVegetable(data){
     return promise;
 }
 
+function UpdateVegetablePrice(data){
+    const url=baseUrl+"/vegetables/changePrice";
+    let requestData={vegId:data.vegId,price:data.price};
+    console.log("inside update price service", requestData);
+    const promise=axios.put(url,requestData);
+    return promise;
+}
 
-export default {fetchVegetableById , addVegetable};
+
+export default {fetchVegetableById , addVegetable,UpdateVegetablePrice};
