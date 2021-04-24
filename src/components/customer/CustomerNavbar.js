@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-export default function Navbar() {
+export default function CustomerNavbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link to="/" className="navbar-brand">
-          Customer Module
-        </Link>
+        
+         <b><em style={{textAlign:"centre"}}> Customer Module</em></b> 
+       
 
         <button
           className="navbar-toggler"
@@ -29,15 +29,15 @@ export default function Navbar() {
                 View Customer
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/getcustomerdetailsonrequest" className="nav-link">
-                Get Customer Details On Request
-              </Link>
               <li className="nav-item">
                 <Link to="/updatecustomerdetails" className="nav-link">
                   Update customer Details
                 </Link>
               </li>
+              <li className="nav-item">
+              <Link to="/getcustomerdetailsonrequest" className="nav-link">
+                Get Customer Details On Request
+              </Link>
               <li className="nav-item">
                 <Link to="/getcustomerbyloc" className="nav-link">
                   Get Customers By location

@@ -19,7 +19,7 @@ export default function ViewCustomersByLoc() {
 
   const customer2 = {
     customerId: 2,
-    name: "Lol123",
+    name: "ayesha ",
     mobileNumber: "987654321",
     emailId: "lol@gmail.com",
     flatNo: "16",
