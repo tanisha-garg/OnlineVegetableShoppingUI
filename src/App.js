@@ -36,10 +36,10 @@ function App() {
   //  promise.then((response) => console.log("Inside response body", response.data))
   //  .catch((error) => console.log("Inside error", error.message));
 
-  const promise = addOrderDetails(22);
-  promise
-    .then((response) => console.log("Inside response body", response.data))
-    .catch((error) => console.log("Inside error", error.message));
+  // const promise = addOrderDetails(22);
+  // promise
+  //   .then((response) => console.log("Inside response body", response.data))
+  //   .catch((error) => console.log("Inside error", error.message));
 
   return (
     <div>
