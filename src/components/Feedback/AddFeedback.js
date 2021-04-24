@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
 import commonStyle from "./commonStyle.module.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function AddFeedback() {
 
@@ -50,11 +51,12 @@ export default function AddFeedback() {
 
     return (
 
-      <div>
+      <div className="container">
           <form onSubmit={(event) => submitHandler(event)}>
-              <div>
+              <div className="form-group">
                   <label>Enter Feedback</label>
                   <select
+                  className="form-control"
                       name="feedback"
                       type="text"
                       ref={feedbackRef}
@@ -65,22 +67,11 @@ export default function AddFeedback() {
                       </select>
                   
               </div>
-              <div>
-                  <label>Enter Customer Id</label>
-                  <select
-                      name="customerId"
-                      type="number"
-                      ref={customerIdRef}
-                      onChange={() => setFieldState(customerIdRef)}>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      </select>
-                  
-              </div>
-              <div>
+        
+              <div className="form-group"> 
                   <label>Enter Rating</label>
                   <select
+                  className="form-control"
                       name="rating"
                       type="number"
                       ref={ratingRef}
@@ -96,9 +87,13 @@ export default function AddFeedback() {
                       <option value="9">9</option>
                       <option value="10">10</option>
                       </select>
-                  <br />
-                  <button type="submit">Add Feedback</button>
+                  <br /> 
               </div>
+              <div className="form-group">
+                <input type="text" placeholder="add comments" name="Comments"> 
+                </input>
+              </div>
+              <button type="submit" className="btn btn-primary">Add Feedback</button>
           </form>
           <h2>{currentState.formStatus}</h2>
 

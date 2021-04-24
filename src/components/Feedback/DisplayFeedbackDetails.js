@@ -5,10 +5,6 @@ export default function DisplayFeedbackDetails({ feed }) {
     return (
 
         <div>
-            Feedback Id is {feedbackId}
-            <br />
-            Customer Id is {customerId}
-            <br />
             Vegetable Id is {vegetableId}
             <br />
             Feedback is {feedback}
