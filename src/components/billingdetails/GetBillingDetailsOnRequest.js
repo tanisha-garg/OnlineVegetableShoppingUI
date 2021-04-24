@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
 import validationMessage from "./billingValidationMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBillByIdActions";
 
 function GetBillingDetailsOnRequest() {
   let bill = {
@@ -17,14 +19,18 @@ function GetBillingDetailsOnRequest() {
   };
   let errMsg = "Cannot retrieve Bill Details Response";
 
+  const dispatch = useDispatch();
+
   const billIdRef = React.createRef();
 
   const initialState = {
     billingId: -1,
-    bill: undefined,
-    errMsg: undefined,
     validations: { billingId: undefined }
   };
+
+  const response = useSelector(state => { 
+    return {bill: state.bill, error: state.error}
+  })
 
   let [state, setNewState] = useState(initialState);
 
@@ -33,7 +39,9 @@ function GetBillingDetailsOnRequest() {
     if (state.validations.billingId) {
       return;
     }
-    const newState = { ...state, bill: bill, errMsg: undefined };
+    const newState = { ...state};
+    const data = {...state};
+    dispatch(fetchBillById(data.billingId));
     setNewState(newState);
   };
 
@@ -91,17 +99,17 @@ function GetBillingDetailsOnRequest() {
       </form>
       <br />
       {/* <span>Id is {state.billingId} </span> */}
-      {state.bill ? (
+      {response.bill ? (
         <div>
           <h3>Billing Details Response</h3>
-          <DisplayBillingDetails bill={bill} />
+          <DisplayBillingDetails bill={response.bill} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
+      {response.error ? (
         <div className="text-danger h6">
-          Request was not successsful <br /> {state.errMsg}
+          Request was not successsful <br /> {response.error}
         </div>
       ) : (
         ""

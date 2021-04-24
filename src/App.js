@@ -18,6 +18,8 @@ import {
   fetchOrdersByCustomerId,
   fetchOrdersByDate,
 } from "./service/OrderServiceT";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   // const promise = fetchBillDetails(40);
@@ -43,6 +45,7 @@ function App() {
 
   return (
     <div>
+      <Provider store={store} >
       <Router>
         <div className="row">
           <div className="col-md-12">
@@ -90,6 +93,8 @@ function App() {
           </div>
         </div>
       </Router>
+      </Provider>
+      
     </div>
   );
 }

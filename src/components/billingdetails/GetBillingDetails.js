@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBillByIdActions";
 import DisplayBillingDetails from "./DisplayBillingDetails";
-import GetBillingDetailsOnRequest from "./GetBillingDetailsOnRequest";
 
 function GetBillingDetails(props) {
   let bill = {
@@ -16,13 +17,22 @@ function GetBillingDetails(props) {
     pincode: "123456",
   };
   let errMsg = "Cannot retrieve Bill Details Response";
-  const initialState = { bill: undefined, errMsg: undefined };
+
+  const initialState = {billingId:-1 };
+
+  const dispatch = useDispatch();
 
   const [state, setNewState] = useState(initialState);
 
+  const response = useSelector( state => {
+    return { bill: state.bill, error: state.error}
+  })
+
   const fetchBillDetailsOnRender = () => {
     const id = props.match.params.id;
-    const newState = { ...state, bill: bill, errMsg: undefined };
+    const newState = { ...state};
+    const data = {...state};
+    dispatch(fetchBillById(data.billingId));
     setNewState(newState);
   };
 
@@ -36,17 +46,17 @@ function GetBillingDetails(props) {
       <div className="mt-4">
         <h2>Get Bill Details by Id</h2>
 
-        {state.bill ? (
+        {response.bill ? (
           <div>
-            <DisplayBillingDetails bill={state.bill} />
+            <DisplayBillingDetails bill={response.bill} />
           </div>
         ) : (
           ""
         )}
 
-        {state.errMsg ? (
+        {response.error ? (
           <div className="text-danger h6 mt-3">
-            Request was not successsful <br /> {state.errMsg}
+            Request was not successsful <br /> {response.error}
           </div>
         ) : (
           ""
