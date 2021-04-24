@@ -7,7 +7,7 @@ function DisplayOrderList({orders}){
             <ul className="list-group">
                 {
                     orders.map((order) => <li className="mt-1 list-group-item" key = {order.orderId} >
-                        <Link to = {`/orderdetails/:${order.orderId}`} >
+                        <Link to = {`/orderhome/orderdetails/:${order.orderId}`} >
                             <span>{order.orderId} &emsp; {order.date}</span>
                         </Link>
                     </li>)
