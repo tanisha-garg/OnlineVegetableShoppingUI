@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
-import VegetableService from "../../service/vegetable/VegetableService";
+import fetchVegetableById from "../../service/VegetableService";
 
 /**
  * 
@@ -59,7 +59,7 @@ export default function GetVegetableDetailsOnRequest() {
           return;
         }
         let data={...state};
-        const promise = VegetableService.fetchVegetableById(state.id);
+        const promise = fetchVegetableById(state.id);
         promise.then((response)=>
           setFormState({...state,formStatus: "vegetable fetched successfully",vegetable:response.data})
         )

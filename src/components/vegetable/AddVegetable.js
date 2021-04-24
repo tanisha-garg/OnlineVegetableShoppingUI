@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
-import VegetableService from "../../service/vegetable/VegetableService";
+import addVegetable from "../../service/VegetableService"
 
 
 /**
@@ -49,7 +49,7 @@ export default function AddVegetable() {
           return;
         }
         let data={...currentState};
-        const promise = VegetableService.addVegetable(data);
+        const promise = addVegetable(data);
         promise.then((response)=>
           setNewState({...currentState,formStatus: "form submitted successfully",vegetable:response.data})
         )

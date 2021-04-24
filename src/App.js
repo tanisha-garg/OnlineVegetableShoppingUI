@@ -7,7 +7,7 @@ import NavBar from './components/vegetable/NavBar';
 import UpdateVegetablePrice from './components/vegetable/UpdateVegetablePrice';
 import UpdateVegetableQuantity from './components/vegetable/UpdateVegetableQuantity';
 import VegetableHome from './components/vegetable/VegetableHome';
-import VegetableService from './service/vegetable/VegetableService';
+import VegetableService, {addVegetable , fetchVegetableById, updateVegetablePrice} from "./service/VegetableService"
 const veg = {
   id: 1,
   name: "potato",
@@ -28,7 +28,7 @@ function App() {
   *testing service add component with mock data
   */
 
-  /*const promise=VegetableService.addVegetable(data);
+  /*const promise=addVegetable(data);
   promise.then(response=>console.log("inside addVegetable mock testing",response.data))
   .catch(error=>console.log("error in vegetable add component ",error.message));*/
 
@@ -36,17 +36,17 @@ function App() {
    * tetsing service fetch vegetable with mock data
    */
 
-   /*const promise=VegetableService.fetchVegetable(1);
+   const promise=VegetableService.fetchVegetableById(15);
    promise.then(response=>console.log("inside fetch vegetable mock testing",response.data))
-   .catch(error=>console.log("error in vegetable fetch component ",error.message));*/
+   .catch(error=>console.log("error in vegetable fetch component ",error.message));
 
    /**
    * tetsing service update vegetable price with mock data
    */
 
-   const promise=VegetableService.UpdateVegetablePrice(data);
+   /*const promise=updateVegetablePrice(data);
    promise.then(response=>console.log("inside update vegetable price mock testing",response.data))
-   .catch(error=>console.log("error in vegetable fetch component ",error.message));
+   .catch(error=>console.log("error in vegetable fetch component ",error.message));*/
 
   return (
     <div>
