@@ -8,7 +8,6 @@ const initialState = {
 
 function fetchBillByIdReducer(state = initialState, action) {
   if (
-    action.type === fetchBillByIdConstants.fetchByIdRequest ||
     action.type === fetchBillByIdConstants.fetchByIdSuccess ||
     action.type === fetchBillByIdConstants.fetchByIdFail
   ) {

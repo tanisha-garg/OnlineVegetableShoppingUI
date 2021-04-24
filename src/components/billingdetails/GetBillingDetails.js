@@ -4,36 +4,16 @@ import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBil
 import DisplayBillingDetails from "./DisplayBillingDetails";
 
 function GetBillingDetails(props) {
-  let bill = {
-    billingId: 1,
-    transactionMode: "COD",
-    transactionDate: "2021-04-20",
-    transactionStatus: "Succesful",
-    flatNo: "21",
-    buildingName: "ABC",
-    area: "Sector 2",
-    city: "Chandigarh",
-    state: "punjab",
-    pincode: "123456",
-  };
-  let errMsg = "Cannot retrieve Bill Details Response";
-
-  const initialState = {billingId:-1 };
 
   const dispatch = useDispatch();
 
-  const [state, setNewState] = useState(initialState);
-
   const response = useSelector( state => {
-    return { bill: state.bill, error: state.error}
+    return { bill: state.fetchBillById.bill, error: state.fetchBillById.error}
   })
 
   const fetchBillDetailsOnRender = () => {
     const id = props.match.params.id;
-    const newState = { ...state};
-    const data = {...state};
-    dispatch(fetchBillById(data.billingId));
-    setNewState(newState);
+    dispatch(fetchBillById(id));
   };
 
   useEffect(fetchBillDetailsOnRender, []);

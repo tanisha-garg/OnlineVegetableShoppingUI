@@ -1,32 +1,25 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByCustomerId(props) {
-  const order1 = {
-    orderId: 1,
-    customerName: "Tanisha",
-    totalAmount: 100.0,
-    date: "20/01/2021",
-    status: "Placed",
-  };
-  const order2 = {
-    orderId: 2,
-    customerName: "Pallavi",
-    totalAmount: 200.0,
-    date: "10/01/2021",
-    status: "Placed",
-  };
-  const orders = [order1, order2];
-  const errMsg = "Cannot fetch data";
 
-  const initialState = { orders: undefined, errMsg: undefined };
+  const dispatch = useDispatch();
 
-  const [state, setNewState] = useState(initialState);
+  const response = useSelector( state => {
+    return {
+      orders: state.fetchOrdersByCustomerId.orders,
+      error: state.fetchOrdersByCustomerId.error,
+    }
+  })
 
   const fetchOrderDetailsOnRender = () => {
     const id = props.match.params.id;
-    const newState = {...state, orders: orders, errMsg: undefined };
-    setNewState(newState);
+    console.log(id);
+    dispatch(fetchOrdersByCustomerId(id));
+    
+ 
   };
 
   useEffect(fetchOrderDetailsOnRender, []);
@@ -36,18 +29,18 @@ function GetOrderDetailsByCustomerId(props) {
       <div className="alert alert-info">Please provide an id in the url path</div>
       <div>
         <h2> Get order details placed by customer</h2> <br />
-        {state.orders ? (
+        {response.orders ? (
           <div>
-            <DisplayOrderList orders={state.orders} />
+            <DisplayOrderList orders={response.orders} />
           </div>
         ) : (
           ""
         )}
-        {state.errMsg ? (
+        {response.error ? (
           <div className="text-danger h6">
             Request processing unsuccessful
             <br />
-            {state.errMsg}
+            {response.error}
           </div>
         ) : (
           ""

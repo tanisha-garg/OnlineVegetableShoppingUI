@@ -29,7 +29,9 @@ function GetBillingDetailsOnRequest() {
   };
 
   const response = useSelector(state => { 
-    return {bill: state.bill, error: state.error}
+    return ({
+      bill: state.fetchBillById.bill, error: state.fetchBillById.error
+    });
   })
 
   let [state, setNewState] = useState(initialState);
@@ -39,10 +41,9 @@ function GetBillingDetailsOnRequest() {
     if (state.validations.billingId) {
       return;
     }
-    const newState = { ...state};
-    const data = {...state};
-    dispatch(fetchBillById(data.billingId));
-    setNewState(newState);
+    console.log("Current state", state);
+    const billingId = billIdRef.current.value;
+    dispatch(fetchBillById(billingId));
   };
 
   const setIdHandler = (reference) => {

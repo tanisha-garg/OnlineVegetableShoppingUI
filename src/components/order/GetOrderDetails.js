@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrderDetails } from "../../redux/order/fetchorderdetails/fetchOrderDetailsActions";
 import DisplayOrderDetails from "./DisplayOrderDetails";
 
 function GetOrderDetails(props) {
 
-let order = {orderId:1, customerName: "Tanisha", totalAmount:100.0, date:"20/01/2021", status:"Placed"};
-let errMsg = "Cannot process the request";
+  const dispatch = useDispatch();
 
-  const initialState = { order: undefined, errMsg: undefined };
-
-  const [state, setNewState] = useState(initialState);
+  const response = useSelector(state => {
+    return {order: state.fetchOrderDetails.order, error: state.fetchOrderDetails.error};
+  });
 
   const fetchOrderDetailsOnRender = () => {
     const id = props.match.params.id;
-    const newState = { ...state, order: order, errMsg: undefined };
-    setNewState(newState);
+    dispatch(fetchOrderDetails(id));
   };
 
   useEffect(fetchOrderDetailsOnRender, []);
@@ -22,17 +22,17 @@ let errMsg = "Cannot process the request";
     <div className="container w-75 mt-5">
       <h2>Get Order Details</h2>
 
-      {state.order ? (
+      {response.order ? (
         <div>
-          <DisplayOrderDetails order={state.order} />
+          <DisplayOrderDetails order={response.order} />
         </div>
       ) : (
         ""
       )}
 
-      {state.errMsg ? (
+      {response.error ? (
         <div className="text-danger h6 mt-3">
-          Request was not successsful <br /> {state.errMsg}
+          Request was not successsful <br /> {response.error}
         </div>
       ) : (
         ""

@@ -1,31 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByDateOnRequest() {
-  const order1 = {
-    orderId: 1,
-    customerName: "Tanisha",
-    totalAmount: 100.0,
-    date: "20/01/2021",
-    status: "Placed",
-  };
-  const order2 = {
-    orderId: 2,
-    customerName: "Pallavi",
-    totalAmount: 200.0,
-    date: "10/01/2021",
-    status: "Placed",
-  };
-  const orders = [order1, order2];
-  const errMsg = "Cannot fetch data";
 
   const dateRef = React.createRef();
 
-  const initialState = {
-    date: undefined,
-    orders: undefined,
-    errMsg: undefined,
-  };
+  const initialState = {date: undefined };
+
+  const dispatch = useDispatch();
+
+  const response = useSelector( state => {
+    return {orders: state.fetchOrdersByDate.orders, error: state.fetchOrdersByDate.error }
+  })
 
   const [state, setNewState] = useState(initialState);
 
@@ -36,16 +24,14 @@ function GetOrderDetailsByDateOnRequest() {
     const newState = {
       ...state,
       [fieldName]: fieldVal,
-      orders: undefined,
-      errMsg: undefined,
     };
     setNewState(newState);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const newState = { ...state, orders: orders, errMsg: undefined };
-    setNewState(newState);
+    const date = dateRef.current.value;
+    dispatch(fetchOrdersByDate(date));
   };
 
   return (
@@ -68,19 +54,19 @@ function GetOrderDetailsByDateOnRequest() {
         <button className="btn btn-primary mt-2">Submit</button>
       </form> <br />
 
-      {state.orders ? (
+      {response.orders ? (
         <div>
-          <DisplayOrderList orders={state.orders} />
+          <DisplayOrderList orders={response.orders} />
         </div>
       ) : (
         ""
       )}
 
-      {state.errMsg ? (
+      {response.error ? (
         <div className="text-danger h6">
           Request processing unsuccessful
           <br />
-          {state.errMsg}
+          {response.error}
         </div>
       ) : (
         ""

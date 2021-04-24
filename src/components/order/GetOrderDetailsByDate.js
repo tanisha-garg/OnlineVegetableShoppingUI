@@ -1,32 +1,19 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByDate(props) {
-  const order1 = {
-    orderId: 1,
-    customerName: "Tanisha",
-    totalAmount: 100.0,
-    date: "20/01/2021",
-    status: "Placed",
-  };
-  const order2 = {
-    orderId: 2,
-    customerName: "Pallavi",
-    totalAmount: 200.0,
-    date: "10/01/2021",
-    status: "Placed",
-  };
-  const orders = [order1, order2];
-  const errMsg = "Cannot fetch data";
 
-  const initialState = { orders: undefined, errMsg: undefined };
+  const dispatch = useDispatch();
 
-  const [state, setNewState] = useState(initialState);
+  const response = useSelector( state => {
+    return {orders: state.fetchOrdersByDate.orders, error: state.fetchOrdersByDate.error }
+  })
 
   const fetchOrderDetailsOnRender = () => {
     const date = props.match.params.date;
-    const newState = { orders: orders, errMsg: undefined };
-    setNewState(newState);
+    dispatch(fetchOrdersByDate(date));
   };
 
   useEffect(fetchOrderDetailsOnRender, []);
@@ -38,18 +25,18 @@ function GetOrderDetailsByDate(props) {
       </div>
       <div>
       <h2> List of Orders On {props.match.params.date}</h2> <br />
-      {state.orders ? (
+      {response.orders ? (
         <div>
-          <DisplayOrderList orders={state.orders} />
+          <DisplayOrderList orders={response.orders} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
+      {response.error ? (
         <div className="text-danger h6">
           Request processing unsuccessful
           <br />
-          {state.errMsg}
+          {response.error}
         </div>
       ) : (
         ""

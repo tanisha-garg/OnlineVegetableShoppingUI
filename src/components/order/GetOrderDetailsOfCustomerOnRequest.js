@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
 import DisplayOrderList from "./DisplayOrderList";
 import validationMessage from "./orderValidationMessage";
 
@@ -24,10 +26,17 @@ function GetOrderDetailsOfCustomerOnRequest() {
 
   const initialState = {
     customerId: -1,
-    orders: undefined,
-    errMsg: undefined,
     validations: { customerId: undefined },
   };
+
+  const dispatch = useDispatch();
+
+  const response = useSelector( state => {
+    return {
+      orders: state.fetchOrdersByCustomerId.orders,
+      error: state.fetchOrdersByCustomerId.error,
+    }
+  })
 
   const [state, setNewState] = useState(initialState);
 
@@ -59,8 +68,9 @@ function GetOrderDetailsOfCustomerOnRequest() {
     if (state.validations.customerId) {
       return;
     }
-    const newState = { ...state, orders: orders, errMsg: undefined };
-    setNewState(newState);
+    const customerId = idRef.current.value;
+    const data = {...state};
+    dispatch(fetchOrdersByCustomerId(customerId));
   };
 
   const validateCustomerId = (customerId) => {
@@ -93,18 +103,18 @@ function GetOrderDetailsOfCustomerOnRequest() {
         <button className="btn btn-primary mt-2">Submit</button>
       </form>{" "}
       <br />
-      {state.orders ? (
+      {response.orders ? (
         <div>
-          <DisplayOrderList orders={state.orders} />
+          <DisplayOrderList orders={response.orders} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
+      {response.error ? (
         <div className="text-danger h6">
           Request processing unsuccessful
           <br />
-          {state.errMsg}
+          {response.error}
         </div>
       ) : (
         ""

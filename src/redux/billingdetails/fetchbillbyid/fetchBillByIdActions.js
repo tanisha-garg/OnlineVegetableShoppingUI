@@ -33,7 +33,7 @@ function fetchBillById(billId){
             state: "punjab",
             pincode: "123456",
           };
-          store.dispatch(fetchBillByIdSuccess(bill));
+          //store.dispatch(fetchBillByIdSuccess(bill));
           store.dispatch(fetchBillByIdFail("Nai hai kuch yaha pe"));
     }
 }

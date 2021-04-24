@@ -3,7 +3,7 @@ function DisplayOrderDetails({ order }) {
 
   return (
     <div>
-      <ul class="list-group mt-5">
+      <ul className="list-group mt-5">
         <li className="list-group-item">Order Id: {orderId} </li>
         <li className="list-group-item"> Customer Name: {customerName} </li>
         <li className="list-group-item">Total Amount: {totalAmount} </li>
