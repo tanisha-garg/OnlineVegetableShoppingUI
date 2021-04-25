@@ -15,14 +15,14 @@ function GetOrderDetailsByDateOnRequest() {
     return {orders: state.fetchOrdersByDate.orders, error: state.fetchOrdersByDate.error }
   })
 
-  const [state, setNewState] = useState(initialState);
+  const [currentState, setNewState] = useState(initialState);
 
   const fieldHandler = (reference) => {
     const field = reference.current;
     const fieldName = field.name;
     const fieldVal = field.value;
     const newState = {
-      ...state,
+      ...currentState,
       [fieldName]: fieldVal,
     };
     setNewState(newState);

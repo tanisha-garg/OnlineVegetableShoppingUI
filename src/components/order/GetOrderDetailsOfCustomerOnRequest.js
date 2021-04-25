@@ -38,7 +38,7 @@ function GetOrderDetailsOfCustomerOnRequest() {
     }
   })
 
-  const [state, setNewState] = useState(initialState);
+  const [currentState, setNewState] = useState(initialState);
 
   const fieldHandler = (reference) => {
     const field = reference.current;
@@ -49,14 +49,12 @@ function GetOrderDetailsOfCustomerOnRequest() {
       validationMessage = validateCustomerId(fieldVal);
     }
     const newValidations = {
-      ...state.validations,
+      ...currentState.validations,
       [fieldName]: validationMessage
     };
     const newState = {
-      ...state,
+      ...currentState,
       [fieldName]: fieldVal,
-      orders: undefined,
-      errMsg: undefined,
       validations: newValidations
     };
     setNewState(newState);
@@ -65,11 +63,11 @@ function GetOrderDetailsOfCustomerOnRequest() {
   const submitHandler = (event) => {
     console.log("Inside submit handler");
     event.preventDefault();
-    if (state.validations.customerId) {
+    if (currentState.validations.customerId) {
       return;
     }
     const customerId = idRef.current.value;
-    const data = {...state};
+    const data = {...currentState};
     dispatch(fetchOrdersByCustomerId(customerId));
   };
 
@@ -94,8 +92,8 @@ function GetOrderDetailsOfCustomerOnRequest() {
             onChange={() => fieldHandler(idRef)}
             required
           />
-          {state.validations.customerId ? (
-            <div className="text-danger mt-2">{state.validations.customerId}</div>
+          {currentState.validations.customerId ? (
+            <div className="text-danger mt-2">{currentState.validations.customerId}</div>
           ) : (
             ""
           )}
