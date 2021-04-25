@@ -45,7 +45,7 @@ export default function ViewCustomer() {
           <form onSubmit={submitHandler}>
               <div>
                   <label> Enter CustomerId</label>
-                  <input name="id" type="number" ref={idRef} onChange={fieldHandler} />
+                  <input name="customerId" type="number" ref={idRef} onChange={fieldHandler} />
                   </div>
                   <button> Get Customer </button>
            </form>

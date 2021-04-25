@@ -8,27 +8,86 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
 import CustomerHome from "./components/customer/CustomerHome";
 import CustomerNavbar from "./components/customer/CustomerNavbar";
+import {
+  getCustomerDetailsOnRequest,
+  updateCustomerDetails,
+  addCustomer,
+  viewCustomersByLoc,
+} from "./service/CustomerService";
 
 function App() {
-  let customer1 = {
-    customerId: 1,
-    name: "Ayesha",
-    mobileNumber: "987654321",
-    emailId: "abc@gmail.com",
-    flatNo: "1",
-    buildingName: "abc enclave",
-    area: "lakshmi nagar",
+  /* 
+  let data={
+    customerId: 6,
+    name: "Virat",
+    mobileNumber: "987654320",
+    emailId: "virat@yahoo.com",
+    flatNo: "303",
+    buildingName: "Siddhi Apts",
+    area: "ashok nagar",
     city: "mumbai",
     state: "maharashtra",
     pincode: "123456",
-  };
+     };
+
+     */
+
+  /*
+  *testing service add customer component with mock data
+  */
+
+  
+  // const promise = addCustomer(data);
+  // promise.then(response=> console.log("Success",response.data))
+  //   .catch(error => console.log(error.message));
+
+
+   let data={
+     customerId:4,
+     name: "Tanmay",
+     mobileNumber:"1234567890",
+     emailId:"hii@yah.com",
+   };
+
+  /*
+   *testing service update customer details component with mock data
+   */
+
+      const promise=updateCustomerDetails(data);
+    promise.then((response)=>{
+        console.log(response.data);
+   }).catch((error)=>{
+      console.log(error.message);
+       console.log(error.response.data);
+      })
+
+  // const city="mumbai"
+
+  //    const promise=viewCustomersByLoc(city);
+  //    promise.then((response)=>{
+  //      console.log(response.data);
+
+  //    }).catch((error)=>{
+  //      console.log(error.message);
+  //      console.log(error.response.data);
+  //    })
+
+    // const customerId=6
+
+    //   const promise=getCustomerDetailsOnRequest(customerId);
+    //   promise.then((response)=>{
+    //     console.log(response.data);
+
+    //   }).catch((error)=>{
+    //     console.log(error.message);
+    //     console.log(error.response.data);
+    //   })
 
   return (
-    <div>
+    <div className=" container mt-7">
       <Router>
-        
-        <CustomerNavbar />      
-        
+        <CustomerNavbar />
+
         <Switch>
           <Route exact path="/customerhome" component={CustomerHome} />
           <Route exact path="/addcustomer" component={AddCustomer} />

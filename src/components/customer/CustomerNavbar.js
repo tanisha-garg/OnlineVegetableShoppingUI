@@ -4,10 +4,10 @@ export default function CustomerNavbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <b>
+          <em style={{ textAlign: "centre" }}> Customer Module</em>
+        </b>
         
-         <b><em style={{textAlign:"centre"}}> Customer Module</em></b> 
-       
-
         <button
           className="navbar-toggler"
           type="button"
@@ -29,12 +29,12 @@ export default function CustomerNavbar() {
                 View Customer
               </Link>
             </li>
-              <li className="nav-item">
-                <Link to="/updatecustomerdetails" className="nav-link">
-                  Update customer Details
-                </Link>
-              </li>
-              <li className="nav-item">
+            <li className="nav-item">
+              <Link to="/updatecustomerdetails" className="nav-link">
+                Update customer Details
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/getcustomerdetailsonrequest" className="nav-link">
                 Get Customer Details On Request
               </Link>
