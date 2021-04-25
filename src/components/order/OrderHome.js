@@ -15,38 +15,42 @@ function OrderHome() {
         <div className="col-md-12 mt-4">
           <p className="h5">Links to different features:</p>
           <ul className="list-group mt-4">
-            <li className="list-group-item">
-              Get order details by giving order id in the url: &emsp;
-              <Link to="/orderhome/orderdetails/:id">Order Details by id</Link>
+            <li className="list-group-item">              
+            <Link to="/orderhome/orderdetails/:id">Click here</Link> &emsp;
+              To get order details by giving order id in the url: 
             </li>
             <li className="list-group-item">
-              Get order list of a customer by passing customer id in the url:
-              &emsp;
-              <Link to="/orderhome/ordersofcustomer/:id">
+            <Link to="/orderhome/ordersofcustomer/:id">
                 {" "}
-                Orders placed by a customer{" "}
-              </Link>
+                Click here{" "}
+              </Link> &emsp;
+              To get order list of a customer by passing customer id in the url:
+              
+             
             </li>
             <li className="list-group-item">
-              Get order list of a customer on request: &emsp;
-              <Link to="/orderhome/ordersofcustomeronrequest">
+            <Link to="/orderhome/ordersofcustomeronrequest">
                 {" "}
-                Customer Orders on request
-              </Link>
+                Click here 
+              </Link>  &emsp;
+              To get order list of a customer on request:
+            
             </li>
             <li className="list-group-item">
-              Get all order placed on a date by passing date in the url: &emsp;
-              <Link to="/orderhome/ordersbydate/:date">
+            <Link to="/orderhome/ordersbydate/:date">
                 {" "}
-                Orders placed on a particular date
-              </Link>
+                Click here
+              </Link> &emsp;
+              To get all order placed on a date by passing date in the url: 
+              
             </li>
             <li className="list-group-item">
-              Get all orders placed on a date on request: &emsp;
-              <Link to="/orderhome/ordersbydateonrequest">
+            <Link to="/orderhome/ordersbydateonrequest">
                 {" "}
-                Orders By Date on request
-              </Link>
+                Click here
+              </Link> &emsp;
+              To get all orders placed on a date on request: 
+              
             </li>
           </ul>
         </div>

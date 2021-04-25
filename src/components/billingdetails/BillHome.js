@@ -13,12 +13,13 @@ function BillHome() {
             <p className="h5">Links to different features:</p>
             <ul className="list-group mt-4">
               <li className="list-group-item">
-              Get bill details by giving id in the url: &emsp;
-              <Link to="/billhome/billdetails/:id"> Get bill details by id </Link>
+              <Link to="/billhome/billdetails/:id"> Click here </Link> &emsp;
+              To get bill details by giving id in the url: 
               </li>
               <li className="list-group-item">
-              Get bill details on request: &emsp;
-              <Link to="/billhome/billdetailsonrequest"> Get bill details by id on request</Link>
+              <Link to="/billhome/billdetailsonrequest">Click here</Link> &emsp;
+              To get bill details on request: 
+              
               </li>
             </ul>
            
