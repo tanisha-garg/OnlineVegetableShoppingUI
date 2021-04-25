@@ -17,7 +17,7 @@ function addVegetable(data){
     return promise;
 }
 
-function updateVegetablePrice(data){
+function updateVegetablePriceService(data){
     const url=baseUrl+"/vegetables/changePrice";
     let requestData={vegId:data.vegId,price:data.price};
     console.log("inside update price service", requestData);
@@ -26,4 +26,4 @@ function updateVegetablePrice(data){
 }
 
 
-export default { fetchVegetableById , addVegetable , updateVegetablePrice}
+export  { fetchVegetableById , addVegetable , updateVegetablePriceService};

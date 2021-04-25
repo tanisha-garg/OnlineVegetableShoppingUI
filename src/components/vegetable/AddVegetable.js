@@ -3,6 +3,8 @@ import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 import addVegetable from "../../service/VegetableService"
+import { useDispatch, useSelector } from "react-redux";
+import { addVegetableAction } from "../../redux/vegetable/addVegetable/addVegetableAction";
 
 
 /**
@@ -35,9 +37,19 @@ export default function AddVegetable() {
       validations:{name:undefined,category:undefined,type:undefined,quanity:undefined,price:undefined}
     };
 
-    const response={vegetable: undefined, errMsg: undefined};
-  
     const [currentState, setNewState] = useState(initialState);
+
+
+    const response=useSelector(state=>{
+      return({
+        vegetable:state.addVegetable.vegetable,
+        error:state.addVegetable.error
+      });
+    });
+
+    const dispatch=useDispatch();
+  
+    
   /**
    * 
    * submit Handler Function
@@ -49,12 +61,7 @@ export default function AddVegetable() {
           return;
         }
         let data={...currentState};
-        const promise = addVegetable(data);
-        promise.then((response)=>
-          setNewState({...currentState,formStatus: "form submitted successfully",vegetable:response.data})
-        )
-        .catch((error)=>
-        setNewState({...currentState,errMsg:error.message}));
+        dispatch(addVegetableAction(data));
         };
 
   /**
@@ -142,12 +149,12 @@ export default function AddVegetable() {
     };
     
     return (
-      <div>
+      <div className="container">
        <h2>Add Vegetable</h2> 
         <form onSubmit={submitHandler} className={commonStyle.content}>
           <div className="form-group">
             <label>Enter name</label>
-            <input
+            <input className="form-control"
               name="name" placeholder="Enter veg name" required
               ref={nameRef}
               onChange={() => changeHandler(nameRef)}
@@ -158,9 +165,9 @@ export default function AddVegetable() {
                 </div>
             ):('')}
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter category</label>
-            <select
+            <select  className="form-control"
               name="category" placeholder="Enter category" required
               ref={categoryRef}
               onChange={() => changeHandler(categoryRef)}>
@@ -175,9 +182,9 @@ export default function AddVegetable() {
                 </div>
             ):('')}
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter type</label>
-            <select
+            <select className="form-control"
               name="type" placeholder="Enter type" required
               ref={typeRef}
               onChange={() => changeHandler(typeRef)}>
@@ -193,10 +200,10 @@ export default function AddVegetable() {
                 {currentState.validations.type}
                 </div>
             ):('')}
-          </div>
-          <div>
+          </div >
+          <div className="form-group">
             <label>Enter price</label>
-            <input
+            <input className="form-control"
               name="price"
               type="number" placeholder="Enter price" required
               ref={priceRef}
@@ -208,9 +215,9 @@ export default function AddVegetable() {
                 </div>
             ):('')}
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter Quantity</label>
-            <input
+            <input className="form-control"
               name="quantity"
               type="number"  placeholder="Enter quantity" required
               ref={quantityRef}
@@ -237,7 +244,7 @@ export default function AddVegetable() {
         {response.error ? (
           <div className={commonStyle.error}>
             Request was not successful <br />
-            {response.errMsg}
+            {response.error}
           </div>
         ) : (
           ""
