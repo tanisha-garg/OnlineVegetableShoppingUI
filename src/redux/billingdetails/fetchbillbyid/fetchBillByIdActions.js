@@ -1,3 +1,4 @@
+import { fetchBillDetails } from "../../../service/BillingDetailsService";
 import store from "../../store";
 import fetchBillByIdConstants from "./fetchBillByIdConstants";
 
@@ -20,21 +21,16 @@ function fetchBillByIdFail(error){
 }
 
 function fetchBillById(billId){
-    return()=> {
-        let bill = {
-            billingId: 2,
-            transactionMode: "COD",
-            transactionDate: "2021-04-20",
-            transactionStatus: "Succesful",
-            flatNo: "21",
-            buildingName: "ABC",
-            area: "Sector 2",
-            city: "Chandigarh",
-            state: "punjab",
-            pincode: "123456",
-          };
-          //store.dispatch(fetchBillByIdSuccess(bill));
-          store.dispatch(fetchBillByIdFail("Nai hai kuch yaha pe"));
+    return()=> {    
+        const promise = fetchBillDetails(billId);
+        promise.then((response) => {
+            const bill = response.data;
+            store.dispatch(fetchBillByIdSuccess(bill));
+        })
+        .catch((error) => {
+            console.log("Inside catch error",error.message);
+            store.dispatch(fetchBillByIdFail(error.message));
+        })
     }
 }
 

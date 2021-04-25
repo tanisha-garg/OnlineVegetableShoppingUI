@@ -1,3 +1,4 @@
+import { addOrderDetails } from "../../../service/OrderServiceT";
 import store from "../../store";
 import addOrderConstants from "./addOrderConstants";
 
@@ -21,15 +22,13 @@ function addOrderFail(error) {
 
 function addOrder(customerId) {
     return() => {
-        let order = {
-            orderId: 2,
-            customerName: "Tanisha",
-            totalAmount: 100.0,
-            date: "20/01/2021",
-            status: "Placed",
-          };
-          store.dispatch(addOrderSuccess(order));
-          //store.dispatch(addOrderFail("Nothing to show"));
+          const promise = addOrderDetails(customerId);
+          promise.then((response) => {
+            store.dispatch(addOrderSuccess(response.data));
+          })
+          .catch((error) => {
+            store.dispatch(addOrderFail(error.message));
+          })
     }
  
 }

@@ -11,7 +11,7 @@ function fetchOrderById(id){
 
 }
 
-function fetchOrdersByCustomerId(id){
+function fetchOrdersByCustId(id){
 
     const url = baseUrl + "/orders/get/customer/" + id;
     console.log(url);
@@ -20,7 +20,7 @@ function fetchOrdersByCustomerId(id){
 
 }
 
-function fetchOrdersByDate(date){
+function fetchAllOrdersByDate(date){
 
     const url = baseUrl + "/orders/get/date/" + date;
     console.log(url);
@@ -40,4 +40,4 @@ function addOrderDetails(id){
 
 
 
-export {fetchOrderById, fetchOrdersByCustomerId, fetchOrdersByDate, addOrderDetails};
+export {fetchOrderById, fetchOrdersByCustId, fetchAllOrdersByDate, addOrderDetails};

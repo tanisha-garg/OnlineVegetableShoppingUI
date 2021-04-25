@@ -1,3 +1,4 @@
+import { fetchOrderById } from "../../../service/OrderServiceT";
 import store from "../../store";
 import fetchOrderDetailsConstants from "./fetchOrderDetailsConstants";
 
@@ -20,16 +21,15 @@ function fetchOrderDetailsFail(error){
 }
 
 function fetchOrderDetails(orderId) {
-    return() => {
-        let order = {
-            orderId: 2,
-            customerName: "Tanisha",
-            totalAmount: 100.0,
-            date: "20/01/2021",
-            status: "Placed",
-          };
-          store.dispatch(fetchOrderDetailsSuccess(order));
-          //store.dispatch(fetchOrderDetailsFail("Nothing to show"));
+     return() => {
+    const promise = fetchOrderById(orderId);
+    promise.then((response) => {
+        store.dispatch(fetchOrderDetailsSuccess(response.data));
+    })
+    .catch((error) => {
+        store.dispatch(fetchOrderDetailsFail(error.message));
+    })
+    
     }
  
 }

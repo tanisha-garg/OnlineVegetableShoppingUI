@@ -5,19 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBillByIdActions";
 
 function GetBillingDetailsOnRequest() {
-  let bill = {
-    billingId: 1,
-    transactionMode: "COD",
-    transactionDate: "2021-04-20",
-    transactionStatus: "Succesful",
-    flatNo: "21",
-    buildingName: "ABC",
-    area: "Sector 2",
-    city: "Chandigarh",
-    state: "punjab",
-    pincode: "123456",
-  };
-  let errMsg = "Cannot retrieve Bill Details Response";
 
   const dispatch = useDispatch();
 
@@ -34,14 +21,14 @@ function GetBillingDetailsOnRequest() {
     });
   })
 
-  let [state, setNewState] = useState(initialState);
+  let [currentState, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (state.validations.billingId) {
+    if (currentState.validations.billingId) {
       return;
     }
-    console.log("Current state", state);
+    console.log("Current state", currentState);
     const billingId = billIdRef.current.value;
     dispatch(fetchBillById(billingId));
   };
@@ -55,14 +42,12 @@ function GetBillingDetailsOnRequest() {
       validationMessage = validateBillId(fieldValue);
     }
     const newValidations = {
-      ...state.validations,
+      ...currentState.validations,
       [fieldName]: validationMessage
     };
     const newState = {
-      ...state,
+      ...currentState,
       billingId: fieldValue,
-      bill: undefined,
-      errMsg: undefined,
       validations: newValidations,
     };
     setNewState(newState);
@@ -88,8 +73,8 @@ function GetBillingDetailsOnRequest() {
             ref={billIdRef}
             onChange={() => setIdHandler(billIdRef)}
           />
-          {state.validations.billingId ? (
-            <div className="text-danger mt-2">{state.validations.billingId}</div>
+          {currentState.validations.billingId ? (
+            <div className="text-danger mt-2">{currentState.validations.billingId}</div>
           ) : (
             ""
           )}
@@ -99,7 +84,6 @@ function GetBillingDetailsOnRequest() {
         <button className="btn btn-primary">Submit</button>
       </form>
       <br />
-      {/* <span>Id is {state.billingId} </span> */}
       {response.bill ? (
         <div>
           <h3>Billing Details Response</h3>
