@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
 import validationMessage from "./billingValidationMessage";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBillByIdActions";
+import { fetchBillByIdOnRequest } from "../../redux/billingdetails/fetchbillbyidonrequest/fetchBillByIdOnRequestActions";
 
 function GetBillingDetailsOnRequest() {
 
@@ -17,7 +17,7 @@ function GetBillingDetailsOnRequest() {
 
   const response = useSelector(state => { 
     return ({
-      bill: state.fetchBillById.bill, error: state.fetchBillById.error
+      bill: state.fetchBillByIdOnRequest.bill, error: state.fetchBillByIdOnRequest.error
     });
   })
 
@@ -30,7 +30,7 @@ function GetBillingDetailsOnRequest() {
     }
     console.log("Current state", currentState);
     const billingId = billIdRef.current.value;
-    dispatch(fetchBillById(billingId));
+    dispatch(fetchBillByIdOnRequest(billingId));
   };
 
   const setIdHandler = (reference) => {

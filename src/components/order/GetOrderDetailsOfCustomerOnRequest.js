@@ -1,26 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
+import { fetchOrdersByCustIdOnRequest } from "../../redux/order/fetchordersbycustidonrequest/fetchOrdersByCustIdOnRequestActions";
 import DisplayOrderList from "./DisplayOrderList";
 import validationMessage from "./orderValidationMessage";
 
 function GetOrderDetailsOfCustomerOnRequest() {
-  const order1 = {
-    orderId: 1,
-    customerName: "Tanisha",
-    totalAmount: 100.0,
-    date: "20/01/2021",
-    status: "Placed",
-  };
-  const order2 = {
-    orderId: 2,
-    customerName: "Pallavi",
-    totalAmount: 200.0,
-    date: "10/01/2021",
-    status: "Placed",
-  };
-  const orders = [order1, order2];
-  const errMsg = "Cannot fetch data";
 
   const idRef = React.createRef();
 
@@ -33,8 +17,8 @@ function GetOrderDetailsOfCustomerOnRequest() {
 
   const response = useSelector( state => {
     return {
-      orders: state.fetchOrdersByCustomerId.orders,
-      error: state.fetchOrdersByCustomerId.error,
+      orders: state.fetchOrdersByCustIdOnRequest.orders,
+      error: state.fetchOrdersByCustIdOnRequest.error,
     }
   })
 
@@ -68,7 +52,7 @@ function GetOrderDetailsOfCustomerOnRequest() {
     }
     const customerId = idRef.current.value;
     const data = {...currentState};
-    dispatch(fetchOrdersByCustomerId(customerId));
+    dispatch(fetchOrdersByCustIdOnRequest(customerId));
   };
 
   const validateCustomerId = (customerId) => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
+import { fetchOrdersByDateOnRequest } from "../../redux/order/fetchordersbydateonrequest/fetchOrdersByDateOnRequestActions";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByDateOnRequest() {
@@ -12,7 +13,7 @@ function GetOrderDetailsByDateOnRequest() {
   const dispatch = useDispatch();
 
   const response = useSelector( state => {
-    return {orders: state.fetchOrdersByDate.orders, error: state.fetchOrdersByDate.error }
+    return {orders: state.fetchOrdersByDateOnRequest.orders, error: state.fetchOrdersByDateOnRequest.error }
   })
 
   const [currentState, setNewState] = useState(initialState);
@@ -31,7 +32,7 @@ function GetOrderDetailsByDateOnRequest() {
   const submitHandler = (event) => {
     event.preventDefault();
     const date = dateRef.current.value;
-    dispatch(fetchOrdersByDate(date));
+    dispatch(fetchOrdersByDateOnRequest(date));
   };
 
   return (
