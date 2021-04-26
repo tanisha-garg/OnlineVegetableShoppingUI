@@ -37,7 +37,7 @@ function getVegetableDetailsOnRequestAction(vegId){
               const vegetable=response.data;
               store.dispatch(getVegetableOnRequestSuccess(vegetable))
           }).catch(error=>{
-              store.dispatch(getVegetableOnRequestFail(error.message))
+              store.dispatch(getVegetableOnRequestFail(error.response.data))
           })
     }
 }

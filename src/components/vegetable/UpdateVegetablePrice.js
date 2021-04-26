@@ -25,7 +25,7 @@ export default function UpdateVegetablePrice() {
   const priceRef=React.createRef();
 
   let [currentState, setNewState] = useState({
-    id: undefined,
+    vegId: undefined,
     price:undefined,
     validations:{id:undefined,price:undefined}
   });
@@ -105,7 +105,7 @@ export default function UpdateVegetablePrice() {
         <div className="form-group">
           <label>Enter veg id</label>
           <input className="form-control"
-            name="id" type="number" placeholder="Enter veg Id" required
+            name="vegId" type="number" placeholder="Enter veg Id" required
             ref={idRef}
             onChange={() => changeHandler(idRef)}
           />

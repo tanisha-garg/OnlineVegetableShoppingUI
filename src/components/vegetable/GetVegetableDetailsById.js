@@ -21,7 +21,7 @@ export default function GetVegetableDetailsById(props) {
     };*/
   
 
-    const currentState=useSelector(state=>{
+    const response=useSelector(state=>{
       return({
         vegetable:state.getVegetableDetailsOnRequest.vegetable,
         error:state.getVegetableDetailsOnRequest.error
@@ -41,22 +41,21 @@ export default function GetVegetableDetailsById(props) {
   
     return (
         <div>
-          Hello
-        {currentState.vegetable ? (
+        {response.vegetable ? (
           <div>
             <h2>
               <i>Vegetable Details</i>
             </h2>
-            <DisplayVegetable veg={currentState.vegetable} />
+            <DisplayVegetable veg={response.vegetable} />
           </div>
         ) : (
           ""
         )}
-        {currentState.error ? (
+        {response.error ? (
           <div className={commonStyle.error}>
             Request was not successful
             <br />
-            {currentState.error}
+            {response.error}
           </div>
         ) : (
           ""
