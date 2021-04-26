@@ -4,13 +4,12 @@ import AddVegetable from './components/vegetable/AddVegetable';
 import DisplayVegetable from './components/vegetable/DisplayVegetable';
 import DisplayVegetables from './components/vegetable/DisplayVegetables';
 import GetVegetableDetailsOnRequest from './components/vegetable/GetVegetableDetailsOnRequest';
-import NavBar from './components/vegetable/NavBar';
 import UpdateVegetablePrice from './components/vegetable/UpdateVegetablePrice';
 import VegetableHome from './components/vegetable/VegetableHome';
 import { fetchVegetableById } from './service/VegetableService';
 import store from "./redux/vegetable/store"
-import { Route, Router, Switch } from 'react-router';
-import Navbar from './components/vegetable/NavBar';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import GetVegetableDetailsById from './components/vegetable/GetVegetableDetailsById';
 
 const veg = {
   id: 1,
@@ -55,12 +54,11 @@ function App() {
   return (
     <div>
       <Provider store={store} >
-      {/*<Router>
+      <Router>
         <div className="row">
           <div className="col-md-12">
-            <Navbar />
             <Switch>
-              <Route exact path="/" component={VegetableHome} />
+              <Route exact path="/vegetablehome" component={VegetableHome} />
               <Route
                 exact
                 path="/vegetables/add"
@@ -68,7 +66,7 @@ function App() {
               />
               <Route
                 exact
-                path="/vegetables/byid"
+                path="/vegetables/byidonrequest"
                 component={GetVegetableDetailsOnRequest}
               />
               <Route
@@ -76,13 +74,15 @@ function App() {
                 path="/vegetables/changePrice"
                 component={UpdateVegetablePrice}
               />
+              <Route
+              exact 
+              path="/vegetables/byid/:id"
+              component={GetVegetableDetailsById}
+              />
             </Switch>
           </div>
         </div>
-      </Router>*/}
-      {/*<AddVegetable/>*/}
-      {/*<GetVegetableDetailsOnRequest/>*/}
-      {<UpdateVegetablePrice/>}
+      </Router>
       </Provider>
       
     </div>
