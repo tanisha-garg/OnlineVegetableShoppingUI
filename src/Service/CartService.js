@@ -19,9 +19,9 @@ export function decreaseQuantityRequest(data){
     return promise;
 }
 
-export function removeItemToCartRequest(data){
-    const url=baseUrl+"/cart/removeVegetable";
-    const promise=axios.delete(url,data)
-    return promise;
+// export function removeItemToCartRequest(data){
+//     const url=baseUrl+"/cart/removeVegetable";
+//     const promise=axios.delete(url,data)
+//     return promise;
 
-}
+// }

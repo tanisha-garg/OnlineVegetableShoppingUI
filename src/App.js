@@ -4,8 +4,9 @@ import AddToCart from './components/Cart/AddToCart';
 import CartHome from './Pages/CartHome';
 import {addItemToCartRequest,increaseQuantityRequest} from './Service/CartService';
 import DisplayCart from './components/Cart/DisplayCart';
-import IncreaseQuantity from './components/Cart/IncreaseQuantity';
-import DecreaseQuantity from './components/Cart/DecreaseQuantity';
+import decreasequantity from './components/Cart/DecreaseQuantity';
+import increasequantity from './components/Cart/DecreaseQuantity';
+import AddOrRemoveItemFromCart from './components/Cart/AddOrRemoveItemFromCart';
 
 
 const veg = {
@@ -36,11 +37,12 @@ function App() {
     
   return (
     <div>
-      {/* <DecreaseQuantity /> */}
+      {/* <AddOrRemoveItemFromCart /> */}
       <AddToCart />
       {/*<DisplayCart />*/}
-      {/* <IncreaseQuantity /> */}
       {/* <CartHome /> */}
+      {/* <AddOrRemoveItemFromCart /> */}
+      
     </div>
   );
 }
