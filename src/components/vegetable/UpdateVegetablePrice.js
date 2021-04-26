@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {updateVegetablePrice} from "../../redux/vegetable/updateVegetablePrice/updateVegetablePriceAction"
+
 
 /**
  * 
@@ -9,26 +12,33 @@ import commonStyle from "./commonStyle.module.css";
  */
 
 export default function UpdateVegetablePrice() {
-  const veg = {
+  /*const veg = {
     id: 1,
     name: "potato",
     category: "underground",
     type: "root",
     quantity: 20,
     price: 50,
-  };
+  };*/
 
   const idRef = React.createRef();
   const priceRef=React.createRef();
 
-  let [state, setNewState] = useState({
+  let [currentState, setNewState] = useState({
     id: undefined,
     price:undefined,
-    vegetable: veg,
-    errMsg: undefined,
-    formStatus: "",
     validations:{id:undefined,price:undefined}
   });
+
+  const response=useSelector(state=>{
+    return({
+      vegetable:state.updateVegetablePrice.vegetable,
+      error:state.updateVegetablePrice.error
+    });
+  });
+
+  const dispatch=useDispatch();
+
   /**
    * 
    * Change Handler Function
@@ -44,9 +54,9 @@ export default function UpdateVegetablePrice() {
     if(ref===priceRef){
         validationMsg=validatePrice(fieldValue);
       }
-    const newValidations={...state.validations,[fieldName]:validationMsg};
+    const newValidations={...currentState.validations,[fieldName]:validationMsg};
     const newState = {
-      ...state,
+      ...currentState,
       [fieldName]: fieldValue,
       vegetable: undefined,
       errMsg: undefined,
@@ -79,53 +89,59 @@ export default function UpdateVegetablePrice() {
        */
 
   const submitHandler = (event) => {
+    console.log("inside submit Handler of update price");
     event.preventDefault();
-    setNewState({ ...state, formStatus: "vegetable updated successfully" });
+    if(currentState.validations.id || currentState.validations.price){
+      return ;
+    }
+    let data={...currentState};
+    dispatch(updateVegetablePrice(data));
   };
 
   return (
-    <div>
-      <form onSubmit={(event) => submitHandler(event)}>
-        <div>
+    <div className="container">
+       <h2>Update Vegetable Price</h2>
+      <form onSubmit={submitHandler} className={commonStyle.content}>
+        <div className="form-group">
           <label>Enter veg id</label>
-          <input
-            name="id" type="number"
+          <input className="form-control"
+            name="id" type="number" placeholder="Enter veg Id" required
             ref={idRef}
             onChange={() => changeHandler(idRef)}
           />
-          {state.validations.id?(
+          {currentState.validations.id?(
             <div className={commonStyle.error}>
-              {state.validations.id}
+              {currentState.validations.id}
               </div>
           ):('')}
         </div>
-        <div>
+        <div className="form-group">
           <label>Enter price</label>
-          <input type="number"
-            name="price"
+          <input type="number" className="form-control"
+            name="price" placeholder="Enter price"  required
             ref={priceRef}
             onChange={() => changeHandler(priceRef)}
           />
-          {state.validations.price?(
+          {currentState.validations.price?(
             <div className={commonStyle.error}>
-              {state.validations.price}
+              {currentState.validations.price}
               </div>
           ):('')}
         </div>
-        <button type="submit">Update Vegetable</button>
+        <button  className="btn btn-primary">Update Vegetable</button>
       </form>
-      <h2>{state.formStatus}</h2>
-      {state.vegetable ? (
+      <h2>{currentState.formStatus}</h2>
+      {response.vegetable ? (
         <div>
-          <DisplayVegetable veg={state.vegetable} />
+          <DisplayVegetable veg={response.vegetable} />
         </div>
       ) : (
         ""
       )}
-      {state.errMsg ? (
-        <div className={commonStyle.console.error}>
+      {response.error ? (
+        <div className={commonStyle.error}>
           Request was not successful <br />
-          {state.errMsg}
+          {response.error}
         </div>
       ) : (
         ""

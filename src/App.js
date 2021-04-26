@@ -1,4 +1,14 @@
-import "./App.css";
+import { Provider } from 'react-redux';
+import './App.css';
+import AddVegetable from './components/vegetable/AddVegetable';
+import DisplayVegetable from './components/vegetable/DisplayVegetable';
+import DisplayVegetables from './components/vegetable/DisplayVegetables';
+import GetVegetableDetailsOnRequest from './components/vegetable/GetVegetableDetailsOnRequest';
+import UpdateVegetablePrice from './components/vegetable/UpdateVegetablePrice';
+import VegetableHome from './components/vegetable/VegetableHome';
+import { fetchVegetableById } from './service/VegetableService';
+import store from "./redux/vegetable/store"
+import GetVegetableDetailsById from './components/vegetable/GetVegetableDetailsById';
 import GetBillingDetails from "./components/billingdetails/GetBillingDetails";
 import GetBillingDetailsOnRequest from "./components/billingdetails/GetBillingDetailsOnRequest";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
@@ -18,30 +28,10 @@ import {
   fetchOrdersByCustomerId,
   fetchOrdersByDate,
 } from "./service/OrderServiceT";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+
+
 
 function App() {
-  // const promise = fetchBillDetails(40);
-  // promise.then((response) => console.log("Inside response body", response.data))
-  // .catch((error) => console.log("Inside error", error.message));
-
-  // const promise = fetchOrderById(29);
-  // promise.then((response) => console.log("Inside response body", response.data))
-  // .catch((error) => console.log("Inside error", error.message));
-
-  //  const promise = fetchOrdersByCustomerId(16);
-  //  promise.then((response) => console.log("Inside response body", response.data))
-  //  .catch((error) => console.log("Inside error", error.message));
-
-  //  const promise = fetchOrdersByDate("23 April 2021");
-  //  promise.then((response) => console.log("Inside response body", response.data))
-  //  .catch((error) => console.log("Inside error", error.message));
-
-  // const promise = addOrderDetails(22);
-  // promise
-  //   .then((response) => console.log("Inside response body", response.data))
-  //   .catch((error) => console.log("Inside error", error.message));
 
   return (
     <div>
@@ -50,8 +40,32 @@ function App() {
         <div className="row">
           <div className="col-md-12">
             <MainNavbar />
+
             <Switch>
+    
               <Route exact path="/" component={Home} />
+              <Route exact path="/vegetablehome" component={VegetableHome} />
+              <Route
+                exact
+                path="/vegetables/add"
+                component={AddVegetable}
+              />
+              <Route
+                exact
+                path="/vegetables/byidonrequest"
+                component={GetVegetableDetailsOnRequest}
+              />
+              <Route
+                exact
+                path="/vegetables/changePrice"
+                component={UpdateVegetablePrice}
+              />
+              <Route
+              exact 
+              path="/vegetables/byid/:id"
+              component={GetVegetableDetailsById}
+              />
+           
               <Route
                 exact
                 path="/orderhome/orderdetails/:id"

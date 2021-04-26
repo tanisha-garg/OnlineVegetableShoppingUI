@@ -2,30 +2,39 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getVegetableDetailsOnRequestAction } from "../../redux/vegetable/getVegetableDetailsOnRequest/getVegetableDetailsOnRequestAction";
 
 /**
  * 
  * Get Vegetable Component
  */
 
-export default function GetVegetableDetails() {
-    const veg = {
+export default function GetVegetableDetailsOnRequest() {
+    /*const veg = {
       id: 1,
       name: "potato",
       category: "underground",
       type: "root",
       quantity: 20,
       price: 30,
-    };
+    };*/
   
     const idRef = React.createRef();
   
-    let [state, setFormState] = useState({
+    let [currentState, setNewState] = useState({
       id: undefined,
-      vegetable: undefined,
-      errMsg: undefined,
       validations:{id:undefined}
     });
+
+    const response=useSelector(state=>{
+      return({
+        vegetable:state.getVegetableDetailsOnRequest.vegetable,
+        error:state.getVegetableDetailsOnRequest.error
+      });
+    });
+
+    const dispatch=useDispatch();
 
 /**
  * 
@@ -35,15 +44,15 @@ export default function GetVegetableDetails() {
     const setIdHandler = () => {
       const idValue=idRef.current.value;
       let ValidationsMsg=validateId(idValue);
-      const newValidations={...state.validations,id:idValue,validations:ValidationsMsg};
+      const newValidations={...currentState.validations,validations:ValidationsMsg};
       let newState = {
-        ...state,
+        ...currentState,
         id: idValue,
         vegetable: undefined,
         errMsg: undefined,
         validations:newValidations
       };
-      setFormState(newState);
+      setNewState(newState);
     };
     
 /**
@@ -52,7 +61,12 @@ export default function GetVegetableDetails() {
  */
   
     const submitHandler = (event) => {
-      event.preDefault();
+      event.preventDefault();
+      const id=idRef.current.value;
+      if(currentState.validations.id){
+          return;
+        }
+        dispatch(getVegetableDetailsOnRequestAction(id));
     };
   
     /**
@@ -66,44 +80,42 @@ export default function GetVegetableDetails() {
     }
   
     return (
-      <div>
+      <div className="container">
         <h2>Get Vegetable Details</h2>
-        <form onSubmit={(event) => submitHandler(event)}>
-            <div className="form-group">
-          <div>
+        <form onSubmit={submitHandler} className={commonStyle.content}>
+          <div className="form-group">
             <label>Enter Veg Id</label>
-            <input
+            <input className="form-control"
               name="id"
-              type="number"
+              type="number" placeholder="Enter veg Id"
               ref={idRef}
               onChange={() => setIdHandler()}
             />
-            {state.validations.id ? (
+            {currentState.validations.id ? (
               <div className={commonStyle.error}>
-                {state.validations.id}
+                {currentState.validations.id}
               </div>
             ) : (
               ""
             )}
             </div>
-          </div>
-          <button>Get Vegetable </button>
+          <button className="btn btn-primary">Get Vegetable </button>
         </form>
-        {state.vegetable ? (
+        {response.vegetable ? (
           <div>
             <h2>
               <i>Vegetable Details</i>
             </h2>
-            <DisplayVegetable veg={state.vegetable} />
+            <DisplayVegetable veg={response.vegetable} />
           </div>
         ) : (
           ""
         )}
-        {state.errMsg ? (
-          <div>
+        {response.error ? (
+          <div className={commonStyle.error}>
             Request was not successful
             <br />
-            {state.errMsg}
+            {response.error}
           </div>
         ) : (
           ""

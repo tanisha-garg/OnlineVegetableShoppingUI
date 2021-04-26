@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import DisplayVegetable from "./DisplayVegetables";
+import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
+import addVegetable from "../../service/VegetableService"
+import { useDispatch, useSelector } from "react-redux";
+import { addVegetableAction } from "../../redux/vegetable/addVegetable/addVegetableAction";
 
 
 /**
@@ -9,14 +12,14 @@ import commonStyle from "./commonStyle.module.css";
  * Add Vegetable Component
  */
 export default function AddVegetable() {
-    const veg = {
+    /*const veg = {
       id: 1,
       name: "potato",
       category: "underground",
       type: "root",
       quantity: 20,
       price: 30,
-    };
+    };*/
   
     const nameRef = React.createRef();
     const categoryRef = React.createRef();
@@ -30,21 +33,36 @@ export default function AddVegetable() {
       type: undefined,
       quantity: undefined,
       price: undefined,
-      vegetable: undefined,
-      errMsg: undefined,
       formStatus: "",
       validations:{name:undefined,category:undefined,type:undefined,quanity:undefined,price:undefined}
     };
-  
+
     const [currentState, setNewState] = useState(initialState);
+
+
+    const response=useSelector(state=>{
+      return({
+        vegetable:state.addVegetable.vegetable,
+        error:state.addVegetable.error
+      });
+    });
+
+    const dispatch=useDispatch();
+  
+    
   /**
    * 
    * submit Handler Function
    */
     const submitHandler = (event) => {
       event.preventDefault();
-      setNewState({ ...currentState, formStatus: "form submitted successfully" });
-    };
+      if(currentState.validations.name || currentState.validations.type ||currentState.validations.category ||
+        currentState.validations.price ||currentState.validations.quanity){
+          return;
+        }
+        let data={...currentState};
+        dispatch(addVegetableAction(data));
+        };
 
   /**
    * 
@@ -129,14 +147,15 @@ export default function AddVegetable() {
       }
       return undefined;
     };
-  
+    
     return (
-      <div>
-        <form onSubmit={(event) => submitHandler(event)}>
+      <div className="container">
+       <h2>Add Vegetable</h2> 
+        <form onSubmit={submitHandler} className={commonStyle.content}>
           <div className="form-group">
             <label>Enter name</label>
-            <input
-              name="name"
+            <input className="form-control"
+              name="name" placeholder="Enter veg name" required
               ref={nameRef}
               onChange={() => changeHandler(nameRef)}
             />
@@ -146,37 +165,47 @@ export default function AddVegetable() {
                 </div>
             ):('')}
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter category</label>
-            <input
-              name="category"
+            <select  className="form-control"
+              name="category" placeholder="Enter category" required
               ref={categoryRef}
-              onChange={() => changeHandler(categoryRef)}
-            />
+              onChange={() => changeHandler(categoryRef)}>
+                <option disabled selected>Select Category</option>
+                <option value="underground">Underground</option>
+                <option value="aboveground">Aboveground</option>
+              </select>
+           
             {currentState.validations.category?(
               <div className={commonStyle.error}>
                 {currentState.validations.category}
                 </div>
             ):('')}
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter type</label>
-            <input
-              name="type"
+            <select className="form-control"
+              name="type" placeholder="Enter type" required
               ref={typeRef}
-              onChange={() => changeHandler(typeRef)}
-            />
+              onChange={() => changeHandler(typeRef)}>
+                <option disabled selected>Select Type</option>
+                <option value="root">Root</option>
+                <option value="cruciferous">Cruciferous</option>
+                <option value="allium">Allium</option>
+                <option value="leafygreen">Leafy Green</option>
+                <option value="marrow">Marrow</option>
+                </select>
             {currentState.validations.type?(
               <div className={commonStyle.error}>
                 {currentState.validations.type}
                 </div>
             ):('')}
-          </div>
-          <div>
+          </div >
+          <div className="form-group">
             <label>Enter price</label>
-            <input
+            <input className="form-control"
               name="price"
-              type="number"
+              type="number" placeholder="Enter price" required
               ref={priceRef}
               onChange={() => changeHandler(priceRef)}
             />
@@ -186,11 +215,11 @@ export default function AddVegetable() {
                 </div>
             ):('')}
           </div>
-          <div>
+          <div className="form-group">
             <label>Enter Quantity</label>
-            <input
+            <input className="form-control"
               name="quantity"
-              type="number"
+              type="number"  placeholder="Enter quantity" required
               ref={quantityRef}
               onChange={() => changeHandler(quantityRef)}
             />
@@ -204,24 +233,18 @@ export default function AddVegetable() {
           </div>
         </form>
         <h2>{currentState.formStatus}</h2>
-        <h2>Details Entered By User</h2>
-        name is :{currentState.name} <br />
-        category is :{currentState.category} <br />
-        type is:{currentState.type} <br />
-        quantity is :{currentState.quantity} <br />
-        price is :{currentState.price}
-        {currentState.vegetable ? (
+        {response.vegetable ? (
           <div>
             <h2>Vegetable added successfully</h2>
-            <DisplayVegetable veg={currentState.vegetable} />
+            <DisplayVegetable veg={response.vegetable} />
           </div>
         ) : (
           ""
         )}
-        {currentState.errMsg ? (
+        {response.error ? (
           <div className={commonStyle.error}>
             Request was not successful <br />
-            {currentState.errMsg}
+            {response.error}
           </div>
         ) : (
           ""
@@ -229,4 +252,3 @@ export default function AddVegetable() {
       </div>
     );
   }
-  
