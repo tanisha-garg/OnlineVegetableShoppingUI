@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
 import './App.css';
+import AddFeedback from "./components/Feedback/AddFeedback"
 import AddVegetable from './components/vegetable/AddVegetable';
 import GetVegetableDetailsOnRequest from './components/vegetable/GetVegetableDetailsOnRequest';
 import UpdateVegetablePrice from './components/vegetable/UpdateVegetablePrice';
@@ -18,8 +19,6 @@ import GetOrderDetailsOfCustomerOnRequest from "./components/order/GetOrderDetai
 import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsByDateOnRequest";
 import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
 import store from './redux/store';
-
-
 
 
 function App() {
@@ -100,7 +99,7 @@ function App() {
         </div>
       </Router>
       </Provider>
-      
+
     </div>
   );
 }
