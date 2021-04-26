@@ -8,48 +8,30 @@ import UpdateVegetablePrice from './components/vegetable/UpdateVegetablePrice';
 import VegetableHome from './components/vegetable/VegetableHome';
 import { fetchVegetableById } from './service/VegetableService';
 import store from "./redux/vegetable/store"
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import GetVegetableDetailsById from './components/vegetable/GetVegetableDetailsById';
+import GetBillingDetails from "./components/billingdetails/GetBillingDetails";
+import GetBillingDetailsOnRequest from "./components/billingdetails/GetBillingDetailsOnRequest";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import MainNavbar from "./components/MainNavbar";
+import Home from "./components/Home";
+import OrderHome from "./components/order/OrderHome";
+import BillHome from "./components/billingdetails/BillHome";
+import GetOrderDetails from "./components/order/GetOrderDetails";
+import GetOrderDetailsByCustomerId from "./components/order/GetOrderDetailsByCustomerId";
+import GetOrderDetailsOfCustomerOnRequest from "./components/order/GetOrderDetailsOfCustomerOnRequest";
+import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsByDateOnRequest";
+import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
+import { fetchBillDetails } from "./service/BillingDetailsService";
+import {
+  addOrderDetails,
+  fetchOrderById,
+  fetchOrdersByCustomerId,
+  fetchOrdersByDate,
+} from "./service/OrderServiceT";
 
-const veg = {
-  id: 1,
-  name: "potato",
-  category: "underground",
-  type: "root",
-  quantity: 20,
-  price: 50,
-};
 
-const data = {
-  vegId:10,
-  price:55
-};
-const veg1=[veg];
+
 function App() {
-
-  /*
-  *testing service add component with mock data
-  */
-
-  /*const promise=addVegetable(data);
-  promise.then(response=>console.log("inside addVegetable mock testing",response.data))
-  .catch(error=>console.log("error in vegetable add component ",error.message));*/
-
-  /**
-   * tetsing service fetch vegetable with mock data
-   */
-
-   /*const promise=fetchVegetableById(15);
-   promise.then(response=>console.log("inside fetch vegetable mock testing",response.data))
-   .catch(error=>console.log("error in vegetable fetch component ",error.message));*/
-
-   /**
-   * tetsing service update vegetable price with mock data
-   */
-
-   /*const promise=updateVegetablePrice(data);
-   promise.then(response=>console.log("inside update vegetable price mock testing",response.data))
-   .catch(error=>console.log("error in vegetable fetch component ",error.message));*/
 
   return (
     <div>
@@ -57,7 +39,11 @@ function App() {
       <Router>
         <div className="row">
           <div className="col-md-12">
+            <MainNavbar />
+
             <Switch>
+    
+              <Route exact path="/" component={Home} />
               <Route exact path="/vegetablehome" component={VegetableHome} />
               <Route
                 exact
@@ -78,6 +64,44 @@ function App() {
               exact 
               path="/vegetables/byid/:id"
               component={GetVegetableDetailsById}
+              />
+           
+              <Route
+                exact
+                path="/orderhome/orderdetails/:id"
+                component={GetOrderDetails}
+              />
+              <Route exact path="/orderhome" component={OrderHome} />
+              <Route exact path="/billhome" component={BillHome} />
+              <Route
+                exact
+                path="/orderhome/ordersofcustomer/:id"
+                component={GetOrderDetailsByCustomerId}
+              />
+              <Route
+                exact
+                path="/orderhome/ordersofcustomeronrequest"
+                component={GetOrderDetailsOfCustomerOnRequest}
+              />
+              <Route
+                exact
+                path="/orderhome/ordersbydateonrequest"
+                component={GetOrderDetailsByDateOnRequest}
+              />
+              <Route
+                exact
+                path="/orderhome/ordersbydate/:date"
+                component={GetOrderDetailsByDate}
+              />
+              <Route
+                exact
+                path="/billhome/billdetails/:id"
+                component={GetBillingDetails}
+              />
+              <Route
+                exact
+                path="/billhome/billdetailsonrequest"
+                component={GetBillingDetailsOnRequest}
               />
             </Switch>
           </div>
