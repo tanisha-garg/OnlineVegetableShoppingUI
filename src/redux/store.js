@@ -8,6 +8,7 @@ import fetchOrderDetailsReducer from "./order/fetchorderdetails/fetchOrderDetail
 import fetchOrdersByCustIdOnRequestReducer from "./order/fetchordersbycustidonrequest/fetchOrdersByCustIdOnRequestReducer";
 import fetchOrdersByCustomerIdReducer from "./order/fetchordersbycustomerid/fetchOrdersByCustomerIdReducer"
 import fetchOrdersByDateReducer from "./order/fetchordersbydate/fetchOrdersByDateReducer";
+import fetchOrdersByDateOnRequestReducer from "./order/fetchordersbydateonrequest/fetchOrdersByDateOnRequestReducer";
 import addVegetableReducer from "./vegetable/addVegetable/addVegetableReducer";
 import getVegetableDetailsOnRequestReducer from "./vegetable/getVegetableDetailsOnRequest/getVegetableDetailsOnRequestReducer";
 import updateVegetablePriceReducer from "./vegetable/updateVegetablePrice/updateVegetablePriceReducer";
@@ -20,6 +21,7 @@ const store = createStore(
         fetchOrdersByCustomerId: fetchOrdersByCustomerIdReducer,
         fetchOrdersByCustIdOnRequest: fetchOrdersByCustIdOnRequestReducer,
         fetchOrdersByDate: fetchOrdersByDateReducer,
+        fetchOrdersByDateOnRequest: fetchOrdersByDateOnRequestReducer,
         addOrder: addOrderReducer,
         fetchOrderDetails: fetchOrderDetailsReducer,
         addVegetable:addVegetableReducer,
