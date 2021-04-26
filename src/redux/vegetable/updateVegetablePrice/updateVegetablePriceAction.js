@@ -1,4 +1,4 @@
-import store from "../store";
+import store from "../../store";
 import updateVegetablePriceConstants from "./updateVegetablePriceConstants";
 import {updateVegetablePriceService} from "../../../service/VegetableService"
 

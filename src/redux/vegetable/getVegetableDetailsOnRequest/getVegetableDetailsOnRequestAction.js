@@ -1,5 +1,5 @@
 import { fetchVegetableById } from "../../../service/VegetableService";
-import store from "../store";
+import store from "../../store";
 import getVegetableDetailsOnRequestConstants from "./getVegetableDetailsOnRequestConstants";
 
 

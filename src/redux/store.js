@@ -6,6 +6,9 @@ import addOrderReducer from "./order/addorder/addOrderReducer";
 import fetchOrderDetailsReducer from "./order/fetchorderdetails/fetchOrderDetailsReducer";
 import fetchOrdersByCustomerIdReducer from "./order/fetchordersbycustomerid/fetchOrdersByCustomerIdReducer"
 import fetchOrdersByDateReducer from "./order/fetchordersbydate/fetchOrdersByDateReducer";
+import addVegetableReducer from "./vegetable/addVegetable/addVegetableReducer";
+import getVegetableDetailsOnRequestReducer from "./vegetable/getVegetableDetailsOnRequest/getVegetableDetailsOnRequestReducer";
+import updateVegetablePriceReducer from "./vegetable/updateVegetablePrice/updateVegetablePriceReducer";
 
 const store = createStore(
     // fetchBillByIdReducer, composeWithDevTools(applyMiddleware(thunk))
@@ -14,7 +17,10 @@ const store = createStore(
         fetchOrdersByCustomerId: fetchOrdersByCustomerIdReducer,
         fetchOrdersByDate: fetchOrdersByDateReducer,
         addOrder: addOrderReducer,
-        fetchOrderDetails: fetchOrderDetailsReducer
+        fetchOrderDetails: fetchOrderDetailsReducer,
+        addVegetable:addVegetableReducer,
+        getVegetableDetailsOnRequest:getVegetableDetailsOnRequestReducer,
+        updateVegetablePrice:updateVegetablePriceReducer
     }), composeWithDevTools(applyMiddleware(thunk))
 );
 
