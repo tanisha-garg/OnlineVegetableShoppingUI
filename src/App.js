@@ -39,6 +39,7 @@ function App() {
       <Router>
         <div className="row">
           <div className="col-md-12">
+            
             <MainNavbar />
 
             <Switch>

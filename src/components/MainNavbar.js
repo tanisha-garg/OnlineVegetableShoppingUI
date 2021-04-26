@@ -38,12 +38,12 @@ function MainNavbar() {
 
             {/* This link is for Vegetable Module  */}
 
-            {/* <li className="nav-item">
+            <li className="nav-item">
 
-                            <Link to="/all" className="nav-link" >
-                                <span>Get All customers</span>
+                            <Link to="/vegetablehome" className="nav-link" >
+                                <span>Vegetable</span>
                             </Link>
-                        </li> */}
+                        </li>
 
             {/* This link is for Cart Module  */}
 

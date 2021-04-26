@@ -3,14 +3,14 @@ import commonStyle from "./commonStyle.module.css";
 
 export default function VegetableHome() {
   return (
-    <div>
+    <div className="container mt-5">
       <h1> Vegetable Module </h1>
 
       <div className={commonStyle.content}>
         <div>
           Welcome to Vegetable Module
-          <br /> various features availble are :
-          <ul className="list-group">
+          <br /> various features availble are : 
+          <ul className="list-group mt-4">
             <li className="list-group-item">
               <Link to="/vegetables/add">Click here to </Link>Add Vegetable
             </li>
