@@ -27,7 +27,7 @@ function fetchOrdersByCustomerId(customerId){
             store.dispatch(fetchOrdersByCustomerIdSuccess(response.data));
           })
           .catch((error) => {
-            store.dispatch(fetchOrdersByCustomerIdFail(error.message));
+            store.dispatch(fetchOrdersByCustomerIdFail(error.response.data));
           })
 
     }

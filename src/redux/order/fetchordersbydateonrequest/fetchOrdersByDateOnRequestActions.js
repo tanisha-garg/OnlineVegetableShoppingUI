@@ -28,7 +28,7 @@ function fetchOrdersByDateOnRequest(date){
           store.dispatch(fetchOrdersByDateOnRequestSuccess(response.data));
         })
         .catch((error) => {
-          store.dispatch(fetchOrdersByDateOnRequestFail(error.message));
+          store.dispatch(fetchOrdersByDateOnRequestFail(error.response.data));
         })
 
   }

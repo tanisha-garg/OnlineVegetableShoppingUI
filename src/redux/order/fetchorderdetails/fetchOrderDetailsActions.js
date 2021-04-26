@@ -27,7 +27,7 @@ function fetchOrderDetails(orderId) {
         store.dispatch(fetchOrderDetailsSuccess(response.data));
     })
     .catch((error) => {
-        store.dispatch(fetchOrderDetailsFail(error.message));
+        store.dispatch(fetchOrderDetailsFail(error.response.data));
     })
     
     }

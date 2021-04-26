@@ -27,7 +27,7 @@ function fetchOrdersByCustIdOnRequest(customerId){
           store.dispatch(fetchOrdersByCustIdOnRequestSuccess(response.data));
         })
         .catch((error) => {
-          store.dispatch(fetchOrdersByCustIdOnRequestFail(error.message));
+          store.dispatch(fetchOrdersByCustIdOnRequestFail(error.response.data));
         })
 
   }
