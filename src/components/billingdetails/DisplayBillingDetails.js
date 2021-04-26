@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function DisplayBillingDetails({ bill }) {
   let {
     billingId,
@@ -10,22 +12,23 @@ function DisplayBillingDetails({ bill }) {
     city,
     state,
     pincode,
-   } = bill;
+  } = bill;
   return (
     <div>
-      <ul>
-        <li>
-          Billing Id: {billingId} <br />
-          Transaction Mode: {transactionMode} <br />
-          Transaction Date: {transactionDate} <br/>
+      <ul className="list-group mt-4">
+        <li className="list-group-item">Billing Id: {billingId}</li>
+        <li className="list-group-item">Transaction Mode: {transactionMode}</li>
+        <li className="list-group-item">Transaction Date: {transactionDate}</li>
+        <li className="list-group-item">
           Transaction Status: {transactionStatus}
         </li>
-        <li>
-          Billing Address: {flatNo}, {buildingName}, {area},
-          <br />
-          {city}, {state}, {pincode}
+        <li className="list-group-item">
+          {" "}
+          Billing Address: {flatNo}, {buildingName}, {area}, {city}, {state},{" "}
+          {pincode}
         </li>
       </ul>
+     
     </div>
   );
 }
