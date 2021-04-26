@@ -1,5 +1,5 @@
 import { addVegetable } from "../../../service/VegetableService";
-import store from "../store";
+import store from "../../store";
 import addVegetableConstants from "./addVegetableConstants";
 
 function addVegetableSuccess(vegetable){

@@ -1,13 +1,9 @@
 import { Provider } from 'react-redux';
 import './App.css';
 import AddVegetable from './components/vegetable/AddVegetable';
-import DisplayVegetable from './components/vegetable/DisplayVegetable';
-import DisplayVegetables from './components/vegetable/DisplayVegetables';
 import GetVegetableDetailsOnRequest from './components/vegetable/GetVegetableDetailsOnRequest';
 import UpdateVegetablePrice from './components/vegetable/UpdateVegetablePrice';
 import VegetableHome from './components/vegetable/VegetableHome';
-import { fetchVegetableById } from './service/VegetableService';
-import store from "./redux/vegetable/store"
 import GetVegetableDetailsById from './components/vegetable/GetVegetableDetailsById';
 import GetBillingDetails from "./components/billingdetails/GetBillingDetails";
 import GetBillingDetailsOnRequest from "./components/billingdetails/GetBillingDetailsOnRequest";
@@ -21,13 +17,8 @@ import GetOrderDetailsByCustomerId from "./components/order/GetOrderDetailsByCus
 import GetOrderDetailsOfCustomerOnRequest from "./components/order/GetOrderDetailsOfCustomerOnRequest";
 import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsByDateOnRequest";
 import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
-import { fetchBillDetails } from "./service/BillingDetailsService";
-import {
-  addOrderDetails,
-  fetchOrderById,
-  fetchOrdersByCustomerId,
-  fetchOrdersByDate,
-} from "./service/OrderServiceT";
+import store from './redux/store';
+
 
 
 
@@ -39,7 +30,7 @@ function App() {
       <Router>
         <div className="row">
           <div className="col-md-12">
-            
+
             <MainNavbar />
 
             <Switch>
