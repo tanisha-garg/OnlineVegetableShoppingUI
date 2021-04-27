@@ -94,6 +94,11 @@ function App() {
                 />
                 <Route
                   exact
+                  path="/feedbackhome/addfeedback"
+                  component={AddFeedback}
+                />
+                <Route
+                  exact
                   path="/feedbackhome/feedbackdetails/:id"
                   component={DisplayFeedbackDetails}
                 />

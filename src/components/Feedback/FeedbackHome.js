@@ -13,18 +13,14 @@ function FeedbackHome() {
           <div className="col-md-12 mt-4">
             <p className="h5">Links to different features:</p>
             <ul className="list-group mt-4">
+            <li className="list-group-item">
+              <Link to="/feedbackhome/addfeedback">Click here</Link> &emsp;
+              To add feedback in the url: 
+              
+              </li>
               <li className="list-group-item">              
               <Link to="/feedbackhome/feedbackdetails/:id">Click here</Link> &emsp;
                 To get feedback details by giving feedback id in the url: 
-              </li>
-              <li className="list-group-item">
-              <Link to="/feedbackhome/feedbacklist/:id">
-                  {" "}
-                  Click here{" "}
-                </Link> &emsp;
-                To get feedback list of a customer by passing feedback id in the url:
-                
-               
               </li>
               <li className="list-group-item">
               <Link to="/feedbackhome/feedbackbyvegetableid/:id">
