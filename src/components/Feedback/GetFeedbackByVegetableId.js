@@ -3,22 +3,27 @@ import DisplayFeedbackDetails from "./DisplayFeedbackDetails"
 import commonStyle from "./commonStyle.module.css"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import { fetchFeedbackByVegetableId } from "../../service/FeedbackService"
 
 export default function GetFeedbackByVegetableId(props) {
 
-    const currentState=useSelector(state=>{
-        return({
-            feedback:state.fetchFeedbackById.feedback,
-            error:state.fetchFeedbackById.error
-
-        })
-    })
-
+   const initialState={feedback:undefined, errMsg:undefined};
+   const [currentState,setNewState]=useState(initialState);
+ 
     const dispatch=useDispatch();
 
     const fetchFeedbackOnRender=()=>{
         const id=props.match.params.id;
-        //dispatch(fetchFeedbackById(id));
+    const promise=fetchFeedbackByVegetableId(id);
+    promise.then((response)=>{
+        const newState={...currentState, feedback:response.data};
+        setNewState(newState);
+
+    })
+    .catch((error)=>{
+        const newState={...currentState, errMsg:error.message};
+        setNewState(newState);
+    })
     }
     
     useEffect(fetchFeedbackOnRender(),[]);

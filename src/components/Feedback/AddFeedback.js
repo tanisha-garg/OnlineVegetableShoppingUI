@@ -2,22 +2,23 @@ import React, { useState } from "react";
 import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
 import commonStyle from "./commonStyle.module.css"
 import "bootstrap/dist/css/bootstrap.min.css"
+import {addFeedback} from "../../service/FeedbackService"
 
 export default function AddFeedback() {
 
 
-    const feedbackRef = React.createRef();
     const ratingRef = React.createRef();
     const customerIdRef = React.createRef();
     const vegetableIdRef = React.createRef();
+    const commentRef= React.createRef();
 
       const response={   feed:undefined,errMsg: undefined};
     const initialState = {
-        feedback: undefined,
         rating: undefined,
         customerId:undefined,
         vegetableId:undefined,
-        formStatus: "",
+        comment:undefined,
+        
     };
 
      const [currentState, setNewState] = useState(initialState);
@@ -28,10 +29,18 @@ export default function AddFeedback() {
         //setNewState({ ...currentState, formStatus: "form submitted successfully" });
 
         let formData = { ...currentState };
-        console.log("form data that has to be sent to service", formData)
+        const promise = addFeedback(formData);
+    promise
+      .then((response) =>
+        setNewState({ ...currentState, feedback: response.data })
+      )
+      .catch((error) =>
+        setNewState({ ...currentState, errMsg: error.message})
+        );
     
     
       };  
+      
 
       const setFieldState = (ref) => {
 
@@ -45,7 +54,7 @@ export default function AddFeedback() {
         };
 
         setNewState(newState);
-
+       
 
     };
 
@@ -53,20 +62,16 @@ export default function AddFeedback() {
 
       <div className="container">
           <form onSubmit={(event) => submitHandler(event)}>
+          <div className="form-group">
+          <label>Enter CustomerId</label>
+                <input type="text"  name="customerId" ref={customerIdRef} onChange={()=>setFieldState(customerIdRef)} /> 
+                
+              </div> 
               <div className="form-group">
-                  <label>Enter Feedback</label>
-                  <select
-                  className="form-control"
-                      name="feedback"
-                      type="text"
-                      ref={feedbackRef}
-                      onChange={() => setFieldState(feedbackRef)}>
-                      <option value="Good">Good</option>
-                      <option value="Average">Average</option>
-                      <option value="Bad">Bad</option>
-                      </select>
-                  
-              </div>
+              <label>Enter VegetableId</label>
+                <input type="text"  name="vegetableId" ref={vegetableIdRef} onChange={()=>setFieldState(vegetableIdRef)} /> 
+            
+              </div> 
         
               <div className="form-group"> 
                   <label>Enter Rating</label>
@@ -90,19 +95,19 @@ export default function AddFeedback() {
                   <br /> 
               </div>
               <div className="form-group">
-                <input type="text" placeholder="add comments" name="Comments"> 
-                </input>
+                <input type="text" placeholder="add comments" name="comment" ref={commentRef} onChange={()=>setFieldState(commentRef)} /> 
+        
               </div>
               <button type="submit" className="btn btn-primary">Add Feedback</button>
           </form>
           <h2>{currentState.formStatus}</h2>
 
           {
-              currentState.feed ? (
+              currentState.feedback ? (
 
                   <div>
                       <h2>Feedback Added Successfully</h2>
-                      <DisplayFeedbackDetails feed={currentState.feed} />
+                      <DisplayFeedbackDetails feed={currentState.feedback} />
                   </div>
 
               ) : ""}

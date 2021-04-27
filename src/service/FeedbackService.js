@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8181";
+const baseUrl = "http://localhost:8080";
 
 function fetchFeedbackByVegetableId(vegetableId) {
 
-    const url = baseUrl + "/feedbacks/byid/" + vegetableId;
+    const url = baseUrl + "/feedback/byid/" + vegetableId;
     const promise = axios.get(url);
     return promise;
 
@@ -12,12 +12,12 @@ function fetchFeedbackByVegetableId(vegetableId) {
 
 function addFeedback(data) {
 
-    const url = baseUrl + "/feedbacks/add";
+    const url = baseUrl + "/feedback/add";
     let requestData = {
-
-        feedback: data.feedback,
+        custId: data.customerId,
         vegetableId: data.vegetableId,
-        rating: data.rating
+        rating: data.rating,
+        comment: data.comment
     };
 
     console.log("inside addPackage service, request data", requestData);
@@ -28,7 +28,7 @@ function addFeedback(data) {
 
 function fetchAllFeedbacks() {
 
-    const url = baseUrl + "/feedbacks";
+    const url = baseUrl + "/feedback";
     const promise = axios.get(url);
     return promise;
 
