@@ -4,7 +4,7 @@ import commonStyle from "./commonStyle.module.css"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 
-export default function GetFeedbackByVegetableId({vegetableId}) {
+export default function GetFeedbackByVegetableId(props) {
 
     const currentState=useSelector(state=>{
         return({
@@ -18,7 +18,7 @@ export default function GetFeedbackByVegetableId({vegetableId}) {
 
     const fetchFeedbackOnRender=()=>{
         const id=props.match.params.id;
-        dispatch(fetchFeedbackById(id));
+        //dispatch(fetchFeedbackById(id));
     }
     
     useEffect(fetchFeedbackOnRender(),[]);
