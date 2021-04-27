@@ -1,19 +1,20 @@
 export default function DisplayFeedbackDetails({ feed }) {
 
-    let { feedbackId,vegetableId,feedback,rating,comments} = feed;
+    let { feedbackId,custId,vegetableId,rating,comment} = feed;
 
     return (
 
         <div>
             Feedback Id is{feedbackId}
             <br/>
+            Customer Id is{custId}
+            <br/>
             Vegetable Id is {vegetableId}
             <br />
-            Feedback is {feedback}
-            <br />
+           
             Rating is {rating}
             <br />
-            Comments is{comments}
+            Comment is{comment}
             <br/>
         </div>
     );

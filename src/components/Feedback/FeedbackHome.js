@@ -15,7 +15,7 @@ function FeedbackHome() {
             <ul className="list-group mt-4">
             <li className="list-group-item">
               <Link to="/feedbackhome/addfeedback">Click here</Link> &emsp;
-              To add feedback in the url: 
+              To add feedback : 
               
               </li>
               <li className="list-group-item">

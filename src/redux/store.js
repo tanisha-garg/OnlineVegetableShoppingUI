@@ -12,7 +12,6 @@ import fetchOrdersByDateOnRequestReducer from "./order/fetchordersbydateonreques
 import addVegetableReducer from "./vegetable/addVegetable/addVegetableReducer";
 import getVegetableDetailsOnRequestReducer from "./vegetable/getVegetableDetailsOnRequest/getVegetableDetailsOnRequestReducer";
 import updateVegetablePriceReducer from "./vegetable/updateVegetablePrice/updateVegetablePriceReducer";
-import addFeedbackReducer from "./feedbackredux/addfeedback/addFeedbackReducer";
 
 const store = createStore(
     combineReducers({
@@ -26,8 +25,7 @@ const store = createStore(
         fetchOrderDetails: fetchOrderDetailsReducer,
         addVegetable:addVegetableReducer,
         getVegetableDetailsOnRequest:getVegetableDetailsOnRequestReducer,
-        updateVegetablePrice:updateVegetablePriceReducer,
-        addFeedback: addFeedbackReducer,
+        updateVegetablePrice:updateVegetablePriceReducer
     }), composeWithDevTools(applyMiddleware(thunk))
 );
 
