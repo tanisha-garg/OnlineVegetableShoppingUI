@@ -31,7 +31,7 @@ function fetchBillByIdOnRequest(billId){
         })
         .catch((error) => {
             console.log("Inside catch error",error.message);
-            store.dispatch(fetchBillByIdOnRequestFail(error.message));
+            store.dispatch(fetchBillByIdOnRequestFail(error.response.data));
         })
     }
 }

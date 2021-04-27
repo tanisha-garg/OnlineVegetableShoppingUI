@@ -14,7 +14,6 @@ import getVegetableDetailsOnRequestReducer from "./vegetable/getVegetableDetails
 import updateVegetablePriceReducer from "./vegetable/updateVegetablePrice/updateVegetablePriceReducer";
 
 const store = createStore(
-    // fetchBillByIdReducer, composeWithDevTools(applyMiddleware(thunk))
     combineReducers({
         fetchBillById: fetchBillByIdReducer,
         fetchBillByIdOnRequest: fetchBillByIdOnRequestReducer,

@@ -4,7 +4,7 @@ function MainNavbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand display-4">
           Online Vegetable Shopping
         </Link>
 
@@ -19,7 +19,7 @@ function MainNavbar() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
+            <li className="nav-item">
               <Link to="/" className="nav-link">
                 <span>Home </span>
                 <span className="sr-only">(current)</span>
@@ -67,6 +67,14 @@ function MainNavbar() {
               <li className="nav-item">
               <Link to="/billhome" className="nav-link">
                 <span>Billing Details</span>
+              </Link>
+            </li>
+
+                          {/* This link is for Feedback Module  */}
+
+                          <li className="nav-item">
+              <Link to="/feedbackhome" className="nav-link">
+                <span>Feedback</span>
               </Link>
             </li>
 

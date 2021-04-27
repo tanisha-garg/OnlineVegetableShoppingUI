@@ -35,7 +35,7 @@ function updateVegetablePrice(data){
                   store.dispatch(updateVegetablePriceSuccess(vegetable));
               }
           ).catch(error=>{
-              let actionObj=updateVegetablePriceFail(error.message);
+              let actionObj=updateVegetablePriceFail(error.response.data);
               store.dispatch(actionObj);
           })
 

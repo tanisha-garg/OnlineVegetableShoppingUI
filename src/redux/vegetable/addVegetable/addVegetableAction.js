@@ -35,7 +35,7 @@ function addVegetableAction(data){
                   store.dispatch(addVegetableSuccess(vegetable));
               }
           ).catch(error=>{
-              let actionObj=addVegetableFail(error.message);
+              let actionObj=addVegetableFail(error.response.data);
               store.dispatch(actionObj);
           })
 

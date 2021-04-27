@@ -27,7 +27,7 @@ function addOrder(customerId) {
             store.dispatch(addOrderSuccess(response.data));
           })
           .catch((error) => {
-            store.dispatch(addOrderFail(error.message));
+            store.dispatch(addOrderFail(error.response.data));
           })
     }
  

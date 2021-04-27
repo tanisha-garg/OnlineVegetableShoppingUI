@@ -25,17 +25,6 @@ function BillHome() {
            
           </div>
         </div>
-
-      {/* <Router>
-        <BillNavbar />
-
-        <Route exact path="/billdetails/:id" component={GetBillingDetails} />
-        <Route
-          exact
-          path="/billdetailsonrequest"
-          component={GetBillingDetailsOnRequest}
-        />
-      </Router> */}
     </div>
   );
 }

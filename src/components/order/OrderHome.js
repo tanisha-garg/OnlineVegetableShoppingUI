@@ -72,17 +72,6 @@ function OrderHome() {
         </div>
       </div>
 
-      {/* <Router>
-        <OrderNavbar />
-        <Switch>
-        <Route exact path="/orderdetails/:id" component={GetOrderDetails} />
-        <Route exact path="/orderhome/ordersofcustomer/:id" component={GetOrderDetailsByCustomerId} />
-        <Route exact path="/orderhome/ordersofcustomeronrequest" component={GetOrderDetailsOfCustomerOnRequest} />
-        <Route exact path="/orderhome/ordersbydateonrequest" component={GetOrderDetailsByDateOnRequest} />
-        <Route exact path="/orderhome/ordersbydate/:date" component={GetOrderDetailsByDate} />
-        </Switch>
-        
-      </Router> */}
     </div>
   );
 }
