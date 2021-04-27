@@ -18,10 +18,6 @@ function FeedbackHome() {
               To add feedback in the url: 
               
               </li>
-              <li className="list-group-item">              
-              <Link to="/feedbackhome/feedbackdetails/:id">Click here</Link> &emsp;
-                To get feedback details by giving feedback id in the url: 
-              </li>
               <li className="list-group-item">
               <Link to="/feedbackhome/feedbackbyvegetableid/:id">
                   {" "}
