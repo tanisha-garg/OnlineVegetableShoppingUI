@@ -1,4 +1,3 @@
-import FeedbackNavbar from "./FeedbackNavbar";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import AddFeedback from "./AddFeedback";
 import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
@@ -40,15 +39,6 @@ function FeedbackHome() {
           </ul>
         </div>
       </div>
-       {/* <Router>
-        <FeedbackNavbar />
-        <Switch>
-        <Route exact path="/feedbackdetails/:id" component={DisplayFeedbackDetails} />
-        <Route exact path="/feedbackhome/feedbacklist/:id" component={DisplayFeedbackList} />
-        <Route exact path="/feedbackhome/feedbackbyvegetableid/:id" component={GetFeedbackByVegetableId} />
-        </Switch>
-        
-      </Router> */}
     </div>
   );
 }
