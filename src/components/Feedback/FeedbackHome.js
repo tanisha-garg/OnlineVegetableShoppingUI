@@ -20,8 +20,7 @@ function FeedbackHome() {
               </li>
               <li className="list-group-item">
               <Link to="/feedbackhome/feedbackbyvegetableid/:id">
-                  {" "}
-                  Click here{" "}
+                  Click here
                 </Link> &emsp;
                 To get feedback details of a customer by passing vegetable id in the url:
                 
