@@ -19,20 +19,22 @@ import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsBy
 import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
 import store from './redux/store';
 import { updateOrderDetails } from "./service/OrderServiceT";
+import GetAllOrders from './components/order/GetAllOrders';
+import UpdateOrderDetail from './components/order/UpdateOrderDetails';
 
 
 
 
 
 function App() {
-  let data={
-    orderId:10,
-    PLACED:"Placed",
+//   let data={
+//     orderId:10,
+//     PLACED:"Placed",
     
-  };
-  const promise = updateOrderDetails(data);
-   promise.then(response=> console.log("Success",response.data))
-     .catch(error => console.log(error.message));
+  // };
+  // const promise = updateOrderDetails(data);
+  //  promise.then(response=> console.log("Success",response.data))
+  //    .catch(error => console.log(error.message));
 
   return (
     <div>
@@ -73,6 +75,11 @@ function App() {
                 path="/orderhome/orderdetails/:id"
                 component={GetOrderDetails}
               />
+              <Route
+                exact
+                path="/orderhome/viewalldetails"
+                component={GetAllOrders}
+              />
               <Route exact path="/orderhome" component={OrderHome} />
               <Route exact path="/billhome" component={BillHome} />
               <Route
@@ -89,6 +96,11 @@ function App() {
                 exact
                 path="/orderhome/ordersbydateonrequest"
                 component={GetOrderDetailsByDateOnRequest}
+              />
+              <Route
+                exact
+                path="/orderhome/updateorderstatus"
+                component={UpdateOrderDetail}
               />
               <Route
                 exact

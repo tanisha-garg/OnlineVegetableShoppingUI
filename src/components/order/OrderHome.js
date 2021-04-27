@@ -52,6 +52,22 @@ function OrderHome() {
               To get all orders placed on a date on request: 
               
             </li>
+            <li className="list-group-item">
+            <Link to="/orderhome/viewalldetails">
+                {" "}
+                Click here
+              </Link> &emsp;
+              To get all orders : 
+              
+            </li>
+            <li className="list-group-item">
+            <Link to="/orderhome/updateorderstatus">
+                {" "}
+                Click here
+              </Link> &emsp;
+              To update order details : 
+              
+            </li>
           </ul>
         </div>
       </div>

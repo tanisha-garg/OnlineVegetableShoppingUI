@@ -40,20 +40,21 @@ function addOrderDetails(id){
 
 }
 
-// function fetchOrderList(){
+export function fetchOrderList(){
+
     
-//     const url = baseUrl + "/getAll";
-//     console.log(url);
-//     const promise = axios.get(url);
-//     return promise;
+    const url = baseUrl + "/orders/getAll";
+    console.log(url);
+    const promise = axios.get(url);
+    return promise;
 
 
-// }
+}
 
 function updateOrderDetails(data){
     
-    const url = baseUrl + "/update/status/" + data.orderId ;
-    const request ={PLACED:data.PLACED}
+    const url = baseUrl + "/orders/update/status/" + data.orderId ;
+    const request ={orderStatus:data.status}
     console.log(url);
     const promise = axios.put(url,request);
     return promise;

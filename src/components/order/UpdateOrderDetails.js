@@ -1,22 +1,14 @@
 import { useState } from "react";
-import DisplayOrderDetail from "./DisplayOrderDetail";
+import { updateOrderDetails } from "../../service/OrderServiceT";
+import DisplayOrderDetails from "./DisplayOrderDetails";
 
 const UpdateOrderDetail = () => {
-  const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
-  const order = {
-    orderId: "1",
-    customerName: "Suriya",
-    status: "delievered",
-    totalAmount: "800" ,
-    date: "20/21",
-    itemName: ["Onion"],
-  };
+  
   const [state, setState] = useState({
     status: "",
-    orderId: ""
+    orderId: "",orderDetail: undefined, error: ""
   });
 
-  const response = { orderDetail: undefined, error: "" };
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +16,12 @@ const UpdateOrderDetail = () => {
   };
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state });
+    const promise =updateOrderDetails(state)
+    promise.then((response)=>{
+      setState({...state,orderDetail:response.data,error:""})
+
+    }).catch((error)=>{setState({...state,orderDetail:undefined,error:error.message})})
+
   };
   return (
     <div className="container">
@@ -32,36 +29,20 @@ const UpdateOrderDetail = () => {
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
           <label>Order Id</label>
-          <select className="form-control" name="orderId" onChange={onHandleChange}>
-            <option disabled selected>
-              select orderId
-            </option>
-            {orderList.map((order, index) => (
-              <option key={order.orderId} value={order.orderId}>
-                {index + 1}
-              </option>
-            ))}
-          </select>
+          <input type="text" name="orderId" className="form-control" onChange={onHandleChange}/>
         </div>
         <div className="form-group">
           <label>Status</label>
-          <select className="form-control" name="status" onChange={onHandleChange}>
-            <option disabled selected>
-              {" "}
-              select Status{" "}
-            </option>
-            <option value="arriving"> Arriving </option>
-            <option value="delivered"> Delivered </option>
-          </select>
+          <input type="text" name="status" className="form-control" onChange={onHandleChange}/>
         </div>
         <button className="btn btn-primary" type="submit">Submit</button>
       </form>
-      {response.orderDetail ? (
-        <DisplayOrderDetail order={response.orderDetail} />
+      {state.orderDetail ? (
+        <DisplayOrderDetails order={state.orderDetail} />
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {state.error ? state.error : ""}
     </div>
   );
 };
