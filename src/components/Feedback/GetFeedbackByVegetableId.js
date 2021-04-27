@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react"
-import DisplayFeedbackDetails from "./DisplayFeedbackDetails"
-import commonStyle from "./commonStyle.module.css"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { fetchFeedbackByVegetableId } from "../../service/FeedbackService"
+import React, { useEffect, useState } from "react";
+import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
+import commonStyle from "./commonStyle.module.css";
+import { useDispatch } from "react-redux";
+import { fetchFeedbackByVegetableId } from "../../service/FeedbackService";
 
 export default function GetFeedbackByVegetableId(props) {
 
    const initialState={feedback:undefined, errMsg:undefined};
    const [currentState,setNewState]=useState(initialState);
  
-    const dispatch=useDispatch();
 
     const fetchFeedbackOnRender=()=>{
         const id=props.match.params.id;
@@ -26,7 +24,7 @@ export default function GetFeedbackByVegetableId(props) {
     })
     }
     
-    useEffect(fetchFeedbackOnRender(),[]);
+    useEffect(fetchFeedbackOnRender,[]);
 
     return (
         <div>
