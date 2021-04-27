@@ -18,11 +18,21 @@ import GetOrderDetailsOfCustomerOnRequest from "./components/order/GetOrderDetai
 import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsByDateOnRequest";
 import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
 import store from './redux/store';
+import { updateOrderDetails } from "./service/OrderServiceT";
+
 
 
 
 
 function App() {
+  let data={
+    orderId:10,
+    PLACED:"Placed",
+    
+  };
+  const promise = updateOrderDetails(data);
+   promise.then(response=> console.log("Success",response.data))
+     .catch(error => console.log(error.message));
 
   return (
     <div>
