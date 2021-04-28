@@ -25,6 +25,12 @@ import FeedbackHome from "./components/Feedback/FeedbackHome";
 import DisplayFeedbackDetails from "./components/Feedback/DisplayFeedbackDetails";
 import DisplayFeedbackList from "./components/Feedback/DisplayFeedbackList";
 import GetFeedbackByVegetableId from "./components/Feedback/GetFeedbackByVegetableId";
+import AddCustomer from "./components/customer/AddCustomer";
+import GetCustomerDetailsOnRequest from "./components/customer/GetCustomerDetailsOnRequest";
+import UpdateCustomerDetails from "./components/customer/UpdateCustomerDetails";
+import ViewCustomer from "./components/customer/ViewCustomer";
+import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
+import CustomerHome from "./components/customer/CustomerHome";
 
 function App() {
   return (
@@ -115,6 +121,24 @@ function App() {
                   path="/feedbackhome/feedbackbyvegetableid/:id"
                   component={GetFeedbackByVegetableId}
                 />
+     <Route exact path="/customerhome" component={CustomerHome} />
+            <Route exact path="/addcustomer" component={AddCustomer} />
+            <Route exact path="/viewcustomer" component={ViewCustomer} />
+            <Route
+              exact
+              path="/updatecustomerdetails"
+              component={UpdateCustomerDetails}
+            />
+            <Route
+              exact
+              path="/getcustomerdetailsonrequest"
+              component={GetCustomerDetailsOnRequest}
+            />
+            <Route
+              exact
+              path="/getcustomerbyloc"
+              component={ViewCustomersByLoc}
+            />
               </Switch>
             </div>
           </div>
