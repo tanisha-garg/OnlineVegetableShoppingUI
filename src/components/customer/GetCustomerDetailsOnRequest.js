@@ -1,38 +1,32 @@
 import React, { useState } from "react";
 import commonStyle from "./commonStyle.module.css";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
-import validationMessage from './validationMessage';
+import validationMessage from "./customerValidationMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { getCustomerThunk } from "../../redux/getCustomer/getCustomerAction";
 
-export default function GetCustomerDetailsOnRequest() {
- let customer1 = {
-    customerId: 10,
-    name: "haha",
-    mobileNumber: "987654321",
-    emailId: "lol@gmail.com",
-    flatNo: "7",
-    buildingName: "abc enclave",
-    area: "anant van",
-    city: "Chennai",
-    state: "Tamil Nadu",
-    pincode: "123456",
-  }
-
+const GetCustomerDetailsOnRequest = () => {
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      customer: state.getCustomer.customer,
+      error: state.getCustomer.error,
+    };
+  });
   const idRef = React.createRef();
 
-  const response = { customer:customer1 , errMsg: undefined };
-
   const initialState = {
-    id: undefined,
-    errMsg:undefined,
-    customer: undefined,
-    validations: {id:undefined },
+    customerId: undefined,
+    errMsg: undefined,
+    validations: { id: undefined },
   };
 
   const [currentState, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (currentState.validations.id){
+    dispatch(getCustomerThunk(currentState));
+    if (currentState.validations.customerId) {
       return;
     }
   };
@@ -41,23 +35,26 @@ export default function GetCustomerDetailsOnRequest() {
     const idValue = idRef.current.value;
 
     let validationMsg;
-    if(ref==idRef){
+    if (ref == idRef) {
       validationMsg = validateId(idValue);
     }
-    
-    const newValidations = {...currentState.validations, id: validationMsg};
+
+    const newValidations = {
+      ...currentState.validations,
+      customerId: validationMsg,
+    };
     const newState = {
       ...currentState,
-      id: idValue,
-      errMsg:undefined,
+      customerId: idValue,
+      errMsg: undefined,
       customer: undefined,
-      validations: newValidations
+      validations: newValidations,
     };
     setNewState(newState);
   };
 
-  const validateId = (id) =>{
-    if (id<0 || id===0){
+  const validateId = (id) => {
+    if (id < 0 || id === 0) {
       return validationMessage.idSmallThanOne;
     }
     return undefined;
@@ -79,12 +76,13 @@ export default function GetCustomerDetailsOnRequest() {
               onChange={() => setFieldState(idRef)}
               className="form-control"
             />
-            {currentState.validations.id ?(
+            {currentState.validations.id ? (
               <div className={commonStyle.error}>
                 {currentState.validations.id}
-                </div>
-            ) : ''
-            }
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <button className="btn btn-primary"> Get Customer </button>
@@ -93,22 +91,14 @@ export default function GetCustomerDetailsOnRequest() {
 
       <div className="mt-5">
         {response.customer ? (
-          <div>
-            <DisplayCustomerDetails customer={response.customer} />
-          </div>
-        ) : (
-          " "
-        )}
-        {response.errMsg ? (
-          <div className={commonStyle.error}>
-            Request unsuccessful
-            <br />
-            {response.errMsg}
-          </div>
+          <DisplayCustomerDetails customer={response.customer} />
         ) : (
           ""
         )}
+        {response.error ? response.error : ""}
       </div>
     </div>
   );
-}
+};
+
+export default GetCustomerDetailsOnRequest;

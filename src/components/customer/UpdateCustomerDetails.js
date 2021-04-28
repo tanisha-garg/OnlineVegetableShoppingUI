@@ -1,40 +1,41 @@
 import  React,{ useState } from "react";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
-import validationMessage from './validationMessage';
+import validationMessage from './customerValidationMessage';
 import commonStyle from "./commonStyle.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCustomerThunk } from "../../redux/updateCustomer/updateCustomerAction";
 
-export default function UpdateCustomerDetails(){
-
-    const customer = {
-    customerId: 4,
-    name: "Ayesha",
-    mobileNumber: "987654321",
-    emailId: "abc@gmail.com",
-    flatNo: "1",
-    buildingName: "abc enclave",
-    area: "lakshmi nagar",
-    city: "mumbai",
-    state: "maharashtra",
-    pincode: "123456",
-  };
-
+const UpdateCustomerDetails=()=>{
+  
+    const dispatch = useDispatch();
+    const response = useSelector((state) => {
+      return {
+        customer: state.updateCustomer.customer,
+        error: state.updateCustomer.error,
+      };
+    });
 
 const idRef = React.createRef();
+const nameRef = React.createRef();
 const mobileNumberRef = React.createRef();
+const emailIdRef = React.createRef();
 
 const initialState = {
-    idRef : undefined,
-    mobileNumberRef : undefined,
-    formstatus : "",
+    customerId : undefined,
+    name: undefined,
+    mobileNumber : undefined,
+    emailId:undefined,
+    //formstatus : "",
     validations : {customerId : undefined, mobileNumber:undefined}
 };
 
-const response = {customer: customer, errMsg: undefined};
+//const response = {customer: customer, errMsg: undefined};
 const [state, setNewState] = useState(initialState);
 
 const submitHandler = (event) => {
   event.preventDefault();
-  setNewState({ ...state, formstatus: "Form is submitted Successfully" });
+  dispatch(updateCustomerThunk(state));
+  //setNewState({ ...state, formstatus: "Form is submitted Successfully" });
 };
 
 const changeHandler = (ref) => {
@@ -53,8 +54,8 @@ const changeHandler = (ref) => {
     const newState = {
       ...state,
       [fieldName]: fieldValue,
-      customer: undefined,
-      errMsg: undefined,
+      //customer: undefined,
+      //errMsg: undefined,
       validations: newValidations
     };
 
@@ -89,9 +90,13 @@ const changeHandler = (ref) => {
   
   <div className="form-group">
     <label>Id</label>
-    <input name="id" type = "number"  ref={idRef} onChange={()=> changeHandler(idRef) }className="form-control" /><br/>
+    <input name="customerId" type = "number"  ref={idRef} onChange={()=> changeHandler(idRef) }className="form-control" /><br/>
     </div>
-  
+
+    <div className="form-group">
+    <label>Name</label>
+    <input name="name"   ref={nameRef} onChange={()=> changeHandler(nameRef) }className="form-control" /><br/>
+    </div>
   
   <div className="form-group">
   <label>New  Mobile Number</label>
@@ -105,28 +110,23 @@ const changeHandler = (ref) => {
     ""
   )}
 </div>
+<div className="form-group">
+    <label>Email Id:</label>
+    <input name="emailId"  type="email" ref={emailIdRef} onChange={()=> changeHandler(emailIdRef) }className="form-control" /><br/>
+    </div>
+
 <button className= "btn btn-primary" >Change</button>
 </form>
 <h2>{state.formstatus}</h2>
 <br />
 {response.customer ? (
-  <div>
-    <h3>Customer Mobile Number updated Successfully</h3>
-    <br/>
-    <DisplayCustomerDetails customer={ response.customer} />
-  </div>
-) : (
-  ""
-)}
-{response.errMsg ? (
-  <div>
-    <h3> Customer Mobile Number not updated Successfully</h3>
-    <br />
-    {response.errMsg}
-  </div>
-) : (
-  ""
-)}
+        <DisplayCustomerDetails customer={response.customer} />
+      ) : (
+        ""
+      )}
+      {response.error ? response.error : ""}
    </div>
  );
 }
+
+export default UpdateCustomerDetails;

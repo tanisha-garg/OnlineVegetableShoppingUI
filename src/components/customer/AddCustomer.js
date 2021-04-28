@@ -1,26 +1,21 @@
 import React, { useState } from "react";
-import validationMessage from "./validationMessage";
+import validationMessage from "./customerValidationMessage";
 import commonStyle from "./commonStyle.module.css";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
+import { useDispatch, useSelector } from "react-redux";
+import { addCustomerThunk } from "../../redux/addCustomer/addCustomerAction";
 
 // Adding Customer using functional Component
-function AddCustomer() {
-  // Dummy Data of Customer for Testing
-
-  const customer = {
-    customerId: 20,
-    name: "Ayesha",
-    mobileNumber: "987654321",
-    emailId: "abc@gmail.com",
-    flatNo: "1",
-    buildingName: "abc enclave",
-    area: "lakshmi nagar",
-    city: "mumbai",
-    state: "maharashtra",
-    pincode: "123456",
-  };
-
-  //Craeting Refs for fields
+const AddCustomer = () => {
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      customer: state.addCustomer.customer,
+      error: state.addCustomer.error,
+    };
+  });
+  
+  //Creating Refs for fields
   const nameRef = React.createRef();
   const mobileNumberRef = React.createRef();
   const emailIdRef = React.createRef();
@@ -44,23 +39,17 @@ function AddCustomer() {
     pincode: undefined,
     formStatus: "",
     validations: {
-      // validations are also undefined initially
       name: undefined,
       mobileNumber: undefined,
       pincode: undefined,
     },
   };
 
-  // response after data is entered in the form
-  const response = {
-    customer: customer,
-    errMsg: undefined,
-  };
-
   const [state, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
     event.preventDefault();
+    dispatch(addCustomerThunk(state));
     setNewState({ ...state, formStatus: "Form submitted successfully" });
   };
 
@@ -256,23 +245,13 @@ function AddCustomer() {
       </form>
       <h2>{state.formStatus}</h2>
       {response.customer ? (
-        <div>
-          <h3>Customer Added Successfully</h3>
-          <DisplayCustomerDetails customer={response.customer} />
-        </div>
+        <DisplayCustomerDetails customer={response.customer} />
       ) : (
         ""
       )}
-      {response.errMsg ? (
-        <div>
-          <h3> Customer not Added Successfully</h3>
-          {response.errMsg}
-        </div>
-      ) : (
-        ""
-      )}
+      {response.error ? response.error : ""}
     </div>
   );
-}
+};
 
 export default AddCustomer;
