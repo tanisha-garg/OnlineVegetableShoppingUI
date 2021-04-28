@@ -5,7 +5,6 @@ import DisplayOrderList from "./DisplayOrderList";
 import validationMessage from "./orderValidationMessage";
 
 function GetOrderDetailsOfCustomerOnRequest() {
-
   const idRef = React.createRef();
 
   const initialState = {
@@ -15,12 +14,12 @@ function GetOrderDetailsOfCustomerOnRequest() {
 
   const dispatch = useDispatch();
 
-  const response = useSelector( state => {
+  const response = useSelector((state) => {
     return {
       orders: state.fetchOrdersByCustIdOnRequest.orders,
       error: state.fetchOrdersByCustIdOnRequest.error,
-    }
-  })
+    };
+  });
 
   const [currentState, setNewState] = useState(initialState);
 
@@ -34,12 +33,12 @@ function GetOrderDetailsOfCustomerOnRequest() {
     }
     const newValidations = {
       ...currentState.validations,
-      [fieldName]: validationMessage
+      [fieldName]: validationMessage,
     };
     const newState = {
       ...currentState,
       [fieldName]: fieldVal,
-      validations: newValidations
+      validations: newValidations,
     };
     setNewState(newState);
   };
@@ -51,7 +50,7 @@ function GetOrderDetailsOfCustomerOnRequest() {
       return;
     }
     const customerId = idRef.current.value;
-    const data = {...currentState};
+    const data = { ...currentState };
     dispatch(fetchOrdersByCustIdOnRequest(customerId));
   };
 
@@ -77,7 +76,9 @@ function GetOrderDetailsOfCustomerOnRequest() {
             required
           />
           {currentState.validations.customerId ? (
-            <div className="text-danger mt-2">{currentState.validations.customerId}</div>
+            <div className="text-danger mt-2">
+              {currentState.validations.customerId}
+            </div>
           ) : (
             ""
           )}
@@ -87,6 +88,9 @@ function GetOrderDetailsOfCustomerOnRequest() {
       <br />
       {response.orders ? (
         <div>
+          <div className="alert alert-success">
+            Orders list fetched successfully
+          </div>
           <DisplayOrderList orders={response.orders} />
         </div>
       ) : (

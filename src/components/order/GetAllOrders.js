@@ -23,7 +23,7 @@ const [orderList,setOrder]=useState({orders:undefined,error: undefined})
   useEffect(fetchAllOrder,[]);
 
   return (
-    <div className="container w-75 mt-5">
+    <div className="container w-75">
       <h2>View All Orders</h2>
       {orderList.orders ? (
         <DisplayOrderList orders={orderList.orders} />
