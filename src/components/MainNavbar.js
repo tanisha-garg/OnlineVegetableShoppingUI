@@ -54,7 +54,7 @@ function MainNavbar() {
             {/* This link is for Order Module  */}
 
             <li className="nav-item">
-              <Link to="/orderhome" className="nav-link">
+              <Link to="/order" className="nav-link">
                 <span>Order</span>
               </Link>
             </li>
@@ -62,7 +62,7 @@ function MainNavbar() {
             {/* This link is for Bill Module  */}
 
             <li className="nav-item">
-              <Link to="/billhome" className="nav-link">
+              <Link to="/bill" className="nav-link">
                 <span>Billing Details</span>
               </Link>
             </li>
