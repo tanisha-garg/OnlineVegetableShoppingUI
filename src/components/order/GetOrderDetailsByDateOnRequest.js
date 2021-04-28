@@ -57,6 +57,9 @@ function GetOrderDetailsByDateOnRequest() {
 
       {response.orders ? (
         <div>
+           <div className="alert alert-success">
+            Orders list fetched successfully
+          </div>
           <DisplayOrderList orders={response.orders} />
         </div>
       ) : (

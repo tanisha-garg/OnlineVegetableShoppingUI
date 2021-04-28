@@ -20,7 +20,7 @@ function OrderHome() {
               To get order details by giving order id in the url
             </li>
             <li className="list-group-item">
-            <Link to="/orderhome/ordersofcustomer/:id">
+            <Link to="/orderhome/ordersofcustomer/16">
                 {" "}
                 Click here{" "}
               </Link> &emsp;
