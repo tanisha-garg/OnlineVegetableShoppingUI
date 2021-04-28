@@ -1,7 +1,4 @@
-
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import GetBillingDetails from "./GetBillingDetails";
-import GetBillingDetailsOnRequest from "./GetBillingDetailsOnRequest";
 
 function BillHome() {
   return (
@@ -14,11 +11,11 @@ function BillHome() {
             <ul className="list-group mt-4">
               <li className="list-group-item">
               <Link to="/billhome/billdetails/:id"> Click here </Link> &emsp;
-              To get bill details by giving id in the url: 
+              To get bill details by giving id in the url
               </li>
               <li className="list-group-item">
               <Link to="/billhome/billdetailsonrequest">Click here</Link> &emsp;
-              To get bill details on request: 
+              To get bill details on request
               
               </li>
             </ul>

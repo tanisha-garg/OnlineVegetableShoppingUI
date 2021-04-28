@@ -18,8 +18,8 @@ import GetOrderDetailsByCustomerId from "./components/order/GetOrderDetailsByCus
 import GetOrderDetailsOfCustomerOnRequest from "./components/order/GetOrderDetailsOfCustomerOnRequest";
 import GetOrderDetailsByDateOnRequest from "./components/order/GetOrderDetailsByDateOnRequest";
 import GetOrderDetailsByDate from "./components/order/GetOrderDetailsByDate";
-import GetAllOrders from './components/order/GetAllOrders';
-import UpdateOrderDetail from './components/order/UpdateOrderDetails';
+import GetAllOrders from "./components/order/GetAllOrders";
+import UpdateOrderDetail from "./components/order/UpdateOrderDetails";
 import store from "./redux/store";
 import FeedbackHome from "./components/Feedback/FeedbackHome";
 import DisplayFeedbackDetails from "./components/Feedback/DisplayFeedbackDetails";
@@ -69,18 +69,18 @@ function App() {
                 <Route exact path="/orderhome" component={OrderHome} />
                 <Route exact path="/billhome" component={BillHome} />
                 <Route exact path="/feedbackhome" component={FeedbackHome} />
-        
-              <Route
-                exact
-                path="/orderhome/viewalldetails"
-                component={GetAllOrders}
-              />
-              <Route
-                exact
-                path="/orderhome/updateorderstatus"
-                component={UpdateOrderDetail}
-              />
-             
+
+                <Route
+                  exact
+                  path="/orderhome/viewalldetails"
+                  component={GetAllOrders}
+                />
+                <Route
+                  exact
+                  path="/orderhome/updateorderstatus"
+                  component={UpdateOrderDetail}
+                />
+
                 <Route
                   exact
                   path="/orderhome/ordersofcustomer/:id"
@@ -116,29 +116,29 @@ function App() {
                   path="/feedbackhome/addfeedback"
                   component={AddFeedback}
                 />
-                 <Route
+                <Route
                   exact
                   path="/feedbackhome/feedbackbyvegetableid/:id"
                   component={GetFeedbackByVegetableId}
                 />
-     <Route exact path="/customerhome" component={CustomerHome} />
-            <Route exact path="/addcustomer" component={AddCustomer} />
-            <Route exact path="/viewcustomer" component={ViewCustomer} />
-            <Route
-              exact
-              path="/updatecustomerdetails"
-              component={UpdateCustomerDetails}
-            />
-            <Route
-              exact
-              path="/getcustomerdetailsonrequest"
-              component={GetCustomerDetailsOnRequest}
-            />
-            <Route
-              exact
-              path="/getcustomerbyloc"
-              component={ViewCustomersByLoc}
-            />
+                <Route exact path="/customerhome" component={CustomerHome} />
+                <Route exact path="/addcustomer" component={AddCustomer} />
+                <Route exact path="/viewcustomer" component={ViewCustomer} />
+                <Route
+                  exact
+                  path="/updatecustomerdetails"
+                  component={UpdateCustomerDetails}
+                />
+                <Route
+                  exact
+                  path="/getcustomerdetailsonrequest"
+                  component={GetCustomerDetailsOnRequest}
+                />
+                <Route
+                  exact
+                  path="/getcustomerbyloc"
+                  component={ViewCustomersByLoc}
+                />
               </Switch>
             </div>
           </div>

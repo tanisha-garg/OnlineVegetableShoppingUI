@@ -28,22 +28,19 @@ function MainNavbar() {
 
             {/* This link is for customer module */}
 
-            {/* <li className="nav-item">
-
-                            <Link to="/addcustomer" className="nav-link" >
-                                <span>Add Customer</span>
-
-                            </Link>
-                        </li> */}
+            <li className="nav-item">
+              <Link to="/customerhome" className="nav-link">
+                <span>Customer</span>
+              </Link>
+            </li>
 
             {/* This link is for Vegetable Module  */}
 
             <li className="nav-item">
-
-                            <Link to="/vegetablehome" className="nav-link" >
-                                <span>Vegetable</span>
-                            </Link>
-                        </li>
+              <Link to="/vegetablehome" className="nav-link">
+                <span>Vegetable</span>
+              </Link>
+            </li>
 
             {/* This link is for Cart Module  */}
 
@@ -62,24 +59,21 @@ function MainNavbar() {
               </Link>
             </li>
 
-              {/* This link is for Bill Module  */}
+            {/* This link is for Bill Module  */}
 
-              <li className="nav-item">
+            <li className="nav-item">
               <Link to="/billhome" className="nav-link">
                 <span>Billing Details</span>
               </Link>
             </li>
 
-                          {/* This link is for Feedback Module  */}
+            {/* This link is for Feedback Module  */}
 
-                          <li className="nav-item">
+            <li className="nav-item">
               <Link to="/feedbackhome" className="nav-link">
                 <span>Feedback</span>
               </Link>
             </li>
-
-          
-
           </ul>
         </div>
       </nav>
