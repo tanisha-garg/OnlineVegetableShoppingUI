@@ -15,7 +15,8 @@ import updateVegetablePriceReducer from "./vegetable/updateVegetablePrice/update
 import { addCustomerReducer } from "./addCustomer/addCustomerReducer";
 import { updateCustomerReducer } from "./updateCustomer/updateCustomerReducer";
 import { getCustomerReducer } from "./getCustomer/getCustomerReducer";
-import { rootReducer } from "./rootReducer";
+import {itemToCartReducer} from "./Cart/itemToCartReducer";
+import {itemToVegReducer} from "./vegItem/itemToVegReducer"
 
 const store = createStore(
     combineReducers({
@@ -33,7 +34,8 @@ const store = createStore(
         addCustomer: addCustomerReducer,
         updateCustomer: updateCustomerReducer,
         getCustomer: getCustomerReducer,
-        rootReducer: rootReducer
+        itemToCart:itemToCartReducer,
+        itemToVeg:itemToVegReducer
     }), composeWithDevTools(applyMiddleware(thunk))
 );
 
