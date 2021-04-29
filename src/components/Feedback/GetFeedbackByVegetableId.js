@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
 import commonStyle from "./commonStyle.module.css";
 import { useDispatch } from "react-redux";
 import { fetchFeedbackByVegetableId } from "../../service/FeedbackService";
+import DisplayFeedbackList from "./DisplayFeedbackList";
 
 export default function GetFeedbackByVegetableId(props) {
 
@@ -15,6 +15,7 @@ export default function GetFeedbackByVegetableId(props) {
     const promise=fetchFeedbackByVegetableId(id);
     promise.then((response)=>{
         const newState={...currentState, feedback:response.data};
+        console.log("insideComponent",response.data)
         setNewState(newState);
 
     })
@@ -31,7 +32,7 @@ export default function GetFeedbackByVegetableId(props) {
             {
                 currentState.feedback ? (
                     <div>
-                        <DisplayFeedbackDetails feedback={currentState.feedback} />
+                        <DisplayFeedbackList feeds={currentState.feedback} />
                     </div>
 
                 ) : ""}
