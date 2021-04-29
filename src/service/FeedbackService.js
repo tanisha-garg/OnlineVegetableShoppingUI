@@ -5,6 +5,7 @@ const baseUrl = "http://localhost:8080";
 function fetchFeedbackByVegetableId(vegetableId) {
 
     const url = baseUrl + "/feedback/view/veg/" + vegetableId;
+    console.log("service");
     const promise = axios.get(url);
     return promise;
 
