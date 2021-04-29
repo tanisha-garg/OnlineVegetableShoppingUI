@@ -14,7 +14,7 @@ const AddCustomer = () => {
       error: state.addCustomer.error,
     };
   });
-  
+
   //Creating Refs for fields
   const nameRef = React.createRef();
   const mobileNumberRef = React.createRef();
@@ -50,7 +50,6 @@ const AddCustomer = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     dispatch(addCustomerThunk(state));
-    setNewState({ ...state, formStatus: "Form submitted successfully" });
   };
 
   const fieldHandler = (ref) => {
@@ -111,7 +110,11 @@ const AddCustomer = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-4 w-75">
+      <div className="alert alert-info">
+        Please provide details to Add Customer
+      </div>
+      <div className="mt-4"></div>
       <h2> Add New Customer</h2>
       <form onSubmit={(event) => submitHandler(event)}>
         <div className="form-group">
@@ -245,11 +248,20 @@ const AddCustomer = () => {
       </form>
       <h2>{state.formStatus}</h2>
       {response.customer ? (
-        <DisplayCustomerDetails customer={response.customer} />
+        <div>
+          <div className="alert alert-success">Customer Added successfully</div>
+          <DisplayCustomerDetails customer={response.customer} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="text-danger h6 mt-3">
+          Request was not successsful <br /> {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

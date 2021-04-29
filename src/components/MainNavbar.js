@@ -28,13 +28,13 @@ function MainNavbar() {
 
             {/* This link is for customer module */}
 
-            {/* <li className="nav-item">
+             <li className="nav-item">
 
-                            <Link to="/addcustomer" className="nav-link" >
-                                <span>Add Customer</span>
+                            <Link to="/customerhome" className="nav-link" >
+                                <span> Customer</span>
 
                             </Link>
-                        </li> */}
+                        </li> 
 
             {/* This link is for Vegetable Module  */}
 

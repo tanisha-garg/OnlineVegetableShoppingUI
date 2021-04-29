@@ -28,7 +28,6 @@ import GetFeedbackByVegetableId from "./components/Feedback/GetFeedbackByVegetab
 import AddCustomer from "./components/customer/AddCustomer";
 import GetCustomerDetailsOnRequest from "./components/customer/GetCustomerDetailsOnRequest";
 import UpdateCustomerDetails from "./components/customer/UpdateCustomerDetails";
-import ViewCustomer from "./components/customer/ViewCustomer";
 import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
 import CustomerHome from "./components/customer/CustomerHome";
 
@@ -123,7 +122,7 @@ function App() {
                 />
      <Route exact path="/customerhome" component={CustomerHome} />
             <Route exact path="/addcustomer" component={AddCustomer} />
-            <Route exact path="/viewcustomer" component={ViewCustomer} />
+            {/*<Route exact path="/viewcustomer" component={ViewCustomer} />*/}
             <Route
               exact
               path="/updatecustomerdetails"
