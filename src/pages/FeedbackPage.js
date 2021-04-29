@@ -22,7 +22,7 @@ const FeedbackPage = (props) => {
               props.history.push(`${props.match.url}/feedbackhome/feedbackbyvegetableid/:id`)
             }
           >
-            View Feedback by Vegetable Id
+            View Feedback By Vegetable Id
           </button>
           </div>
         <div className="pageLine"></div>
