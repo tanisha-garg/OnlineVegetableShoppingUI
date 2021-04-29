@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrdersByCustomerId } from "../../redux1/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
+import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByCustomerId(props) {

@@ -3,7 +3,7 @@ import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {updateVegetablePrice} from "../../redux1/vegetable/updateVegetablePrice/updateVegetablePriceAction"
+import {updateVegetablePrice} from "../../redux/vegetable/updateVegetablePrice/updateVegetablePriceAction"
 
 
 /**

@@ -9,7 +9,7 @@ import GetVegetableDetailsById from "./components/vegetable/GetVegetableDetailsB
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MainNavbar from "./components/MainNavbar";
 import Home from "./components/Home";
-import store from "./redux1/store";
+import store from "./redux/store";
 import FeedbackHome from "./components/Feedback/FeedbackHome";
 import GetFeedbackByVegetableId from "./components/Feedback/GetFeedbackByVegetableId";
 import AddCustomer from "./components/customer/AddCustomer";
@@ -18,9 +18,9 @@ import UpdateCustomerDetails from "./components/customer/UpdateCustomerDetails";
 import ViewCustomer from "./components/customer/ViewCustomer";
 import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
 import CustomerHome from "./components/customer/CustomerHome";
-import BillDetailsPage from "./pages1/BillDetailsPage";
-import OrderPage from "./pages1/OrderPage";
-import CartPage from "./pages1/CartPage";
+import BillDetailsPage from "./pages/BillDetailsPage";
+import OrderPage from "./pages/OrderPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
     

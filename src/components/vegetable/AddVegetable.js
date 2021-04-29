@@ -4,7 +4,7 @@ import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 import addVegetable from "../../service/VegetableService"
 import { useDispatch, useSelector } from "react-redux";
-import { addVegetableAction } from "../../redux1/vegetable/addVegetable/addVegetableAction";
+import { addVegetableAction } from "../../redux/vegetable/addVegetable/addVegetableAction";
 
 
 /**

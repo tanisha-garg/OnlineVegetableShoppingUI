@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrdersByDate } from "../../redux1/order/fetchordersbydate/fetchOrdersByDateActions";
-import { fetchOrdersByDateOnRequest } from "../../redux1/order/fetchordersbydateonrequest/fetchOrdersByDateOnRequestActions";
+import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
+import { fetchOrdersByDateOnRequest } from "../../redux/order/fetchordersbydateonrequest/fetchOrdersByDateOnRequestActions";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByDateOnRequest() {

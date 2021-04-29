@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrdersByDate } from "../../redux1/order/fetchordersbydate/fetchOrdersByDateActions";
+import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
 import DisplayOrderList from "./DisplayOrderList";
 import dateFormat from 'dateformat';
 

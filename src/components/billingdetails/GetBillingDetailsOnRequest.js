@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DisplayBillingDetails from "./DisplayBillingDetails";
 import validationMessage from "./billingValidationMessage";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBillByIdOnRequest } from "../../redux1/billingdetails/fetchbillbyidonrequest/fetchBillByIdOnRequestActions";
+import { fetchBillByIdOnRequest } from "../../redux/billingdetails/fetchbillbyidonrequest/fetchBillByIdOnRequestActions";
 
 function GetBillingDetailsOnRequest() {
   const dispatch = useDispatch();

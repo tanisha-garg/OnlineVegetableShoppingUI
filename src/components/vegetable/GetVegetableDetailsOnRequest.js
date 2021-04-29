@@ -3,7 +3,7 @@ import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getVegetableDetailsOnRequestAction } from "../../redux1/vegetable/getVegetableDetailsOnRequest/getVegetableDetailsOnRequestAction";
+import { getVegetableDetailsOnRequestAction } from "../../redux/vegetable/getVegetableDetailsOnRequest/getVegetableDetailsOnRequestAction";
 
 /**
  * 
