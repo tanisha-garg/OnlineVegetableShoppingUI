@@ -60,24 +60,7 @@ function App() {
                   path="/feedbackhome/feedbackbyvegetableid/:id"
                   component={GetFeedbackByVegetableId}
                 />
-                <Route exact path="/customerhome" component={CustomerHome} />
-                <Route exact path="/addcustomer" component={AddCustomer} />
-               {/*<Route exact path="/viewcustomer" component={ViewCustomer} />*/}
-                <Route
-                  exact
-                  path="/updatecustomerdetails"
-                  component={UpdateCustomerDetails}
-                />
-                <Route
-                  exact
-                  path="/getcustomerdetailsonrequest"
-                  component={GetCustomerDetailsOnRequest}
-                />
-                <Route
-                  exact
-                  path="/getcustomerbyloc"
-                  component={ViewCustomersByLoc}
-                />
+               
               </Switch>
             </div>
           </div>

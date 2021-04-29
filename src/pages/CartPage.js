@@ -6,6 +6,12 @@ const CartPage = (props) => {
     <div className="container mt-5 mb-5">
       <div className="page">
         <div className="pageButton">
+        <button
+            className="btn btn-outline-secondary"
+            onClick={() => props.history.push(`${props.match.url}/add`)}
+          >
+            Add vegetable
+          </button>
          
         </div>
         <div className="pageLine"></div>
