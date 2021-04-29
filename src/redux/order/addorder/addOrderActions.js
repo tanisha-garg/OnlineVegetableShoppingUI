@@ -1,4 +1,4 @@
-import { addOrderDetails } from "../../../service/OrderServiceT";
+import { addOrderDetails } from "../../../service/OrderService";
 import store from "../../store";
 import addOrderConstants from "./addOrderConstants";
 

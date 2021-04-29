@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
+import { fetchCustomerId } from "../../service/OrderService";
 import DisplayOrderList from "./DisplayOrderList";
 
 function GetOrderDetailsByCustomerId(props) {
+
+  const customerId = fetchCustomerId();
 
   const dispatch = useDispatch();
 
@@ -15,9 +18,9 @@ function GetOrderDetailsByCustomerId(props) {
   })
 
   const fetchOrderDetailsOnRender = () => {
-    const id = props.match.params.id;
+    const id = props.match.params;
     console.log(id);
-    dispatch(fetchOrdersByCustomerId(id));
+    dispatch(fetchOrdersByCustomerId(customerId));
     
  
   };

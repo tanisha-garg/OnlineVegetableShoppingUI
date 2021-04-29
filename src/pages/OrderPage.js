@@ -48,10 +48,10 @@ const OrderPage = (props) => {
           <button
             className="btn btn-outline-secondary"
             onClick={() =>
-              props.history.push(`${props.match.url}/ordersbydate/:date`)
+              props.history.push(`${props.match.url}/ordersbydate`)
             }
           >
-            Orders placed on a date
+            Orders placed today
           </button>
           <button
             className="btn btn-outline-secondary"
@@ -95,7 +95,7 @@ const OrderPage = (props) => {
             />
             <Route
               exact
-              path={`${props.match.url}/ordersbydate/:date`}
+              path={`${props.match.url}/ordersbydate`}
               component={GetOrderDetailsByDate}
             />
             <Route

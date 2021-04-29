@@ -1,6 +1,4 @@
 import axios from "axios";
-import { data } from "jquery";
-import orderValidationMessage from "../components/order/orderValidationMessage";
 
 const baseUrl = "http://localhost:8080";
 
@@ -62,7 +60,16 @@ function updateOrderDetails(data){
 
 }
 
+function fetchCustomerId(){
+    return 16;
+}
+
+function ordersPlacedToday(){
+    const today = new Date();
+    return today;
+}
 
 
 
-export {fetchOrderById, fetchOrdersByCustId, fetchAllOrdersByDate, addOrderDetails,updateOrderDetails};
+
+export {fetchOrderById, fetchOrdersByCustId, fetchAllOrdersByDate, addOrderDetails,updateOrderDetails, fetchCustomerId, ordersPlacedToday};

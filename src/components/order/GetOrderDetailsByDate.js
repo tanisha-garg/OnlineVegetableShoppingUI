@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
 import DisplayOrderList from "./DisplayOrderList";
 import dateFormat from 'dateformat';
+import {ordersPlacedToday} from "../../service/OrderService"
 
-function GetOrderDetailsByDate(props) {
+function GetOrderDetailsByDate() {
+
+  const today = ordersPlacedToday();
 
   const dispatch = useDispatch();
 
@@ -13,8 +16,7 @@ function GetOrderDetailsByDate(props) {
   })
 
   const fetchOrderDetailsOnRender = () => {
-    const date = props.match.params.date;
-    const finalDate = dateFormat(date, "dd mmmm yyyy");
+    const finalDate = dateFormat(today, "dd mmmm yyyy");
     console.log(finalDate);
     dispatch(fetchOrdersByDate(finalDate));
   };
@@ -23,11 +25,8 @@ function GetOrderDetailsByDate(props) {
 
   return (
     <div className="container w-75 mt-5">
-      <div className="alert alert-info">
-        Please provide a date in "dd mmmm yyyy" format in the url path. Eg, 25April2021
-      </div>
       <div>
-      <h2> List of Orders On {props.match.params.date}</h2> <br />
+      <h2> List of Orders Placed Today</h2> <br />
       {response.orders ? (
         <div>
           <DisplayOrderList orders={response.orders} />
