@@ -1,5 +1,9 @@
 import commonStyle from "./commonStyle.module.css";
 
+/**
+ * 
+ * Displaying details of function 
+ */
 export default function DisplayVegetable({veg}){
     return(
         <div className={commonStyle.result}>
