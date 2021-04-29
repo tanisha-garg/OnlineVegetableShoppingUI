@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
 import { fetchOrdersByDateOnRequest } from "../../redux/order/fetchordersbydateonrequest/fetchOrdersByDateOnRequestActions";
 import DisplayOrderList from "./DisplayOrderList";
+
+/**
+ * Component returns a list of orders placed on a particular date
+ * The date is accepted form a form in dd mmmm yyyy format
+*/
 
 function GetOrderDetailsByDateOnRequest() {
 

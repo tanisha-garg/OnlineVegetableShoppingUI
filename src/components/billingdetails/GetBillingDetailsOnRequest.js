@@ -4,6 +4,12 @@ import validationMessage from "./billingValidationMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBillByIdOnRequest } from "../../redux/billingdetails/fetchbillbyidonrequest/fetchBillByIdOnRequestActions";
 
+
+/**
+ * Component to fetch bill details by passing a bill id through a form
+ * Once the user clicks on submit button the bill details is displayed if bill exists, if a bill 
+ * doesn't exist then error message is shown.
+*/
 function GetBillingDetailsOnRequest() {
   const dispatch = useDispatch();
 

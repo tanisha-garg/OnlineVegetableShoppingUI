@@ -1,7 +1,11 @@
 import { Route, Switch } from "react-router";
 import GetBillingDetails from "../components/billingdetails/GetBillingDetails";
 import GetBillingDetailsOnRequest from "../components/billingdetails/GetBillingDetailsOnRequest";
-import "./page.css"
+import "./page.css";
+
+/**
+ * Component contains all the buttons and routes to different components and acts as a side navbar
+*/
 
 const BillDetailsPage = (props) => {
   return (

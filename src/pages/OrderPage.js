@@ -2,11 +2,15 @@ import { Route, Switch } from "react-router";
 import GetAllOrders from "../components/order/GetAllOrders";
 import GetOrderDetails from "../components/order/GetOrderDetails";
 import GetOrderDetailsByCustomerId from "../components/order/GetOrderDetailsByCustomerId";
-import GetOrderDetailsByDate from "../components/order/GetOrderDetailsByDate";
+import GetOrdersPlacedToday from "../components/order/GetOrdersPlacedToday";
 import GetOrderDetailsByDateOnRequest from "../components/order/GetOrderDetailsByDateOnRequest";
 import GetOrderDetailsOfCustomerOnRequest from "../components/order/GetOrderDetailsOfCustomerOnRequest";
 import UpdateOrderDetails from "../components/order/UpdateOrderDetails";
 import "./page.css";
+
+/**
+ * Component contains all the buttons and routes to different components and acts as a side navbar
+*/
 
 const OrderPage = (props) => {
   return (
@@ -24,7 +28,7 @@ const OrderPage = (props) => {
           <button
             className="btn btn-outline-secondary"
             onClick={() =>
-              props.history.push(`${props.match.url}/ordersofcustomer/:id`)
+              props.history.push(`${props.match.url}/ordersofcustomer`)
             }
           >
             Orders placed by customer
@@ -80,7 +84,7 @@ const OrderPage = (props) => {
             />
             <Route
               exact
-              path={`${props.match.url}/ordersofcustomer/:id`}
+              path={`${props.match.url}/ordersofcustomer`}
               component={GetOrderDetailsByCustomerId}
             />
             <Route
@@ -96,7 +100,7 @@ const OrderPage = (props) => {
             <Route
               exact
               path={`${props.match.url}/ordersbydate`}
-              component={GetOrderDetailsByDate}
+              component={GetOrdersPlacedToday}
             />
             <Route
               exact

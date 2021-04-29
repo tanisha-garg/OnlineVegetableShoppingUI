@@ -4,7 +4,13 @@ import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomer
 import { fetchCustomerId } from "../../service/OrderService";
 import DisplayOrderList from "./DisplayOrderList";
 
-function GetOrderDetailsByCustomerId(props) {
+/**
+ * Component displays all the orders placed by the customer.
+ * The id in the url is taken from the logged in user.
+ * For now, there is a method in the service which is returning a hard coded customer id
+*/
+
+function GetOrderDetailsByCustomerId() {
 
   const customerId = fetchCustomerId();
 
@@ -18,8 +24,6 @@ function GetOrderDetailsByCustomerId(props) {
   })
 
   const fetchOrderDetailsOnRender = () => {
-    const id = props.match.params;
-    console.log(id);
     dispatch(fetchOrdersByCustomerId(customerId));
     
  

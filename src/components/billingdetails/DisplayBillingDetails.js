@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+/**
+ * Component to display billing details
+*/
 
 function DisplayBillingDetails({ bill }) {
+
+  /**
+   * Destructuring of bill
+  */
   let {
     billingId,
     transactionMode,
@@ -13,6 +19,7 @@ function DisplayBillingDetails({ bill }) {
     state,
     pincode,
   } = bill;
+  
   return (
     <div>
       <ul className="list-group mt-4">

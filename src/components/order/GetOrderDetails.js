@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchOrderDetails } from "../../redux/order/fetchorderdetails/fetchOrderDetailsActions";
 import DisplayOrderDetails from "./DisplayOrderDetails";
 
+/**
+ * Component to display order details by passing id in the url.
+ * By default an error message will be shown as there is no valid id in the url
+*/
 function GetOrderDetails(props) {
 
   const dispatch = useDispatch();

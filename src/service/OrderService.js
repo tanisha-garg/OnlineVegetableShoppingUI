@@ -2,6 +2,12 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:8080";
 
+/**
+ * function to send request to fetchOrderDetails endpoint of OrderRestController
+ * @param  id (orderId)
+ * @returns promise
+ */
+
 function fetchOrderById(id){
 
     const url = baseUrl + "/orders/get/" + id;
@@ -10,6 +16,12 @@ function fetchOrderById(id){
     return promise;
 
 }
+
+/**
+ * function to send request to fetchOrderDetailsByCustomerId endpoint of OrderRestController
+ * @param  id (customerId)
+ * @returns promise
+ */
 
 function fetchOrdersByCustId(id){
 
@@ -20,6 +32,12 @@ function fetchOrdersByCustId(id){
 
 }
 
+/**
+ * function to send request to fetchOrderDetailsByDate endpoint of OrderRestController
+ * @param  date
+ * @returns promise
+ */
+
 function fetchAllOrdersByDate(date){
 
     const url = baseUrl + "/orders/get/date/" + date;
@@ -28,6 +46,12 @@ function fetchAllOrdersByDate(date){
     return promise;
 
 }
+
+/**
+ * function to send request to addOrderDetails endpoint of OrderRestController
+ * @param  id (customerId)
+ * @returns promise
+ */
 
 function addOrderDetails(id){
 
@@ -38,7 +62,13 @@ function addOrderDetails(id){
 
 }
 
-export function fetchOrderList(){
+/**
+ * function to send request to fetchAllOrders endpoint of OrderRestController
+ * @param  
+ * @returns promise
+ */
+
+function fetchOrderList(){
 
     
     const url = baseUrl + "/orders/getAll";
@@ -48,6 +78,12 @@ export function fetchOrderList(){
 
 
 }
+
+/**
+ * function to send request to updateOrderStatus endpoint of OrderRestController
+ * @param  data
+ * @returns promise
+ */
 
 function updateOrderDetails(data){
     
@@ -60,9 +96,21 @@ function updateOrderDetails(data){
 
 }
 
+/**
+ * function to return a dummy customerId element
+ * 
+ * @returns 16 (customerId)
+ */
+
 function fetchCustomerId(){
     return 16;
 }
+
+/**
+ * function to return todays date
+ * 
+ * @returns date
+ */
 
 function ordersPlacedToday(){
     const today = new Date();
@@ -72,4 +120,4 @@ function ordersPlacedToday(){
 
 
 
-export {fetchOrderById, fetchOrdersByCustId, fetchAllOrdersByDate, addOrderDetails,updateOrderDetails, fetchCustomerId, ordersPlacedToday};
+export {fetchOrderById, fetchOrdersByCustId, fetchAllOrdersByDate,fetchOrderList, addOrderDetails,updateOrderDetails, fetchCustomerId, ordersPlacedToday};

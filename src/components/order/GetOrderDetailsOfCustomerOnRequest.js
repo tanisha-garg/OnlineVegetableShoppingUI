@@ -4,6 +4,11 @@ import { fetchOrdersByCustIdOnRequest } from "../../redux/order/fetchordersbycus
 import DisplayOrderList from "./DisplayOrderList";
 import validationMessage from "./orderValidationMessage";
 
+/**
+ * Component returns a list of orders placed by customer where the customer id is 
+ * accepted from a form
+*/
+
 function GetOrderDetailsOfCustomerOnRequest() {
   const idRef = React.createRef();
 

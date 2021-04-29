@@ -1,3 +1,6 @@
+/**
+ * Component to display Order Details
+*/
 function DisplayOrderDetails({ order }) {
   let { orderId, customerName, totalAmount, date, status } = order;
 

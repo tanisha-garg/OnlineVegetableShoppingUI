@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import {fetchOrderList} from "../../service/OrderService"
 
+/**
+ * Component to display order list with links.
+ * Once the user clicks on the given link it takes the user to DisplayOrderDetails component
+*/
 function DisplayOrderList({orders}){
 
     return(

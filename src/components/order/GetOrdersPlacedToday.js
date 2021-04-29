@@ -3,9 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchOrdersByDate } from "../../redux/order/fetchordersbydate/fetchOrdersByDateActions";
 import DisplayOrderList from "./DisplayOrderList";
 import dateFormat from 'dateformat';
-import {ordersPlacedToday} from "../../service/OrderService"
+import {ordersPlacedToday} from "../../service/OrderService";
 
-function GetOrderDetailsByDate() {
+/**
+ * Component displays the list of orders placed today
+ * The date is called from a method defined in service which returns todays date
+*/
+
+function GetOrdersPlacedToday() {
 
   const today = ordersPlacedToday();
 
@@ -49,4 +54,4 @@ function GetOrderDetailsByDate() {
   );
 }
 
-export default GetOrderDetailsByDate;
+export default GetOrdersPlacedToday;

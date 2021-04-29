@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBillByIdActions";
 import DisplayBillingDetails from "./DisplayBillingDetails";
 
+/**
+ * Component to fetch the bill details by providing id in the url.
+ * User has to provide a bill id in the url, by default there will be an error saying,
+ *  "Request not successfull"
+*/
+
 function GetBillingDetails(props) {
+
   const dispatch = useDispatch();
 
   const response = useSelector((state) => {
