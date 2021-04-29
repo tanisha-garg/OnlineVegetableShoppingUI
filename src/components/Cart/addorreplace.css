@@ -1,0 +1,72 @@
+.cartItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cartItem :first-child{
+    width: 75%;
+}
+.heading{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgrey;
+    margin-bottom: 1em;
+    
+}
+.heading div{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+.item div{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.title{
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.vegName{
+    margin-right: 10px;
+}
+.itemCart{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+.itemCart :first-child{
+    width:40%;
+}
+
+/* .flex-container{
+    display: flex;
+    flex-direction: row;
+} */
+.symbol{
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #c2c2c2;
+    border-radius: 50%;
+    padding-top: 2px;
+    line-height: 1;
+}
+.value{
+    width: 20px;
+    padding-left: 5px;
+    margin: 0 6px;
+}

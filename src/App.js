@@ -20,10 +20,22 @@ import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
 import CustomerHome from "./components/customer/CustomerHome";
 import BillDetailsPage from "./pages/BillDetailsPage";
 import OrderPage from "./pages/OrderPage";
+import AddToCart from './components/Cart/AddToCart';
+import CartHome from './Pages/CartHome';
+import {addItemToCartRequest,increaseQuantityRequest} from './Service/CartService';
+import DisplayCart from './components/Cart/DisplayCart';
+import decreasequantity from './components/Cart/DecreaseQuantity';
+import increasequantity from './components/Cart/DecreaseQuantity';
+import AddOrRemoveItemFromCart from './components/Cart/AddOrRemoveItemFromCart';
 
 function App() {
+    
   return (
     <div>
+    
+//       <AddToCart />
+//       <AddOrRemoveItemFromCart />
+
       <Provider store={store}>
         <Router>
           <div className="row">
