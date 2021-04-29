@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router";
 import AddFeedback from "../components/Feedback/AddFeedback";
-import GetfeedbackByVegetableId from "../components/Feedback/GetFeedbackByVegetableId";
+import GetFeedbackByVegetableId from "../components/Feedback/GetFeedbackByVegetableId";
 import "./page.css";
 
 const FeedbackPage = (props) => {
@@ -11,7 +11,7 @@ const FeedbackPage = (props) => {
             <button
               className="btn btn-outline-secondary"
               onClick={() =>
-                props.history.push(`${props.match.url}/feedbackhome/addfeedback`)
+                props.history.push(`${props.match.url}/addfeedback`)
               }
             >
               Add Feedback
@@ -19,7 +19,7 @@ const FeedbackPage = (props) => {
             <button
             className="btn btn-outline-secondary"
             onClick={() =>
-              props.history.push(`${props.match.url}/feedbackhome/feedbackbyvegetableid/:id`)
+              props.history.push(`${props.match.url}/feedbackbyvegetableid/:id`)
             }
           >
             View Feedback By Vegetable Id
@@ -30,13 +30,13 @@ const FeedbackPage = (props) => {
         <Switch>
             <Route
               exact
-              path={`${props.match.url}/feedbackhome/addfeedback`}
+              path={`${props.match.url}/addfeedback`}
               component={AddFeedback}
             />
             <Route
               exact
-              path={`${props.match.url}/feedbackhome/feedbackbyvegetableid/:id`}
-              component={AddFeedback}
+              path={`${props.match.url}/feedbackbyvegetableid/:id`}
+              component={GetFeedbackByVegetableId}
             />
              </Switch>
         </div>

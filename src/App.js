@@ -12,6 +12,7 @@ import OrderPage from "./pages/OrderPage";
 import CartPage from "./pages/CartPage";
 import CustomerPage from "./pages/CustomerPage";
 import VegetablePage from "./pages/VegetablePage";
+import FeedbackPage from "./pages/FeedbackPage";
 
 function App() {
     
@@ -30,7 +31,7 @@ function App() {
                 <Route path="/cart" component={CartPage} />
                 <Route path="/order" component={OrderPage} /> 
                 <Route path="/bill" component={BillDetailsPage} />
-                
+                <Route path="/feedback" component={FeedbackPage} />
                 
 
                
