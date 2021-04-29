@@ -20,6 +20,7 @@ import CustomerHome from "./components/customer/CustomerHome";
 import BillDetailsPage from "./pages/BillDetailsPage";
 import OrderPage from "./pages/OrderPage";
 import CartPage from "./pages/CartPage";
+import CustomerPage from "./pages/CustomerPage";
 
 function App() {
     
@@ -35,7 +36,8 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route path="/bill" component={BillDetailsPage} />
                 <Route path="/order" component={OrderPage} /> 
-                <Route cart="/cart" component={CartPage} />
+                <Route path="/cart" component={CartPage} />
+                <Route  path="/customer" component={CustomerPage} />
 
                 <Route exact path="/vegetablehome" component={VegetableHome} />
                 <Route exact path="/vegetables/add" component={AddVegetable} />

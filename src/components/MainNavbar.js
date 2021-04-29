@@ -29,7 +29,7 @@ function MainNavbar() {
             {/* This link is for customer module */}
 
             <li className="nav-item">
-              <Link to="/customerhome" className="nav-link">
+              <Link to="/customer" className="nav-link">
                 <span>Customer</span>
               </Link>
             </li>

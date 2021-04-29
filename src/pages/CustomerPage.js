@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router";
-import AddCustomer from "./components/customer/AddCustomer";
-import GetCustomerDetailsOnRequest from "./components/customer/GetCustomerDetailsOnRequest";
-import UpdateCustomerDetails from "./components/customer/UpdateCustomerDetails";
-import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
+import AddCustomer from "../components/customer/AddCustomer";
+import GetCustomerDetailsOnRequest from "../components/customer/GetCustomerDetailsOnRequest";
+import UpdateCustomerDetails from "../components/customer/UpdateCustomerDetails";
+import ViewCustomersByLoc from "../components/customer/ViewCustomersByLoc";
 import "./page.css";
 
 const CustomerPage = (props) => {

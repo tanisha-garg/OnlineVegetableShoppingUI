@@ -6,7 +6,7 @@ export default function ViewCustomersByLoc() {
   
 
   
-  const response = { customers: customersList, errMsg: undefined };
+  const response = { customers: undefined, errMsg: undefined };
 
   const initialState = {
     city: undefined,
