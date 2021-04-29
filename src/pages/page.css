@@ -1,0 +1,27 @@
+/* .container {
+    margin-top: 5em;
+  } */
+  
+  .page {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pageButton {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+  }
+  .pageButton button {
+    min-width: 120px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .pageLine {
+    width:2%;
+    border-left: 1px solid black;
+    /* height: 70%; */
+  }
+  .pageContainer {
+    width: 65%;
+  }

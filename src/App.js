@@ -1,5 +1,25 @@
-import React from 'react';
-import './App.css';
+import { Provider } from "react-redux";
+import "./App.css";
+import AddFeedback from "./components/Feedback/AddFeedback";
+import AddVegetable from "./components/vegetable/AddVegetable";
+import GetVegetableDetailsOnRequest from "./components/vegetable/GetVegetableDetailsOnRequest";
+import UpdateVegetablePrice from "./components/vegetable/UpdateVegetablePrice";
+import VegetableHome from "./components/vegetable/VegetableHome";
+import GetVegetableDetailsById from "./components/vegetable/GetVegetableDetailsById";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import MainNavbar from "./components/MainNavbar";
+import Home from "./components/Home";
+import store from "./redux/store";
+import FeedbackHome from "./components/Feedback/FeedbackHome";
+import GetFeedbackByVegetableId from "./components/Feedback/GetFeedbackByVegetableId";
+import AddCustomer from "./components/customer/AddCustomer";
+import GetCustomerDetailsOnRequest from "./components/customer/GetCustomerDetailsOnRequest";
+import UpdateCustomerDetails from "./components/customer/UpdateCustomerDetails";
+import ViewCustomer from "./components/customer/ViewCustomer";
+import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
+import CustomerHome from "./components/customer/CustomerHome";
+import BillDetailsPage from "./pages/BillDetailsPage";
+import OrderPage from "./pages/OrderPage";
 import AddToCart from './components/Cart/AddToCart';
 import CartHome from './Pages/CartHome';
 import {addItemToCartRequest,increaseQuantityRequest} from './Service/CartService';
@@ -8,42 +28,78 @@ import decreasequantity from './components/Cart/DecreaseQuantity';
 import increasequantity from './components/Cart/DecreaseQuantity';
 import AddOrRemoveItemFromCart from './components/Cart/AddOrRemoveItemFromCart';
 
-
-const veg = {
-  id: 1,
-  name: "potato",
-  category: "underground",
-  type: "root",
-  quantity: 10,
-  price: 50,
-};
-const data = {
-  vegId:10,
-  custId:4,
-  quantity:"23"
-};
-const veg1=[veg];
-
 function App() {
-  const promise=increaseQuantityRequest(data);
-  promise.then((response)=>{console.log(response.data);})
-  .catch((error)=>{console.log(error.response.data);})
-
-  // const promise=decreaseQuantityRequest(data);
-  // promise.then((response)=>{console.log(response.data);})
-  // .catch((error)=>{console.log(error.response.data);})
-  
-
     
   return (
     <div>
-      
-      <AddToCart />
-      <AddOrRemoveItemFromCart />
-      {/*<DisplayCart />*/}
-      {/* <CartHome /> */}
-      {/* <AddOrRemoveItemFromCart /> */}
-      
+    
+//       <AddToCart />
+//       <AddOrRemoveItemFromCart />
+
+      <Provider store={store}>
+        <Router>
+          <div className="row">
+            <div className="col-md-12">
+              <MainNavbar />
+
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/bill" component={BillDetailsPage} />
+                <Route path="/order" component={OrderPage} /> 
+
+                <Route exact path="/vegetablehome" component={VegetableHome} />
+                <Route exact path="/vegetables/add" component={AddVegetable} />
+                <Route
+                  exact
+                  path="/vegetables/byidonrequest"
+                  component={GetVegetableDetailsOnRequest}
+                />
+                <Route
+                  exact
+                  path="/vegetables/changePrice"
+                  component={UpdateVegetablePrice}
+                />
+                <Route
+                  exact
+                  path="/vegetables/byid/:id"
+                  component={GetVegetableDetailsById}
+                />
+
+                <Route exact path="/feedbackhome" component={FeedbackHome} />
+
+                <Route
+                  exact
+                  path="/feedbackhome/addfeedback"
+                  component={AddFeedback}
+                />
+                <Route
+                  exact
+                  path="/feedbackhome/feedbackbyvegetableid/:id"
+                  component={GetFeedbackByVegetableId}
+                />
+                <Route exact path="/customerhome" component={CustomerHome} />
+                <Route exact path="/addcustomer" component={AddCustomer} />
+                <Route exact path="/viewcustomer" component={ViewCustomer} />
+                <Route
+                  exact
+                  path="/updatecustomerdetails"
+                  component={UpdateCustomerDetails}
+                />
+                <Route
+                  exact
+                  path="/getcustomerdetailsonrequest"
+                  component={GetCustomerDetailsOnRequest}
+                />
+                <Route
+                  exact
+                  path="/getcustomerbyloc"
+                  component={ViewCustomersByLoc}
+                />
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </Provider>
     </div>
   );
 }
