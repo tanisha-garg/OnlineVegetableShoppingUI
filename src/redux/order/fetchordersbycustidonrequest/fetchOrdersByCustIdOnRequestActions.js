@@ -1,4 +1,4 @@
-import { fetchOrdersByCustId } from "../../../service/OrderServiceT";
+import { fetchOrdersByCustId } from "../../../service1/OrderServiceT";
 import store from "../../store";
 import fetchOrdersByCustIdOnRequestConstants from "./fetchOrdersByCustIdOnRequestConstants";
 

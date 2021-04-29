@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
 import commonStyle from "./commonStyle.module.css";
 import { useDispatch } from "react-redux";
-import { fetchFeedbackByVegetableId } from "../../service/FeedbackService";
+import { fetchFeedbackByVegetableId } from "../../service1/FeedbackService";
 
 export default function GetFeedbackByVegetableId(props) {
 

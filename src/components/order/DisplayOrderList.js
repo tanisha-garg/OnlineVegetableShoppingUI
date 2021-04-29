@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {fetchOrderList} from "../../service/OrderServiceT"
+import {fetchOrderList} from "../../service1/OrderServiceT"
 
 function DisplayOrderList({orders}){
 

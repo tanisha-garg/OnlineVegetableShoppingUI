@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl="http://localhost:8585";
+const baseUrl="http://localhost:8080";
 
 function fetchVegetableById(id){
     const url=baseUrl+"/vegetables/byid/" +id;
