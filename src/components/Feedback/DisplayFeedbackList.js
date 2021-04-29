@@ -5,8 +5,8 @@ export default function DisplayFeedbackList({ feeds }) {
     return (
 
         <div>
-            <ul>
-                {feeds.map((feed) => <li key={feed.feedbackId}><DisplayFeedbackDetails feed={feed} /></li>)}
+            <ul className="list-group">
+                {feeds.map((feed) => <li className="" key={feed.feedbackId}><DisplayFeedbackDetails feed={feed} /></li>)}
             </ul>
         </div>
     );
