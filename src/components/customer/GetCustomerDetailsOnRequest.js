@@ -3,7 +3,7 @@ import commonStyle from "./commonStyle.module.css";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
 import validationMessage from "./customerValidationMessage";
 import { useDispatch, useSelector } from "react-redux";
-import { getCustomerThunk } from "../../redux/getCustomer/getCustomerAction";
+import { getCustomerThunk } from "../../redux1/getCustomer/getCustomerAction";
 
 const GetCustomerDetailsOnRequest = () => {
   const dispatch = useDispatch();

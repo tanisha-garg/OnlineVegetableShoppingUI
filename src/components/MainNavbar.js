@@ -44,12 +44,12 @@ function MainNavbar() {
 
             {/* This link is for Cart Module  */}
 
-            {/* <li className="nav-item">
+            <li className="nav-item">
 
-                            <Link to="/customerdetailsonrequest" className="nav-link" >
-                                <span>Get customer details</span>
+                            <Link to="/cart" className="nav-link" >
+                                <span>Cart</span>
                             </Link>
-                        </li> */}
+                        </li>
 
             {/* This link is for Order Module  */}
 

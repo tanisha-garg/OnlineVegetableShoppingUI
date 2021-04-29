@@ -3,7 +3,7 @@ import validationMessage from "./customerValidationMessage";
 import commonStyle from "./commonStyle.module.css";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
 import { useDispatch, useSelector } from "react-redux";
-import { addCustomerThunk } from "../../redux/addCustomer/addCustomerAction";
+import { addCustomerThunk } from "../../redux1/addCustomer/addCustomerAction";
 
 // Adding Customer using functional Component
 const AddCustomer = () => {

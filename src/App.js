@@ -9,7 +9,7 @@ import GetVegetableDetailsById from "./components/vegetable/GetVegetableDetailsB
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MainNavbar from "./components/MainNavbar";
 import Home from "./components/Home";
-import store from "./redux/store";
+import store from "./redux1/store";
 import FeedbackHome from "./components/Feedback/FeedbackHome";
 import GetFeedbackByVegetableId from "./components/Feedback/GetFeedbackByVegetableId";
 import AddCustomer from "./components/customer/AddCustomer";
@@ -18,24 +18,14 @@ import UpdateCustomerDetails from "./components/customer/UpdateCustomerDetails";
 import ViewCustomer from "./components/customer/ViewCustomer";
 import ViewCustomersByLoc from "./components/customer/ViewCustomersByLoc";
 import CustomerHome from "./components/customer/CustomerHome";
-import BillDetailsPage from "./pages/BillDetailsPage";
-import OrderPage from "./pages/OrderPage";
-import AddToCart from './components/Cart/AddToCart';
-import CartHome from './Pages/CartHome';
-import {addItemToCartRequest,increaseQuantityRequest} from './Service/CartService';
-import DisplayCart from './components/Cart/DisplayCart';
-import decreasequantity from './components/Cart/DecreaseQuantity';
-import increasequantity from './components/Cart/DecreaseQuantity';
-import AddOrRemoveItemFromCart from './components/Cart/AddOrRemoveItemFromCart';
+import BillDetailsPage from "./pages1/BillDetailsPage";
+import OrderPage from "./pages1/OrderPage";
+import CartPage from "./pages1/CartPage";
 
 function App() {
     
   return (
     <div>
-    
-//       <AddToCart />
-//       <AddOrRemoveItemFromCart />
-
       <Provider store={store}>
         <Router>
           <div className="row">
@@ -46,6 +36,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route path="/bill" component={BillDetailsPage} />
                 <Route path="/order" component={OrderPage} /> 
+                <Route cart="/cart" component={CartPage} />
 
                 <Route exact path="/vegetablehome" component={VegetableHome} />
                 <Route exact path="/vegetables/add" component={AddVegetable} />

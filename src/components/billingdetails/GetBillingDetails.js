@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBillByIdActions";
+import { fetchBillById } from "../../redux1/billingdetails/fetchbillbyid/fetchBillByIdActions";
 import DisplayBillingDetails from "./DisplayBillingDetails";
 
 function GetBillingDetails(props) {

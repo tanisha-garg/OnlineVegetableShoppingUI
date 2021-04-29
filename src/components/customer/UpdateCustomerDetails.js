@@ -3,7 +3,7 @@ import DisplayCustomerDetails from "./DisplayCustomerDetails";
 import validationMessage from './customerValidationMessage';
 import commonStyle from "./commonStyle.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCustomerThunk } from "../../redux/updateCustomer/updateCustomerAction";
+import { updateCustomerThunk } from "../../redux1/updateCustomer/updateCustomerAction";
 
 const UpdateCustomerDetails=()=>{
   

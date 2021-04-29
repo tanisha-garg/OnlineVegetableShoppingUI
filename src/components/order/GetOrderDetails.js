@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOrderDetails } from "../../redux/order/fetchorderdetails/fetchOrderDetailsActions";
+import { fetchOrderDetails } from "../../redux1/order/fetchorderdetails/fetchOrderDetailsActions";
 import DisplayOrderDetails from "./DisplayOrderDetails";
 
 function GetOrderDetails(props) {
