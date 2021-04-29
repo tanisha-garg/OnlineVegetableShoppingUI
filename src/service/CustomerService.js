@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = "http://localhost:8584";
+const baseUrl = "http://localhost:8080";
 
 function getCustomerDetailsOnRequest(customerId) {      
   const url = baseUrl + "/customers/view/" + customerId;

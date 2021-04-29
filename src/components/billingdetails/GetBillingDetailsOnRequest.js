@@ -5,21 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBillByIdOnRequest } from "../../redux/billingdetails/fetchbillbyidonrequest/fetchBillByIdOnRequestActions";
 
 function GetBillingDetailsOnRequest() {
-
   const dispatch = useDispatch();
 
   const billIdRef = React.createRef();
 
   const initialState = {
     billingId: -1,
-    validations: { billingId: undefined }
+    validations: { billingId: undefined },
   };
 
-  const response = useSelector(state => { 
-    return ({
-      bill: state.fetchBillByIdOnRequest.bill, error: state.fetchBillByIdOnRequest.error
-    });
-  })
+  const response = useSelector((state) => {
+    return {
+      bill: state.fetchBillByIdOnRequest.bill,
+      error: state.fetchBillByIdOnRequest.error,
+    };
+  });
 
   let [currentState, setNewState] = useState(initialState);
 
@@ -43,7 +43,7 @@ function GetBillingDetailsOnRequest() {
     }
     const newValidations = {
       ...currentState.validations,
-      [fieldName]: validationMessage
+      [fieldName]: validationMessage,
     };
     const newState = {
       ...currentState,
@@ -74,7 +74,9 @@ function GetBillingDetailsOnRequest() {
             onChange={() => setIdHandler(billIdRef)}
           />
           {currentState.validations.billingId ? (
-            <div className="text-danger mt-2">{currentState.validations.billingId}</div>
+            <div className="text-danger mt-2">
+              {currentState.validations.billingId}
+            </div>
           ) : (
             ""
           )}
@@ -86,6 +88,9 @@ function GetBillingDetailsOnRequest() {
       <br />
       {response.bill ? (
         <div>
+          <div className="alert alert-success">
+            Billing Details fetched successfully
+          </div>
           <h3>Billing Details Response</h3>
           <DisplayBillingDetails bill={response.bill} />
         </div>

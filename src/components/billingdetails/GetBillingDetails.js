@@ -4,12 +4,11 @@ import { fetchBillById } from "../../redux/billingdetails/fetchbillbyid/fetchBil
 import DisplayBillingDetails from "./DisplayBillingDetails";
 
 function GetBillingDetails(props) {
-
   const dispatch = useDispatch();
 
-  const response = useSelector( state => {
-    return { bill: state.fetchBillById.bill, error: state.fetchBillById.error}
-  })
+  const response = useSelector((state) => {
+    return { bill: state.fetchBillById.bill, error: state.fetchBillById.error };
+  });
 
   const fetchBillDetailsOnRender = () => {
     const id = props.match.params.id;
@@ -28,6 +27,9 @@ function GetBillingDetails(props) {
 
         {response.bill ? (
           <div>
+            <div className="alert alert-success">
+              Billing Details fetched successfully
+            </div>
             <DisplayBillingDetails bill={response.bill} />
           </div>
         ) : (

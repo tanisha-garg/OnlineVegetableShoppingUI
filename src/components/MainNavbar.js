@@ -28,58 +28,52 @@ function MainNavbar() {
 
             {/* This link is for customer module */}
 
-             <li className="nav-item">
-
-                            <Link to="/customerhome" className="nav-link" >
-                                <span> Customer</span>
-
-                            </Link>
-                        </li> 
+            <li className="nav-item">
+              <Link to="/customerhome" className="nav-link">
+                <span>Customer</span>
+              </Link>
+            </li>
 
             {/* This link is for Vegetable Module  */}
 
             <li className="nav-item">
-
-                            <Link to="/vegetablehome" className="nav-link" >
-                                <span>Vegetable</span>
-                            </Link>
-                        </li>
+              <Link to="/vegetablehome" className="nav-link">
+                <span>Vegetable</span>
+              </Link>
+            </li>
 
             {/* This link is for Cart Module  */}
 
-            {/* <li className="nav-item">
+            <li className="nav-item">
 
-                            <Link to="/customerdetailsonrequest" className="nav-link" >
-                                <span>Get customer details</span>
+                            <Link to="/cart" className="nav-link" >
+                                <span>Cart</span>
                             </Link>
-                        </li> */}
+                        </li>
 
             {/* This link is for Order Module  */}
 
             <li className="nav-item">
-              <Link to="/orderhome" className="nav-link">
+              <Link to="/order" className="nav-link">
                 <span>Order</span>
               </Link>
             </li>
 
-              {/* This link is for Bill Module  */}
+            {/* This link is for Bill Module  */}
 
-              <li className="nav-item">
-              <Link to="/billhome" className="nav-link">
+            <li className="nav-item">
+              <Link to="/bill" className="nav-link">
                 <span>Billing Details</span>
               </Link>
             </li>
 
-                          {/* This link is for Feedback Module  */}
+            {/* This link is for Feedback Module  */}
 
-                          <li className="nav-item">
+            <li className="nav-item">
               <Link to="/feedbackhome" className="nav-link">
                 <span>Feedback</span>
               </Link>
             </li>
-
-          
-
           </ul>
         </div>
       </nav>
