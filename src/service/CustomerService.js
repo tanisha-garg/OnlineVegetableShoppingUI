@@ -29,16 +29,16 @@ function addCustomer(data) {
   return promise;
 }
 
-//  function viewCustomersByLoc(city) {
-//    const url = baseUrl + "/view/location" + city;
-//    console.log(url);
-//    const promise = axios.get(url);
-//    return promise;
-//  }
+ function viewCustomersByLoc(city) {
+   const url = baseUrl + "/view/allbycity" + city;
+   console.log(url);
+   const promise = axios.get(url,city);
+   return promise;
+ }
 
 export {
   getCustomerDetailsOnRequest,
   updateCustomer,
   addCustomer,
-  // viewCustomersByLoc,
+  viewCustomersByLoc,
 };

@@ -61,10 +61,12 @@ const GetCustomerDetailsOnRequest = () => {
   };
 
   return (
-    <div>
-      <h3> Get Customer details on Request</h3>
-
-      <div>
+    <div className="container mt-4 w-75">
+      <div className="alert alert-info">Please provide a valid Customer Id</div>
+      <div className="mt-4">
+        <h2>Get Customer Details by Id</h2>
+      </div>
+      <div className="container mt-4 w-75">
         <form onSubmit={submitHandler}>
           <div className="form-group">
             <label>Enter Customer Id</label>
@@ -90,12 +92,21 @@ const GetCustomerDetailsOnRequest = () => {
       </div>
 
       <div className="mt-5">
+        <div className="alert alert-success">
+          Customer Details fetched successfully
+        </div>
         {response.customer ? (
           <DisplayCustomerDetails customer={response.customer} />
         ) : (
           ""
         )}
-        {response.error ? response.error : ""}
+        {response.error ? (
+          <div className="text-danger h6 mt-3">
+            Request was not successsful <br /> {response.error}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

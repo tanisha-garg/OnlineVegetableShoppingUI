@@ -83,9 +83,13 @@ const changeHandler = (ref) => {
   };
   
   return(
-    <div>
-    <h3> Change Customer Details</h3>
-    <br/>
+    <div className="container mt-4 w-75">
+     <div className="alert alert-info">
+        Please provide a valid Customer Id
+      </div>
+      <div className="mt-4">
+        <h2>Update Customer Details by Id</h2>
+      </div>
   <form onSubmit = {(event) => submitHandler(event)}>
   
   <div className="form-group">
@@ -120,11 +124,22 @@ const changeHandler = (ref) => {
 <h2>{state.formstatus}</h2>
 <br />
 {response.customer ? (
+  <div>
+  <div className="alert alert-success">
+    Customer Details updated successfully
+  </div>
         <DisplayCustomerDetails customer={response.customer} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+          <div className="text-danger h6 mt-3">
+            Request was not successsful <br /> {response.error}
+          </div>
+        ) : (
+          ""
+        )}
    </div>
  );
 }
