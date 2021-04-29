@@ -1,4 +1,8 @@
-.page {
+.container {
+    margin-top: 5em;
+  }
+  
+  .page {
     display: flex;
     justify-content: space-between;
   }
@@ -16,7 +20,7 @@
   .pageLine {
     width:2%;
     border-left: 1px solid black;
-    /* height: 70%; */
+    height: 325px;
   }
   .pageContainer {
     width: 65%;
