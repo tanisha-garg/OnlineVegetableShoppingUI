@@ -36,6 +36,10 @@
     text-align: center;
     margin-bottom: 2em;
 }
+
+.vegName{
+    margin-right: 10px;
+}
 .itemCart{
     width: 50%;
     display: flex;
@@ -43,9 +47,13 @@
     margin-bottom: 1em;
 }
 .itemCart :first-child{
-    width:75%;
+    width:40%;
 }
 
+/* .flex-container{
+    display: flex;
+    flex-direction: row;
+} */
 .symbol{
     width: 28px;
     height: 28px;

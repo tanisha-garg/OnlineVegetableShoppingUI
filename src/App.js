@@ -37,8 +37,9 @@ function App() {
     
   return (
     <div>
-      {/* <AddOrRemoveItemFromCart /> */}
+      
       <AddToCart />
+      <AddOrRemoveItemFromCart />
       {/*<DisplayCart />*/}
       {/* <CartHome /> */}
       {/* <AddOrRemoveItemFromCart /> */}

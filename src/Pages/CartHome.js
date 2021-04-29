@@ -1,18 +1,15 @@
 import AddToCart from "../components/Cart/AddToCart";
-import IncreaseQuantity from "../components/Cart/IncreaseQuantity";
-import DecreaseQuantity from "../components/Cart/DecreaseQuantity";
+import AddOrRemoveItemFromCart from "../components/Cart/AddOrRemoveItemFromCart"
+import { Route, Switch } from "react-router-dom";
+import './page.css';
 
-const CartPage = () => {
+const CartHome = (props) => {
     return ( 
         <div>
-            {/* <IncreaseQuantity/> */}
-            {/* <AddToCart/> */}
-           
-           {/* <DecreaseQuantity/> */}
+          
         </div>
-            
-        
+      
      );
 }
  
-export default CartPage;
+export default CartHome;

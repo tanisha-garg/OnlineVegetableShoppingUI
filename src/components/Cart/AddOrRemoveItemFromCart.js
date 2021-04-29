@@ -1,69 +1,63 @@
 import { useState } from "react";
-import { increaseQuantityRequest,decreaseQuantityRequest } from "../../Service/CartService";
+import { useDispatch, useSelector } from "react-redux";
+import { itemToCartIncreaseThunk , itemToCartDecreaseThunk} from "../../Redux/Cart/itemToCartAction";
+import { itemToCartConstant } from "../../Redux/Cart/itemToCartConstant";
+import { addItemToCartRequest } from "../../Service/CartService";
 import "./addorreplace.css";
 
 const AddOrRemoveItemFromCart = () => {
-    const vegList = [
-      { vegId: 1, vegName: "Potato",quantity:' 1' },
-      { vegId: 2, vegName: "Tomato",quantity:' 5' },
-      { vegId: 3, vegName: "cabbage",quantity:' 8'},
-    ];
-    const cart = {
-      name: "Sameer",
-      vegetables:[
-        {
-          id:"4",
-          name:"Potato",
-          quantity:"10",
-          type:"fresh",
-          category:"underground",
-          price:"20",
-        },
-      ]
-      
-    };
-    const [state, setState] = useState({
-      itemId: "",
-      select:false
-    });
-  
-    const response={order:undefined,error:""}
-  
-    const onHandleChange = (e) => {
-      const { name, value ,checked} = e.target;
-      console.log(value,checked)
-      setState({ ...state, [name]: value ,select:checked });
-      
+
+    const dispatch=useDispatch();
+
+    const response = useSelector((state)=>{
+        return{
+            vegetables:state.itemToCart.items
+        }
+    })
+
+    const onHandlePlace = (e) =>{
+       
+    }
+
+
+    const onHandleDecrease = (vegId) =>{
+        const data =    {
+            vegId:vegId,
+            custId:"7",
+            quantity:1
+        };
+        dispatch(itemToCartDecreaseThunk(data))
     };
 
-    const onHandleDecrease = (e) =>{
-        this.setState(prevState => {
-            return {count: prevState.count - 1}
-         });
+    const onHandleIncrease = (vegId) =>{
+        const data =    {
+            vegId:vegId,
+            custId:"7",
+            quantity:1
+        };
+        dispatch(itemToCartIncreaseThunk(data))
     };
 
-    const onHandleIncrease = () =>{
-        this.setState(prevState => {
-            return {count: prevState.count+1}
-        })
-    };
-
-    
 
     return (
         <div className="cartItem">
         <h2 className="title">Cart</h2>
-          {vegList.map((vegetable) => (
+          {response.vegetables.map((vegetable) => (
             <div key={vegetable.vegId} className="itemCart">
-                <h5>{vegetable.vegName}</h5>
-                <div className="symbol">-</div>
+                <h5>{vegetable.name}</h5>
+                <div className="symbol" onClick={()=>onHandleDecrease(vegetable.vegId)}>-</div>
                 <span className="value">{vegetable.quantity}</span>
-                <div className="symbol" >+</div>
+                <div className="symbol" onClick={()=>onHandleIncrease(vegetable.vegId)}>+</div>
             </div>
           ))}
-          <button type="submit" className="btn btn-primary" onClick={onHandleChange}>
+          <button type="submit" className="btn btn-primary" onClick={onHandlePlace}>
           Place Order
         </button>
+        {/* {response.order ?(
+            <DisplayOrderDeta
+        ) */}
+
+        
         </div>
     );
 

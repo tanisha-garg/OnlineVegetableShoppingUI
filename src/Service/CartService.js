@@ -2,11 +2,12 @@ import axios from 'axios';
 const baseUrl = "http://localhost:8585";
 
 
-export function addItemToCartRequest(data){
-    const url=baseUrl+"/cart/add"
-    const promise=axios.post(url,data)
+export function viewAllVeg(){
+    const url=baseUrl+"/vegetables/viewAll"
+    const promise=axios.get(url)
     return promise;
 }
+
 export function increaseQuantityRequest(data){
     const url=baseUrl+"/cart/increasequantity"
     const promise=axios.put(url,data);
@@ -18,6 +19,7 @@ export function decreaseQuantityRequest(data){
     const promise=axios.put(url,data);
     return promise;
 }
+
 
 // export function removeItemToCartRequest(data){
 //     const url=baseUrl+"/cart/removeVegetable";
