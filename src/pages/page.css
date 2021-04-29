@@ -1,8 +1,4 @@
-/* .container {
-    margin-top: 5em;
-  } */
-  
-  .page {
+.page {
     display: flex;
     justify-content: space-between;
   }
