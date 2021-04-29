@@ -1,12 +1,9 @@
 import { Provider } from "react-redux";
 import "./App.css";
-import AddFeedback from "./components/Feedback/AddFeedback";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MainNavbar from "./components/MainNavbar";
 import Home from "./components/Home";
 import store from "./redux/store";
-import FeedbackHome from "./components/Feedback/FeedbackHome";
-import GetFeedbackByVegetableId from "./components/Feedback/GetFeedbackByVegetableId";
 import BillDetailsPage from "./pages/BillDetailsPage";
 import OrderPage from "./pages/OrderPage";
 import CartPage from "./pages/CartPage";
@@ -31,27 +28,7 @@ function App() {
                 <Route path="/cart" component={CartPage} />
                 <Route path="/order" component={OrderPage} /> 
                 <Route path="/bill" component={BillDetailsPage} />
-                <Route path="/feedback" component={FeedbackPage} />
-                
-
-               
-               
-               
-               
-
-                <Route exact path="/feedbackhome" component={FeedbackHome} />
-
-                <Route
-                  exact
-                  path="/feedbackhome/addfeedback"
-                  component={AddFeedback}
-                />
-                <Route
-                  exact
-                  path="/feedbackhome/feedbackbyvegetableid/:id"
-                  component={GetFeedbackByVegetableId}
-                />
-               
+                <Route path="/feedback" component={FeedbackPage} />               
               </Switch>
             </div>
           </div>
