@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router";
 import AddVegetable from "../components/vegetable/AddVegetable";
+import GetVegetableByName from "../components/vegetable/GetVegetableByName";
 import GetVegetableDetailsById from "../components/vegetable/GetVegetableDetailsById";
 import GetVegetableDetailsOnRequest from "../components/vegetable/GetVegetableDetailsOnRequest";
 import UpdateVegetablePrice from "../components/vegetable/UpdateVegetablePrice";
@@ -36,6 +37,12 @@ const VegetablePage = (props) => {
           >
             Update Price
           </button>
+          <button
+            className="btn btn-outline-secondary"
+            onClick={() => props.history.push(`${props.match.url}/getbyname`)}
+          >
+            Get Vegetable By Name
+          </button>
         </div>
         <div className="pageLine"></div>
         <div className="pageContainer">
@@ -59,6 +66,11 @@ const VegetablePage = (props) => {
                   exact
                   path={`${props.match.url}/changePrice`}
                   component={UpdateVegetablePrice}
+                />
+                 <Route
+                  exact
+                  path={`${props.match.url}/getbyname`}
+                  component={GetVegetableByName}
                 />
           </Switch>
         </div>

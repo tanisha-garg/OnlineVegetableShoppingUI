@@ -25,5 +25,12 @@ function updateVegetablePriceService(data){
     return promise;
 }
 
+function fetchVegetablesByName(name){
+    const url = baseUrl + "/vegetables/viewAllByCategory/" + name;
+    console.log(url);
+    const promise = axios.get(url);
+    return promise;
+}
 
-export  { fetchVegetableById , addVegetable , updateVegetablePriceService};
+
+export  { fetchVegetableById , addVegetable , updateVegetablePriceService, fetchVegetablesByName};
