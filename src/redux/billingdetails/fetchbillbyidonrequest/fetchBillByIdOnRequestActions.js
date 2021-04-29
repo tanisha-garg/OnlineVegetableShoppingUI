@@ -1,4 +1,4 @@
-import { fetchBillDetails } from "../../../service1/BillingDetailsService";
+import { fetchBillDetails } from "../../../service/BillingDetailsService";
 import store from "../../store";
 import fetchBillByIdOnRequestConstants from "./fetchBillByIdOnRequestConstants";
 

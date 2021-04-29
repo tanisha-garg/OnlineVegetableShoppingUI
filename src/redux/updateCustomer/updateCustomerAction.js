@@ -1,4 +1,4 @@
-import { updateCustomer } from "../../service1/CustomerService";
+import { updateCustomer } from "../../service/CustomerService";
 import store from "../store";
 import { updateCustomerConstant } from "./updateCustomerConstant";
 

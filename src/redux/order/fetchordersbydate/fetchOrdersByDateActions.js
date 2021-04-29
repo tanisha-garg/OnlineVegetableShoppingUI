@@ -1,4 +1,4 @@
-import { fetchAllOrdersByDate } from "../../../service1/OrderServiceT";
+import { fetchAllOrdersByDate } from "../../../service/OrderServiceT";
 import store from "../../store";
 import fetchOrdersByDateConstants from "./fetchOrdersByDateConstants";
 

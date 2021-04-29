@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DisplayFeedbackDetails from "./DisplayFeedbackDetails";
 import commonStyle from "./commonStyle.module.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import {addFeedback} from "../../service1/FeedbackService"
+import {addFeedback} from "../../service/FeedbackService"
 
 export default function AddFeedback() {
 

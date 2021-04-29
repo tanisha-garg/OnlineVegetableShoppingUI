@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchOrderList } from "../../service1/OrderServiceT";
+import { fetchOrderList } from "../../service/OrderServiceT";
 import DisplayOrderList from "./DisplayOrderList";
 const GetAllOrders = () => {
 const [orderList,setOrder]=useState({orders:undefined,error: undefined})

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DisplayVegetable from "./DisplayVegetable";
 import validationMessage from "./validationMessage";
 import commonStyle from "./commonStyle.module.css";
-import addVegetable from "../../service1/VegetableService"
+import addVegetable from "../../service/VegetableService"
 import { useDispatch, useSelector } from "react-redux";
 import { addVegetableAction } from "../../redux/vegetable/addVegetable/addVegetableAction";
 

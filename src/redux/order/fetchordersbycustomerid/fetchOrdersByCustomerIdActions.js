@@ -1,6 +1,6 @@
 import store from "../../store";
 import fetchOrdersByCustomerIdConstants from "./fetchOrdersByCustomerIdConstants";
-import {fetchOrdersByCustId} from "../../../service1/OrderServiceT" 
+import {fetchOrdersByCustId} from "../../../service/OrderServiceT" 
 
 function fetchOrdersByCustomerIdSuccess(orders){
     return({

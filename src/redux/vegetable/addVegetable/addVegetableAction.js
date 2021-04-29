@@ -1,4 +1,4 @@
-import { addVegetable } from "../../../service1/VegetableService";
+import { addVegetable } from "../../../service/VegetableService";
 import store from "../../store";
 import addVegetableConstants from "./addVegetableConstants";
 
