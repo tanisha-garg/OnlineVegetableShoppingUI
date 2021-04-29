@@ -1,4 +1,4 @@
-import { addCustomer } from "../../service/CustomerService";
+import { addCustomer } from "../../service1/CustomerService";
 import { addCustomerConstant } from "./addCustomerConstant";
 import store from "../store";
 

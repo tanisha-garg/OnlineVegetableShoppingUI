@@ -1,6 +1,6 @@
 import store from "../../store";
 import updateVegetablePriceConstants from "./updateVegetablePriceConstants";
-import {updateVegetablePriceService} from "../../../service/VegetableService"
+import {updateVegetablePriceService} from "../../../service1/VegetableService"
 
 function updateVegetablePriceSuccess(vegetable){
     return({

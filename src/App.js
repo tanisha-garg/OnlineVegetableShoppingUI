@@ -21,6 +21,7 @@ import BillDetailsPage from "./pages/BillDetailsPage";
 import OrderPage from "./pages/OrderPage";
 import CartPage from "./pages/CartPage";
 import CustomerPage from "./pages/CustomerPage";
+import VegetablePage from "./pages/VegetablePage";
 
 function App() {
     
@@ -34,28 +35,18 @@ function App() {
 
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/bill" component={BillDetailsPage} />
-                <Route path="/order" component={OrderPage} /> 
-                <Route path="/cart" component={CartPage} />
                 <Route  path="/customer" component={CustomerPage} />
+                <Route  path="/vegetable" component={VegetablePage} />
+                <Route path="/cart" component={CartPage} />
+                <Route path="/order" component={OrderPage} /> 
+                <Route path="/bill" component={BillDetailsPage} />
+                
+                
 
-                <Route exact path="/vegetablehome" component={VegetableHome} />
-                <Route exact path="/vegetables/add" component={AddVegetable} />
-                <Route
-                  exact
-                  path="/vegetables/byidonrequest"
-                  component={GetVegetableDetailsOnRequest}
-                />
-                <Route
-                  exact
-                  path="/vegetables/changePrice"
-                  component={UpdateVegetablePrice}
-                />
-                <Route
-                  exact
-                  path="/vegetables/byid/:id"
-                  component={GetVegetableDetailsById}
-                />
+               
+               
+               
+               
 
                 <Route exact path="/feedbackhome" component={FeedbackHome} />
 

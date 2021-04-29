@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateOrderDetails } from "../../service/OrderServiceT";
+import { updateOrderDetails } from "../../service1/OrderServiceT";
 import DisplayOrderDetails from "./DisplayOrderDetails";
 
 const UpdateOrderDetail = () => {

@@ -37,7 +37,7 @@ function MainNavbar() {
             {/* This link is for Vegetable Module  */}
 
             <li className="nav-item">
-              <Link to="/vegetablehome" className="nav-link">
+              <Link to="/vegetable" className="nav-link">
                 <span>Vegetable</span>
               </Link>
             </li>

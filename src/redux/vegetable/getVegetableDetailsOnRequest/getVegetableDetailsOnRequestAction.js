@@ -1,4 +1,4 @@
-import { fetchVegetableById } from "../../../service/VegetableService";
+import { fetchVegetableById } from "../../../service1/VegetableService";
 import store from "../../store";
 import getVegetableDetailsOnRequestConstants from "./getVegetableDetailsOnRequestConstants";
 

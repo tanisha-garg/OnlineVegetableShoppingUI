@@ -1,4 +1,4 @@
-import { getCustomerDetailsOnRequest } from "../../service/CustomerService";
+import { getCustomerDetailsOnRequest } from "../../service1/CustomerService";
 import store from "../store";
 import { getCustomerConstant } from "./getCustomerConstant";
 
