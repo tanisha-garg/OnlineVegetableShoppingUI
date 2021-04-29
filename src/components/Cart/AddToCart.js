@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { itemToCartIncreaseThunk } from "../../Redux/Cart/itemToCartAction";
-import { itemToVegThunk } from "../../Redux/vegItem/itemToVegAction";
+import { itemToCartIncreaseThunk } from "../../redux/Cart/itemToCartAction";
+import { itemToVegThunk } from "../../redux/vegItem/itemToVegAction";
 import "./addorreplace.css";
 const AddToCart = ({history}) => {
 

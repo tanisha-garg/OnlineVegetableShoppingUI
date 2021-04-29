@@ -1,4 +1,4 @@
-import { viewAllVeg } from "../../Service/CartService";
+import { viewAllVeg } from "../../service/CartService";
 import { itemToVegConstant } from "./itemToVegConstant";
 
   export const itemToVegStart = () => ({

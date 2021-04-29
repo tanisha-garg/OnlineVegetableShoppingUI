@@ -1,4 +1,4 @@
-import { increaseQuantityRequest,decreaseQuantityRequest } from "../../Service/CartService"
+import { increaseQuantityRequest,decreaseQuantityRequest } from "../../service/CartService"
 import { itemToCartConstant } from "./itemToCartConstant";
 
   export const itemToCartStart = () => ({

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { itemToCartIncreaseThunk , itemToCartDecreaseThunk} from "../../Redux/Cart/itemToCartAction";
-import { itemToCartConstant } from "../../Redux/Cart/itemToCartConstant";
-import { addItemToCartRequest } from "../../Service/CartService";
+import { itemToCartIncreaseThunk , itemToCartDecreaseThunk} from "../../redux/Cart/itemToCartAction";
+import { itemToCartConstant } from "../../redux/Cart/itemToCartConstant";
+import { addItemToCartRequest } from "../../service/CartService";
 import "./addorreplace.css";
 
 const AddOrRemoveItemFromCart = () => {
