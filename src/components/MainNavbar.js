@@ -70,7 +70,7 @@ function MainNavbar() {
             {/* This link is for Feedback Module  */}
 
             <li className="nav-item">
-              <Link to="/feedbackhome" className="nav-link">
+              <Link to="/feedback" className="nav-link">
                 <span>Feedback</span>
               </Link>
             </li>

@@ -18,7 +18,7 @@ const AddToCart = ({history}) => {
     const onHandleAdd=(vegId)=>{
       const data ={
         vegId:vegId,
-        custId:'7',
+        custId:'4',
         quantity:1
       }
       dispatch(itemToCartIncreaseThunk(data))

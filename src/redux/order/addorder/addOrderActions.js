@@ -20,17 +20,18 @@ function addOrderFail(error) {
   };
 }
 
-function addOrder(customerId) {
+function addOrderAction(customerId) {
     return() => {
           const promise = addOrderDetails(customerId);
           promise.then((response) => {
             store.dispatch(addOrderSuccess(response.data));
           })
           .catch((error) => {
+            console.log(error.response.data);
             store.dispatch(addOrderFail(error.response.data));
           })
     }
  
 }
 
-export {addOrderSuccess, addOrderFail, addOrder};
+export {addOrderSuccess, addOrderFail, addOrderAction};
