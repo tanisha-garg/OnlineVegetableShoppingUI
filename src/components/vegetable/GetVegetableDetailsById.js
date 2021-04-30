@@ -11,22 +11,22 @@ import { getVegetableDetailsOnRequestAction } from "../../redux/vegetable/getVeg
  */
 
 export default function GetVegetableDetailsById(props) {
-    /*const veg = {
-      id: 1,
-      name: "potato",
-      category: "underground",
-      type: "root",
-      quantity: 20,
-      price: 30,
-    };*/
-  
-
+   
+   /**
+     * useSelector is used to access the state from the store . 
+     */
     const response=useSelector(state=>{
       return({
         vegetable:state.getVegetableDetailsOnRequest.vegetable,
         error:state.getVegetableDetailsOnRequest.error
       });
     });
+
+    
+    /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
 
     const dispatch=useDispatch();
 

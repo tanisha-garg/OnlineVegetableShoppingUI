@@ -11,21 +11,22 @@ import { getVegetableDetailsOnRequestAction } from "../../redux/vegetable/getVeg
  */
 
 export default function GetVegetableDetailsOnRequest() {
-    /*const veg = {
-      id: 1,
-      name: "potato",
-      category: "underground",
-      type: "root",
-      quantity: 20,
-      price: 30,
-    };*/
   
     const idRef = React.createRef();
   
+    
+    /**
+     * useState returns current State and function which set the current state .
+     */
+    
     let [currentState, setNewState] = useState({
       id: undefined,
       validations:{id:undefined}
     });
+
+    /**
+     * useSelector is used to access the state from the store . 
+     */
 
     const response=useSelector(state=>{
       return({
@@ -33,6 +34,11 @@ export default function GetVegetableDetailsOnRequest() {
         error:state.getVegetableDetailsOnRequest.error
       });
     });
+
+    /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
 
     const dispatch=useDispatch();
 

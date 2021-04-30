@@ -37,15 +37,25 @@ export default function AddVegetable() {
       validations:{name:undefined,category:undefined,type:undefined,quanity:undefined,price:undefined}
     };
 
+    /**
+     * useState returns current State and function which set the current state .
+     */
     const [currentState, setNewState] = useState(initialState);
 
 
+    /**
+     * useSelector is used to access the state from the store . 
+     */
     const response=useSelector(state=>{
       return({
         vegetable:state.addVegetable.vegetable,
         error:state.addVegetable.error
       });
     });
+/**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
 
     const dispatch=useDispatch();
   

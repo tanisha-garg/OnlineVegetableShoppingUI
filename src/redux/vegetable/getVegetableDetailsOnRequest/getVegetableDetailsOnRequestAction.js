@@ -24,14 +24,6 @@ function getVegetableOnRequestFail(error){
 
 function getVegetableDetailsOnRequestAction(vegId){
     return()=>{
-        /*const veg = {
-            vegId: 1,
-            name: "potato",
-            category: "underground",
-            type: "root",
-            quantity: 20,
-            price: 50,
-          };*/
           const promise=fetchVegetableById(vegId);
           promise.then(response=>{
               const vegetable=response.data;

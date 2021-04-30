@@ -20,14 +20,7 @@ function addVegetableFail(error){
 
 function addVegetableAction(data){
     return()=>{
-        /*const veg = {
-            vegId: 1,
-            name: "potato",
-            category: "underground",
-            type: "root",
-            quantity: 20,
-            price: 50,
-          };*/
+       
           const promise = addVegetable(data);
           promise.then(
               response=>{
