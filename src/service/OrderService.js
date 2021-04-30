@@ -103,7 +103,7 @@ function updateOrderDetails(data){
  */
 
 function fetchCustomerId(){
-    return 16;
+    return 4;
 }
 
 /**

@@ -57,7 +57,7 @@ const AddToCart = ({history}) => {
           ))}
            
   
-          <button type="submit" className="btn btn-primary" >Go To Cart</button>
+          
         
       </div>
     );
