@@ -34,7 +34,6 @@ function GetOrderDetailsByCustomerId(props) {
 
   return (
     <div className="container w-75 mt-5">
-      <div className="alert alert-info">Please provide an id in the url path</div>
       <div>
         <h2> Get order details placed by customer</h2> <br />
         {response.orders ? (
