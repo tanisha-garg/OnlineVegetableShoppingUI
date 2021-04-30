@@ -11,6 +11,11 @@ import DisplayBillingDetails from "./DisplayBillingDetails";
 
 function GetBillingDetails(props) {
 
+  /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
+
   const dispatch = useDispatch();
 
   const response = useSelector((state) => {

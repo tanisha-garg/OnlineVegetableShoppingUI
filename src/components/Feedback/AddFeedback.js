@@ -64,12 +64,12 @@ export default function AddFeedback() {
           <form onSubmit={(event) => submitHandler(event)}>
           <div className="form-group">
           <label>Enter CustomerId</label>
-                <input type="text"  name="customerId" ref={customerIdRef} onChange={()=>setFieldState(customerIdRef)} /> 
+                <input className="form-control" type="text"  name="customerId" ref={customerIdRef} onChange={()=>setFieldState(customerIdRef)} /> 
                 
               </div> 
               <div className="form-group">
               <label>Enter VegetableId</label>
-                <input type="text"  name="vegetableId" ref={vegetableIdRef} onChange={()=>setFieldState(vegetableIdRef)} /> 
+                <input type="text" className="form-control"  name="vegetableId" ref={vegetableIdRef} onChange={()=>setFieldState(vegetableIdRef)} /> 
             
               </div> 
         
@@ -95,10 +95,11 @@ export default function AddFeedback() {
                   <br /> 
               </div>
               <div className="form-group">
-                <input type="text" placeholder="add comments" name="comment" ref={commentRef} onChange={()=>setFieldState(commentRef)} /> 
+                <label>Comments</label>
+                <textarea  className="form-control" placeholder="add comments" name="comment" ref={commentRef} onChange={()=>setFieldState(commentRef)} /> 
         
               </div>
-              <button type="submit" className="btn btn-primary">Add Feedback</button>
+              <button type="submit" className="form-control" className="btn btn-primary">Add Feedback</button>
           </form>
           <h2>{currentState.formStatus}</h2>
 
