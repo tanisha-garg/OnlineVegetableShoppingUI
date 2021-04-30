@@ -28,7 +28,7 @@ const OrderPage = (props) => {
           <button
             className="btn btn-outline-secondary"
             onClick={() =>
-              props.history.push(`${props.match.url}/ordersofcustomer`)
+              props.history.push(`${props.match.url}/ordersofcustomer/:id`)
             }
           >
             Orders placed by customer
@@ -84,7 +84,7 @@ const OrderPage = (props) => {
             />
             <Route
               exact
-              path={`${props.match.url}/ordersofcustomer`}
+              path={`${props.match.url}/ordersofcustomer/:id`}
               component={GetOrderDetailsByCustomerId}
             />
             <Route

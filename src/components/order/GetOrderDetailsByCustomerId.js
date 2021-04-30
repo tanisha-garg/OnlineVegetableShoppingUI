@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrdersByCustomerId } from "../../redux/order/fetchordersbycustomerid/fetchOrdersByCustomerIdActions";
 import { fetchCustomerId } from "../../service/OrderService";
@@ -10,7 +10,7 @@ import DisplayOrderList from "./DisplayOrderList";
  * For now, there is a method in the service which is returning a hard coded customer id
 */
 
-function GetOrderDetailsByCustomerId() {
+function GetOrderDetailsByCustomerId(props) {
 
   const customerId = fetchCustomerId();
 
@@ -24,6 +24,7 @@ function GetOrderDetailsByCustomerId() {
   })
 
   const fetchOrderDetailsOnRender = () => {
+    const id =  props.match.params.id;
     dispatch(fetchOrdersByCustomerId(customerId));
     
  
