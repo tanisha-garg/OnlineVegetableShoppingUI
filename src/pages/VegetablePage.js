@@ -39,9 +39,9 @@ const VegetablePage = (props) => {
           </button>
           <button
             className="btn btn-outline-secondary"
-            onClick={() => props.history.push(`${props.match.url}/getbyname`)}
+            onClick={() => props.history.push(`${props.match.url}/getbycategory`)}
           >
-            Get Vegetable By Name
+            Get Vegetable By Category
           </button>
         </div>
         <div className="pageLine"></div>
@@ -69,7 +69,7 @@ const VegetablePage = (props) => {
                 />
                  <Route
                   exact
-                  path={`${props.match.url}/getbyname`}
+                  path={`${props.match.url}/getbycategory`}
                   component={GetVegetableByName}
                 />
           </Switch>
