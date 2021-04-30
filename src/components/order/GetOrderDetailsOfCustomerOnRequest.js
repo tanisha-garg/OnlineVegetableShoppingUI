@@ -17,7 +17,16 @@ function GetOrderDetailsOfCustomerOnRequest() {
     validations: { customerId: undefined },
   };
 
+   /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
+
   const dispatch = useDispatch();
+    /**
+   * useSelector is used to extract data from the redux store state.
+   * It is returning orders, error from the store
+   */
 
   const response = useSelector((state) => {
     return {

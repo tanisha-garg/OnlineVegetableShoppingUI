@@ -6,19 +6,35 @@ import DisplayOrderDetails from "./DisplayOrderDetails";
 /**
  * Component to display order details by passing id in the url.
  * By default an error message will be shown as there is no valid id in the url
-*/
+ */
 function GetOrderDetails(props) {
+  /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
 
   const dispatch = useDispatch();
 
-  const response = useSelector(state => {
-    return {order: state.fetchOrderDetails.order, error: state.fetchOrderDetails.error};
+  /**
+   * useSelector is used to extract data from the redux store state.
+   * It is returning order, error from the store
+   */
+
+  const response = useSelector((state) => {
+    return {
+      order: state.fetchOrderDetails.order,
+      error: state.fetchOrderDetails.error,
+    };
   });
 
   const fetchOrderDetailsOnRender = () => {
     const id = props.match.params.id;
     dispatch(fetchOrderDetails(id));
   };
+
+  /**
+   * useEffect helps in performing side effects
+   */
 
   useEffect(fetchOrderDetailsOnRender, []);
 

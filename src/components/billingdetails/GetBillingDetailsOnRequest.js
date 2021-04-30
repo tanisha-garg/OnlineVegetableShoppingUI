@@ -4,13 +4,17 @@ import validationMessage from "./billingValidationMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBillByIdOnRequest } from "../../redux/billingdetails/fetchbillbyidonrequest/fetchBillByIdOnRequestActions";
 
-
 /**
  * Component to fetch bill details by passing a bill id through a form
- * Once the user clicks on submit button the bill details is displayed if bill exists, if a bill 
+ * Once the user clicks on submit button the bill details is displayed if bill exists, if a bill
  * doesn't exist then error message is shown.
-*/
+ */
 function GetBillingDetailsOnRequest() {
+  /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
+
   const dispatch = useDispatch();
 
   const billIdRef = React.createRef();
@@ -20,12 +24,22 @@ function GetBillingDetailsOnRequest() {
     validations: { billingId: undefined },
   };
 
+  /**
+   * useSelector is used to extract data from the redux store state.
+   * It is returning bill, error from the store
+   */
+
   const response = useSelector((state) => {
     return {
       bill: state.fetchBillByIdOnRequest.bill,
       error: state.fetchBillByIdOnRequest.error,
     };
   });
+
+  /**
+   * useState is being used to maintain the current state by setting new state with setNewState
+   *  function
+   */
 
   let [currentState, setNewState] = useState(initialState);
 

@@ -6,19 +6,36 @@ import DisplayOrderList from "./DisplayOrderList";
 /**
  * Component returns a list of orders placed on a particular date
  * The date is accepted form a form in dd mmmm yyyy format
-*/
+ */
 
 function GetOrderDetailsByDateOnRequest() {
-
   const dateRef = React.createRef();
 
-  const initialState = {date: undefined };
+  const initialState = { date: undefined };
+
+  /**
+   * useDispatch() is assigned to a variable and an action is dispatched to the store by adding action
+   * as an argument in the variable.
+   */
 
   const dispatch = useDispatch();
 
-  const response = useSelector( state => {
-    return {orders: state.fetchOrdersByDateOnRequest.orders, error: state.fetchOrdersByDateOnRequest.error }
-  })
+  /**
+   * useSelector is used to extract data from the redux store state.
+   * It is returning orders, error from the store
+   */
+
+  const response = useSelector((state) => {
+    return {
+      orders: state.fetchOrdersByDateOnRequest.orders,
+      error: state.fetchOrdersByDateOnRequest.error,
+    };
+  });
+
+  /**
+   * useState is being used to maintain the current state by setting new state with setNewState
+   *  function
+   */
 
   const [currentState, setNewState] = useState(initialState);
 
@@ -42,7 +59,6 @@ function GetOrderDetailsByDateOnRequest() {
   return (
     <div className="container w-75 mt-5">
       <h2>Get Order Details By Date</h2>
-
       <form onSubmit={(event) => submitHandler(event)}>
         <div className="form-group mt-4">
           <label>Enter Date:</label>
@@ -57,11 +73,11 @@ function GetOrderDetailsByDateOnRequest() {
           />
         </div>
         <button className="btn btn-primary mt-2">Submit</button>
-      </form> <br />
-
+      </form>{" "}
+      <br />
       {response.orders ? (
         <div>
-           <div className="alert alert-success">
+          <div className="alert alert-success">
             Orders list fetched successfully
           </div>
           <DisplayOrderList orders={response.orders} />
@@ -69,7 +85,6 @@ function GetOrderDetailsByDateOnRequest() {
       ) : (
         ""
       )}
-
       {response.error ? (
         <div className="text-danger h6">
           Request processing unsuccessful
