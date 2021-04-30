@@ -5,6 +5,12 @@ import validationMessage from "./customerValidationMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { getCustomerThunk } from "../../redux/getCustomer/getCustomerAction";
 
+
+/**
+ * Component returns the details of customer where the customer id is 
+ * accepted from a form
+*/
+
 const GetCustomerDetailsOnRequest = () => {
   const dispatch = useDispatch();
   const response = useSelector((state) => {
@@ -62,7 +68,6 @@ const GetCustomerDetailsOnRequest = () => {
 
   return (
     <div className="container mt-4">
-      <div className="alert alert-info">Please provide a valid Customer Id</div>
       <div className="mt-4">
         <h2>Get Customer Details by Id</h2>
       </div>

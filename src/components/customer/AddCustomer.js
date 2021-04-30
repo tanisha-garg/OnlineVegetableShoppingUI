@@ -5,7 +5,11 @@ import DisplayCustomerDetails from "./DisplayCustomerDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { addCustomerThunk } from "../../redux/addCustomer/addCustomerAction";
 
-// Adding Customer using functional Component
+/**
+ * Component adds a customer and
+ *  returns the details of customer when the data is  
+ * accepted from a form
+*/
 const AddCustomer = () => {
   const dispatch = useDispatch();
   const response = useSelector((state) => {
@@ -111,9 +115,6 @@ const AddCustomer = () => {
 
   return (
     <div className="container mt-4 w-75">
-      <div className="alert alert-info">
-        Please provide details to Add Customer
-      </div>
       <div className="mt-4"></div>
       <h2> Add New Customer</h2>
       <form onSubmit={(event) => submitHandler(event)}>

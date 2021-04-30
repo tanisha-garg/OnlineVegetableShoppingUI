@@ -1,3 +1,6 @@
+/**
+ * Constants for validations of Customer Module
+*/
 const validationMessage = {
   idSmallerThanOne: "Customer id can't be negative or zero", // validating id
   nameSmallthanLengthThree: "Name can't be smaller than 3 letters", // Check name has min length 3

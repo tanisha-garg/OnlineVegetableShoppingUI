@@ -1,3 +1,6 @@
+/**
+ * Component to display Customer Details
+ */
 function DisplayCustomerDetails({ customer }) {
   return (
     <div>
@@ -9,71 +12,70 @@ function DisplayCustomerDetails({ customer }) {
               textAlign: "right",
             }}
           >
-            Customer ID :{" "}
-          </th>          
-          <th
-            style={{
-              textAlign: "right",
-            }}
-          >
-            Name :{" "}
+            Customer ID
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            Mobile Number :{" "}
+            Name
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            Email Id :{" "}
+            Mobile Number
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            Flat Number :{" "}
+            Email Id
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            Building Name :{" "}
+            Flat Number
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            Area :{" "}
+            Building Name
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            City :{" "}
+            Area
           </th>
           <th
             style={{
               textAlign: "right",
             }}
           >
-            State :{" "}
+            City
           </th>
-          <th style=
-            {{
+          <th
+            style={{
               textAlign: "right",
-            }}>
-
-            
-            Pincode :{" "}
+            }}
+          >
+            State
+          </th>
+          <th
+            style={{
+              textAlign: "right",
+            }}
+          >
+            Pincode
           </th>
         </tr>
 

@@ -5,6 +5,12 @@ import commonStyle from "./commonStyle.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCustomerThunk } from "../../redux/updateCustomer/updateCustomerAction";
 
+/**
+ * Component returns the updated details of customer where the customer id, name, 
+ * mobile number, email id is 
+ * accepted from a form
+*/
+
 const UpdateCustomerDetails=()=>{
   
     const dispatch = useDispatch();
@@ -25,17 +31,14 @@ const initialState = {
     name: undefined,
     mobileNumber : undefined,
     emailId:undefined,
-    //formstatus : "",
     validations : {customerId : undefined, mobileNumber:undefined}
 };
 
-//const response = {customer: customer, errMsg: undefined};
 const [state, setNewState] = useState(initialState);
 
 const submitHandler = (event) => {
   event.preventDefault();
   dispatch(updateCustomerThunk(state));
-  //setNewState({ ...state, formstatus: "Form is submitted Successfully" });
 };
 
 const changeHandler = (ref) => {
@@ -54,8 +57,6 @@ const changeHandler = (ref) => {
     const newState = {
       ...state,
       [fieldName]: fieldValue,
-      //customer: undefined,
-      //errMsg: undefined,
       validations: newValidations
     };
 
@@ -84,9 +85,6 @@ const changeHandler = (ref) => {
   
   return(
     <div className="container mt-4 w-75">
-     <div className="alert alert-info">
-        Please provide a valid Customer Id
-      </div>
       <div className="mt-4">
         <h2>Update Customer Details by Id</h2>
       </div>
